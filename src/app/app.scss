@@ -1,0 +1,38 @@
+@import './variables';
+* {
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+a.subview div.md-list-item {
+  background: rgba(194, 194, 194, 0.12);
+  &:hover {
+    background: rgba(194, 194, 194, 0.22);
+  }
+}
+
+a.subview div.md-list-item.md-list-item-focus {
+  background: #e6e6e6;
+}
+
+md-card-content {
+  font-size: 15px !important;
+}
+
+md-input {
+  margin: 8px 0;
+  width: 100%;
+}
+
+.md-primary { 
+  background: $os-primar-color !important 
+}
+
+.md-primary-button {
+    background: rgb(33, 150, 243) !important;
+    color: white !important;
+}
+
+md-sidenav-layout {
+  background: rgba(255,255,255, 1);
+}

@@ -1,0 +1,34 @@
+.DS_Store
+ehthumbs.db
+Icon?
+Thumbs.db
+.idea
+.vscode
+
+# Node Files #
+/node_modules
+/bower_components
+npm-debug.log
+
+# Typing #
+/src/typings/tsd/
+/typings/
+/tsd_typings/
+
+# Dist #
+/dist/
+/public/__build__/
+/src/*/__build__/
+/__build__/**
+/public/dist/
+/src/*/dist/
+.webpack.json
+/src/assets/bower_components/
+
+# Coverage #
+/coverage/
+
+/output/
+/src/compiled/
+.awcache/
+/src/app/**/*.css

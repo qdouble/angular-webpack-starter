@@ -1,0 +1,23 @@
+<md-sidenav-layout fullscreen>
+  <md-sidenav #sidenav [mode]="sideNavMode">
+    <md-nav-list>
+      <template ngFor let-view [ngForOf]="views" let-even="even" let-odd="odd" let-rowIndex="index">
+        <a md-list-item [routerLink]="view.link" routerLinkActive="active-link" (click)="mobile ? sidenav.close() : {}">
+          <md-icon md-list-icon>{{view.icon}}</md-icon>
+          <span md-line>{{view.name}}</span>
+          <span md-line class="secondary">{{view.description}}</span>
+        </a>
+      </template>
+    </md-nav-list>
+  </md-sidenav>
+  <md-toolbar color="primary">
+    <button md-icon-button (click)="sidenav.toggle()">
+      <md-icon>menu</md-icon>
+    </button> Angular Starter App
+  </md-toolbar>
+<div flex layout="row">
+<md-card flex>
+  <router-outlet (activate)="activatedEvent($event)" (deactivate)="deactivatedEvent($event)"></router-outlet>
+</md-card>
+</div>
+</md-sidenav-layout>

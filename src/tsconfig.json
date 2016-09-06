@@ -1,0 +1,45 @@
+{
+  "compilerOptions": {
+    "target": "es5",
+    "emitDecoratorMetadata": true,
+    "experimentalDecorators": true,
+    "allowSyntheticDefaultImports": false,
+    "noEmitHelpers": true,
+    "pretty": true,
+    "sourceMap": true,
+    "lib": ["es5", "dom"],
+    "strictNullChecks": false,
+    "baseUrl": ".",
+    "types": [
+      "core-js",
+      "hammerjs",
+      "jasmine",
+      "node",
+      "protractor",
+      "selenium-webdriver",
+      "source-map"
+    ],
+    "typeRoots": [
+      "../node_modules/@types"
+    ],
+    "outDir": "../output"
+  },
+  "exclude": [
+    "../node_modules",
+    "./**/*.e2e.ts",
+    "./**/*.spec.ts",
+    "./main.browser.aot.ts"
+  ],
+  "awesomeTypescriptLoaderOptions": {
+    "useWebpackText": true,
+    "forkChecker": true,
+    "useCache": true
+  },
+  "compileOnSave": false,
+  "buildOnSave": false,
+  "atom": { "rewriteTsconfig": false },
+  "angularCompilerOptions": {
+   "genDir": "compiled",
+   "debug": true
+ }
+}
