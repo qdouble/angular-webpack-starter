@@ -10,7 +10,7 @@ if ('production' === ENV) {
 }
 
 export function main() {
-  platformBrowser().bootstrapModuleFactory(AppModuleNgFactory)
+  return platformBrowser().bootstrapModuleFactory(AppModuleNgFactory)
     .catch(err => console.log(err));
 }
 
