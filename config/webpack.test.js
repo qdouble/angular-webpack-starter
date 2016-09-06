@@ -90,8 +90,7 @@ module.exports = {
         exclude: [
           // these packages have problems with their sourcemaps
           helpers.root('node_modules/rxjs'),
-          helpers.root('node_modules/@angular'),
-          helpers.root('node_modules/@ngrx'),
+          helpers.root('node_modules/@angular')
         ]
       }
 
@@ -118,15 +117,6 @@ module.exports = {
           'awesome-typescript-loader',
           'angular2-template-loader'
         ],
-        // query: {
-        //   compilerOptions: {
-
-        //     // Remove TypeScript helpers to be injected
-        //     // below by DefinePlugin
-        //     removeComments: true
-
-        //   }
-        // },
         exclude: [/\.e2e\.ts$/]
       },
 

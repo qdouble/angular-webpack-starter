@@ -23,7 +23,7 @@
     "tslint": "tslint",
     "lint": "npm run tslint 'src/app/**/*.ts'",
     "clean": "npm cache clean && npm run rimraf -- node_modules doc typings coverage dist .awscache ts-node src/compiled",
-    "clean:dist": "npm run rimraf -- dist",
+    "clean:dist": "npm run rimraf -- dist .awscache",
     "clean:compile": "npm run rimraf -- output compiled src/compiled",
     "compile": "npm run compile:aot",
     "compile:aot": "npm run sass && npm run clean:compile && ./node_modules/.bin/ngc -p src && npm run build:aot",

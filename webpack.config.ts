@@ -88,14 +88,13 @@ module.exports = function webpackConfig(): WebpackConfig {
       {
         test: /\.scss$/,
         exclude: /node_modules/,
-        loaders: ['raw-loader', 'sass-loader'] // sass-loader not scss-loader
+        loaders: ['raw-loader', 'sass-loader']
       },
     ]
   };
 
   config.plugins = [
     new ContextReplacementPlugin(
-        // The (\\|\/) piece accounts for path separators in *nix and Windows
         /angular(\\|\/)core(\\|\/)(esm(\\|\/)src|src)(\\|\/)linker/,
         root('./src')
       ),
@@ -127,6 +126,7 @@ module.exports = function webpackConfig(): WebpackConfig {
         beautify: false,
         comments: false
       }),
+      // Generate Gzip files (Optional, production server should do this.) //
       new CompressionPlugin({
         asset: '[path].gz[query]',
         algorithm: 'gzip',
