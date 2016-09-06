@@ -24,6 +24,7 @@ Default production port is `8088`.
 These can be changed in constants.js
 
 The scripts are set to compile css next to scss because ngc compiler does not support Sass.
+To compile scss, use `npm run sass`, but many of the scripts will either build or watch scss files.
 
 Use `npm start` for dev server;
 
