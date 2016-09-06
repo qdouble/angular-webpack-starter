@@ -8,7 +8,6 @@ npm start
 
 ## Features
 * Webpack 2
-  * `System.import`
 * TypeScript 2
   * @types
 * Material Design 2
@@ -16,19 +15,24 @@ npm start
   * Async loading
   * Treeshaking
   * AOT Compilation
+  * AOT safe SASS compilation
 
-Default dev port is 3000;
-Default prod port is 8088;
+Default dev port is `3000`.
+
+Default production port is `8088`.
+
 These can be changed in constants.js
 
 The scripts are set to compile css next to scss because ngc compiler does not support Sass.
 
 Use `npm start` for dev server;
+
 Use `npm run server:prod` for production server and production watch.
+
 Use `npm run prod:build` for production build.
 
 To create AOT version, run `npm run compile`. This will compile and build script.
-Then you can run `npm run prodserver` to see it running;
+Then you can run `npm run prodserver` to see it run;
 
 There is a known bug of AOT not properly loading the routing configuration of lazy loaded modules
 https://github.com/angular/angular/issues/11075
