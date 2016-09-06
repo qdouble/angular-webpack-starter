@@ -32,3 +32,4 @@ npm-debug.log
 /src/compiled/
 .awcache/
 /src/app/**/*.css
+ts-node
