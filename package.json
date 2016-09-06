@@ -42,7 +42,6 @@
     "prebuild": "rm -rf dist && npm run sass",
     "debug:build": "node-nightly --inspect --debug-brk node_modules/webpack/bin/webpack.js",
     "build": "npm run build:prod",
-    // Do not use build:aot directly unless you have already compiled. Use `npm run compile` instead, it compiles and builds:aot
     "build:aot": "webpack",
     "build:dev": "webpack",
     "build:prod": "webpack",

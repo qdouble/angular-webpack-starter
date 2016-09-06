@@ -34,6 +34,8 @@ Use `npm run prod:build` for production build.
 
 To create AOT version, run `npm run compile`. This will compile and build script.
 Then you can use `npm run prodserver` to see to serve files;
+Do not use build:aot directly unless you have already compiled.
+Use `npm run compile` instead, it compiles and builds:aot
 
 There is a known bug of AOT not properly loading the routing configuration of lazy loaded modules
 https://github.com/angular/angular/issues/11075
