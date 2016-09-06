@@ -63,7 +63,6 @@ module.exports = {
   plugins: [
     new ForkCheckerPlugin(),
     new NamedModulesPlugin(),
-    new webpack.optimize.OccurrenceOrderPlugin(true),
     new webpack.optimize.CommonsChunkPlugin({ 
       name: ['main'], minChunks: Infinity 
     }),
