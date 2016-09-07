@@ -1,9 +1,10 @@
 import './polyfills.browser.aot';
 import './rxjs.imports';
+declare var ENV: string;
 
 import { enableProdMode } from '@angular/core';
 import { platformBrowser } from '@angular/platform-browser';
-import { AppModuleNgFactory } from './compiled/app/app.module.ngfactory';
+import { AppModuleNgFactory } from './app/app.module.ngfactory';
 
 if ('production' === ENV) {
   enableProdMode();
