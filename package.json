@@ -22,12 +22,13 @@
     "test": "karma start",
     "ci": "npm run e2e && npm run test",
     "tslint": "tslint",
-    "lint": "npm run tslint 'src/app/**/*.ts'",
-    "clean": "npm cache clean && npm run rimraf -- node_modules doc typings coverage dist .awscache src/compiled",
-    "clean:dist": "npm run rimraf -- dist .awscache",
-    "clean:compile": "npm run rimraf -- output compiled src/compiled",
+    "lint": "npm run tslint \"src/app/**/*.ts\" ",
+    "clean": "npm cache clean && npm run rimraf -- node_modules doc typings coverage dist .awcache output && npm run clean:compile",
+    "clean:dist": "npm run rimraf -- dist .awcache output",
+    "clean:compile": "npm run rimraf -- \"src/compiled\" ",
     "compile": "npm run compile:aot",
     "compile:aot": "npm run sass && npm run clean:compile && \"./node_modules/.bin/ngc\" -p src && npm run build:aot",
+    "compile:dev": "npm run sass && npm run clean:compile && \"./node_modules/.bin/ngc\" -p src && npm run build:aot:dev",
     "compile:only": "npm run clean:compile && npm run sass && \"./node_modules/.bin/ngc\" -p src",
     "compile:watch": "watch-run -i npm run compile:only -p 'src/app/**/*.ts, src/app/**/*.scss' npm run compile:only",
     "prodserver": "node prodserver",
@@ -43,6 +44,7 @@
     "debug:build": "node-nightly --inspect --debug-brk node_modules/webpack/bin/webpack.js",
     "build": "npm run build:prod",
     "build:aot": "webpack",
+    "build:aot:dev": "webpack",
     "build:dev": "webpack",
     "build:prod": "webpack",
     "watch": "npm run watch:dev",
@@ -127,11 +129,11 @@
   },
   "license": "Apache-2.0",
   "bugs": {
-    "url": "https://github.com/qdouble/angular2starter/issues"
+    "url": "https://github.com/qdouble/angular2webpack2-starter/issues"
   },
-  "homepage": "https://github.com/qdouble/angular2starter#readme",
+  "homepage": "https://github.com/qdouble/angular2webpack2-starter#readme",
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/qdouble/angular2starter.git"
+    "url": "git+https://github.com/qdouble/angular2webpack2-starter.git"
   }
 }

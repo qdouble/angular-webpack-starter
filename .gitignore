@@ -33,3 +33,6 @@ npm-debug.log
 .awcache/
 /src/app/**/*.css
 ts-node
+/**/*.ngfactory.ts
+/**/*.css.ts
+/**/*.css.shim.ts
