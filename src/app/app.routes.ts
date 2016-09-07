@@ -5,14 +5,14 @@ import { Routes } from '@angular/router';
 
 // Lazy loaded modules are different based on whether in AOT or JIT mode.
 // Using a string instead of a function is supposed to let angular do prefixing
-// but it doesn't appear to work currently. This is a workaround.
+// but it doesn't currently work. This is the best workaround for now.
 
 export function loadLazy() {
   if (!AOT) {
     return System.import('./features/lazy')
       .then((r: any) => r.LazyModule);
   } else {
-    return System.import('./features/lazy/index.ngfactory.ts')
+    return System.import('../compiled/app/features/lazy/index.ngfactory.ts')
       .then((r: any) => r.LazyModuleNgFactory);
   }
 }

@@ -75,7 +75,7 @@
       "check-module"
     ],
 
-    // "eofline": true,
+    "eofline": true,
     "indent": [
       true,
       "spaces"
