@@ -37,3 +37,10 @@ Then you can use `npm run prodserver` to see to serve files.
 Do not use build:aot directly unless you have already compiled.
 Use `npm run compile` instead, it compiles and builds:aot
 
+### AOT  Don'ts
+The following are some things that will make AOT compile fail.
+- Don’t use require statements for your templates or styles, use styleUrls and templateUrls, the angular2-template-loader plugin will change it to require at build time. 
+- Don’t use default exports.
+- Don’t use form.controls.controlName, use form.get(‘controlName’)
+- Don’t use control.errors?.someError, use control.hasError(‘someError’)
+- Don’t use functions in your providers, routes or directives, export a function and then reference that function name
