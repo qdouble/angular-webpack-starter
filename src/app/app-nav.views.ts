@@ -13,5 +13,5 @@ export const views: Object[] = [
     name: 'Bad Link',
     icon: 'error',
     link: ['wronglink']
-  },
+  }
 ];

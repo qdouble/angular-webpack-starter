@@ -31,15 +31,15 @@ export class App implements AfterContentInit {
     }
   }
 
-  activatedEvent(event) {
+  activateEvent(event) {
     if (ENV === 'development') {
-      console.log('Activated Event:', event);
+      console.log('Activate Event:', event);
     }
   }
 
-  deactivatedEvent(event) {
+  deactivateEvent(event) {
     if (ENV === 'development') {
-      console.log('Deactivated Event', event);
+      console.log('Deactivate Event', event);
     }
   }
 }
