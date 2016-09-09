@@ -18,6 +18,7 @@
     "pree2e": "npm run webdriver:update -- --standalone",
     "e2e": "npm run protractor",
     "e2e:live": "npm run e2e -- --elementExplorer",
+    "e2e:server": "PORT=4201 node prodserver",
     "pretest": "npm run lint",
     "test": "karma start",
     "ci": "npm run e2e && npm run test",
