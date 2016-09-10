@@ -53,3 +53,9 @@ the angular2-template-loader plugin will change it to require at build time.
 - Don’t use form.controls.controlName, use form.get(‘controlName’)
 - Don’t use control.errors?.someError, use control.hasError(‘someError’)
 - Don’t use functions in your providers, routes or directives, export a function and then reference that function name
+
+### Testing
+For unit tests, use `npm run test`. Code coverage results are output into coverage/ folder.
+
+For e2e test, use `npm run e2e:server` to start a testing server for dist files (default port 4201), 
+and use `npm run e2e` to run actual e2e test.
