@@ -3,7 +3,7 @@ var ports = require('../constants')
 var helpers = require('./helpers');
 
 exports.config = {
-  baseUrl: `http://localhost:${ports.DEV_PORT}/`,
+  baseUrl: `http://localhost:${ports.E2E_PORT}/`,
 
   // use `npm run e2e`
   specs: [

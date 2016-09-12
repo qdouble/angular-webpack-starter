@@ -15,9 +15,7 @@
       <md-icon>menu</md-icon>
     </button> Angular Starter App
   </md-toolbar>
-<div flex layout="row">
-<md-card flex>
-  <router-outlet (activate)="activatedEvent($event)" (deactivate)="deactivatedEvent($event)"></router-outlet>
+<md-card>
+  <router-outlet (activate)="activateEvent($event)" (deactivate)="deactivateEvent($event)"></router-outlet>
 </md-card>
-</div>
 </md-sidenav-layout>

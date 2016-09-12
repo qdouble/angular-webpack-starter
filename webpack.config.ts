@@ -79,7 +79,8 @@ module.exports = function webpackConfig(): WebpackConfig {
         test: /\.ts$/,
         loaders: [
           'awesome-typescript-loader',
-          'angular2-template-loader'
+          'angular2-template-loader',
+          'angular2-router-loader?loader=system&genDir=src/compiled/app&aot=' + AOT
         ],
         exclude: [/\.(spec|e2e|d)\.ts$/]
       },
