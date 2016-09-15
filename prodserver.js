@@ -18,8 +18,6 @@ app.get('/*', renderIndex);
 
 var PORT = process.env.PORT || ports.PROD_PORT;
 
-console.log(PORT)
-
 app.listen(PORT, () => {
   console.log(`Listening on: http://localhost:${PORT}`);
 });

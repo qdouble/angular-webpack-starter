@@ -86,12 +86,7 @@ module.exports = function webpackConfig(): WebpackConfig {
       },
       { test: /\.json$/, loader: 'json-loader' },
       { test: /\.html/, loader: 'raw-loader', exclude: [root('src/index.html')] },
-      { test: /\.css$/, loader: 'raw-loader' },
-      {
-        test: /\.scss$/,
-        exclude: /node_modules/,
-        loaders: ['raw-loader', 'sass-loader']
-      },
+      { test: /\.css$/, loader: 'raw-loader' }
     ]
   };
 
