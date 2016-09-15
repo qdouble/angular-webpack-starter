@@ -1,4 +1,4 @@
-# Starter Seed Project for Angular 2 using Nightly Builds, Material Design and Webpack 2
+# Starter Seed Project for Angular 2, Material Design 2 and Webpack 2
 > A simple Angular 2 Seed featuring Angular 2 and Webpack 2 with AOT and Lazyloading.
 
 ```
@@ -34,11 +34,6 @@ Use `npm run server:prod` for production server and production watch.
 
 Use `npm run prod:build` for production build.
 
-To update nightly builds (and other applications with ^ in version),
-run `npm update`. If a nightly build introduces a breaking change that harms your app, you can roll back
-by using the SHA # of a previous working build. Just go to https://github.com/angular?utf8=%E2%9C%93&query=builds
-and look up the commit dates before the build that caused you trouble and amend package dependency to
-`github:angular/PACKAGE_NAME-builds#SOME_SHA_NUMBER`.
 
 To create AOT version, run `npm run compile`. This will compile and build script.
 Then you can use `npm run prodserver` to see to serve files.
