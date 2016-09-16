@@ -6,10 +6,7 @@ const {
   ContextReplacementPlugin,
   DefinePlugin,
   ProgressPlugin,
-  NoErrorsPlugin,
-  optimize: {
-    CommonsChunkPlugin
-  }
+  NoErrorsPlugin
 } = require('webpack');
 
 const CompressionPlugin = require('compression-webpack-plugin');
@@ -97,7 +94,6 @@ module.exports = function webpackConfig(): WebpackConfig {
       ),
     new ProgressPlugin(),
     new ForkCheckerPlugin(),
-    new CommonsChunkPlugin({ name: ['main'], minChunks: Infinity }),
     new DefinePlugin(CONSTANTS),
     new NamedModulesPlugin(),
     new CopyWebpackPlugin([{
