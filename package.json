@@ -12,7 +12,7 @@
     "postinstall": "npm run sass",
     "rimraf": "rimraf",
     "webdev": "webpack-dev-server",
-    "ngc": "./node_modules/.bin/ngc -p src --locale=en-US && npm run rimraf -- output",
+    "ngc": "./node_modules/.bin/ngc -p tsconfig.aot.json --locale=en-US && npm run rimraf -- output",
     "webdriver-manager": "webdriver-manager",
     "webdriver:update": "npm run webdriver-manager update",
     "webdriver:start": "npm run webdriver-manager start",
