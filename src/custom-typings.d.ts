@@ -25,6 +25,7 @@ import * as _ from 'lodash'
 declare var AOT: boolean;
 declare var ENV: string;
 declare var HMR: boolean;
+declare var HOST: string;
 declare var System: SystemJS;
 
 interface SystemJS {
@@ -35,6 +36,7 @@ interface GlobalEnvironment {
   AOT;
   ENV;
   HMR;
+  HOST;
   SystemJS: SystemJS;
   System: SystemJS;
 }

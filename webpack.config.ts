@@ -1,6 +1,6 @@
 /* tslint:disable: variable-name max-line-length */
 import 'ts-helpers';
-import { DEV_PORT } from './constants';
+import { DEV_PORT, EXCLUDE_SOURCE_MAPS, HOST } from './constants';
 
 const {
   ContextReplacementPlugin,
@@ -16,11 +16,7 @@ const HtmlWebpackPlugin = require('html-webpack-plugin');
 const NamedModulesPlugin = require('webpack/lib/NamedModulesPlugin');
 const UglifyJsPlugin = require('webpack/lib/optimize/UglifyJsPlugin');
 
-const path = require('path');
-
-function root(__path = '.') {
-  return path.join(__dirname, __path);
-}
+const root = require('./config/helpers.js').root;
 
 const ENV = process.env.npm_lifecycle_event;
 const AOT = ENV === 'build:aot' || ENV === 'build:aot:dev' || ENV === 'server:aot' || ENV === 'watch:aot';
@@ -33,7 +29,7 @@ module.exports = function webpackConfig(): WebpackConfig {
     AOT: AOT,
     ENV: isProd ? JSON.stringify('production') : JSON.stringify('development'),
     PORT: DEV_PORT,
-    HOST: 'localhost'
+    HOST: JSON.stringify(HOST)
   };
 
   let config: WebpackConfig = Object.assign({});
@@ -63,11 +59,7 @@ module.exports = function webpackConfig(): WebpackConfig {
       {
         test: /\.js$/,
         loader: 'source-map-loader',
-        exclude: [
-          // these packages have problems with their sourcemaps
-          root('node_modules/rxjs'),
-          root('node_modules/@angular')
-        ]
+        exclude: [EXCLUDE_SOURCE_MAPS]
       },
     ],
 
