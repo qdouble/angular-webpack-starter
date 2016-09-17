@@ -147,8 +147,8 @@
     "use-life-cycle-interface": true,
     "use-pipe-transform-interface": true,
     "import-destructuring-spacing": true,
-    "directive-selector-prefix": [true, "my"],
-    "component-selector-prefix": [true, "my"],
-    "pipe-naming": [true, "camelCase", "my"]
+    "directive-selector-prefix": [true],
+    "component-selector-prefix": [true],
+    "pipe-naming": [true, "camelCase"]
   }
 }
