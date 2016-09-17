@@ -12,10 +12,7 @@ const DefinePlugin = require('webpack/lib/DefinePlugin');
 const ForkCheckerPlugin = require('awesome-typescript-loader').ForkCheckerPlugin;
 const NamedModulesPlugin = require('webpack/lib/NamedModulesPlugin');
 
-/**
- * Webpack Constants
- */
-const ENV = process.env.ENV = process.env.NODE_ENV = 'test';
+const EXCLUDE_SOURCE_MAPS = require('../constants').EXCLUDE_SOURCE_MAPS;
 
 /**
  * Webpack configuration
@@ -87,11 +84,7 @@ module.exports = {
       {
         test: /\.js$/,
         loader: 'source-map-loader',
-        exclude: [
-          // these packages have problems with their sourcemaps
-          helpers.root('node_modules/rxjs'),
-          helpers.root('node_modules/@angular')
-        ]
+        exclude: [EXCLUDE_SOURCE_MAPS]
       }
 
     ],
@@ -134,11 +127,6 @@ module.exports = {
        * See: https://github.com/webpack/raw-loader
        */
       { test: /\.css$/, loaders: ['to-string-loader', 'css-loader'], exclude: [helpers.root('src/index.html')] },
-      {
-        test: /\.scss$/,
-        exclude: /node_modules/,
-        loaders: ['raw-loader', 'sass-loader'] // sass-loader not scss-loader
-      },
 
       /**
        * Raw loader support for *.html
@@ -196,13 +184,10 @@ module.exports = {
      */
     // NOTE: when adding more properties make sure you include them in custom-typings.d.ts
     new DefinePlugin({
-      'ENV': JSON.stringify(ENV),
-      'HMR': false,
-      'process.env': {
-        'ENV': JSON.stringify(ENV),
-        'NODE_ENV': JSON.stringify(ENV),
-        'HMR': false,
-      }
+      AOT: false,
+      ENV: JSON.stringify('test'),
+      PORT: 3000,
+      HOST: JSON.stringify('localhost')
     }),
     new NamedModulesPlugin()
   ],
