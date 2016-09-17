@@ -1,5 +1,5 @@
 import { AfterContentInit, Component, ViewChild } from '@angular/core';
-import { MdInput } from '@angular2-material/input';
+// import { MdInput } from '@angular2-material/input';
 
 @Component({
   selector: 'my-dashboard',
@@ -7,8 +7,8 @@ import { MdInput } from '@angular2-material/input';
 })
 
 export class DashboardComponent implements AfterContentInit {
-  @ViewChild(MdInput) input: MdInput;
+  // @ViewChild(MdInput) input: MdInput;
   ngAfterContentInit() {
-    this.input.value = 'Angular User';
+    // this.input.value = 'Angular User';
   }
 }

@@ -34,6 +34,7 @@
     "clean:compile": "npm run rimraf -- \"src/compiled\" ",
     "compile": "npm run compile:aot",
     "compile:aot": "npm run sass && npm run clean:compile && npm run ngc && npm run build:aot",
+    "compile:universal": "npm run sass && npm run clean:compile && npm run ngc && npm run build:universal:aot",
     "compile:dev": "npm run sass && npm run clean:compile && npm run ngc && npm run build:aot:dev",
     "compile:only": "npm run clean:compile && npm run sass && npm run ngc",
     "compile:watch": "watch-run -i npm run compile:only -p 'src/app/**/*.ts, src/app/**/*.scss' npm run compile:only",
@@ -54,11 +55,13 @@
     "build:dev": "npm run clean:dist && webpack",
     "build:prod": "npm run clean:dist && webpack",
     "build:universal": "npm run clean:dist && webpack",
+    "build:universal:aot": "npm run clean:dist && webpack",
     "watch": "npm run watch:dev",
     "watch:aot": "npm-run-all -p -r \"compile:watch -- --watch\" sass:watch",
     "watch:dev": "npm-run-all -p -r \"build:dev -- --watch\" sass:watch",
     "watch:prod": "npm-run-all -p -r \"build:prod -- --watch\" sass:watch",
-    "universal": "npm run clean:dist && npm run build:universal && nodemon dist/server/index.js"
+    "universal": "npm run build:universal && nodemon dist/server/index.js",
+    "universal:aot": "npm run compile:universal && nodemon dist/server/index.js"
   },
   "dependencies": {
     "@angular/common": "2.0.0",

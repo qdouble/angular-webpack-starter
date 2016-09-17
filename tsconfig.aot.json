@@ -32,7 +32,11 @@
     "node_modules",
     "src/**/*.e2e.ts",
     "src/**/*.spec.ts",
-    "src/main.browser.aot.ts"
+    "src/server.ts",
+    "src/app.module.universal.node.ts",
+    "src/main.browser.aot.ts",
+    "src/app.module.ts",
+    "src/app.module.universal.node.ts"
   ],
   "awesomeTypescriptLoaderOptions": {
     "useWebpackText": true,

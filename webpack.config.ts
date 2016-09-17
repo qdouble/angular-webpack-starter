@@ -22,26 +22,22 @@ const includeClientPackages = require('./config/helpers.js').includeClientPackag
 const root = require('./config/helpers.js').root;
 
 const ENV = process.env.npm_lifecycle_event;
-const AOT = ENV === 'build:aot' || ENV === 'build:aot:dev' || ENV === 'server:aot' || ENV === 'watch:aot';
+const AOT = ENV === 'build:aot' || ENV === 'build:aot:dev' || ENV === 'server:aot' || ENV === 'watch:aot' || ENV === 'build:universal:aot';
 const isProd = ENV === 'build:prod' || ENV === 'server:prod' || ENV === 'watch:prod' || ENV === 'build:aot' || ENV === 'build:universal';
 const UNIVERSAL = ENV === 'build:universal';
 
 console.log('PRODUCTION BUILD = ', isProd);
 
 const CONSTANTS = {
-    AOT: AOT,
-    ENV: isProd ? JSON.stringify('production') : JSON.stringify('development'),
-    PORT: DEV_PORT,
-    HOST: JSON.stringify(HOST)
-  };
+  AOT: AOT,
+  ENV: isProd ? JSON.stringify('production') : JSON.stringify('development'),
+  PORT: DEV_PORT,
+  HOST: JSON.stringify(HOST)
+};
 
 const commonConfig = function webpackConfig(): WebpackConfig {
   let config: WebpackConfig = Object.assign({});
   config.plugins = [];
-
-  // config.resolve = {
-  //   extensions: ['', '.ts', '.js', '.json']
-  // };
 
   config.module = {
     preLoaders: [
@@ -80,10 +76,18 @@ const commonConfig = function webpackConfig(): WebpackConfig {
       from: 'src/assets',
       to: 'assets'
     }]),
-    new HtmlWebpackPlugin({
-      template: 'src/index.html'
-    })
+    // new HtmlWebpackPlugin({
+    //   template: 'src/index.html'
+    // })
   ];
+
+  if (!UNIVERSAL) {
+    config.plugins.push(
+      new HtmlWebpackPlugin({
+        template: 'src/index.html'
+      })
+    );
+  }
 
   if (isProd) {
     config.plugins.push(
@@ -124,11 +128,25 @@ const clientConfig = function webpackConfig(): WebpackConfig {
   }
 
   config.output = {
-    path: root('dist/client'),
-    filename: isProd ? '[name].[hash].bundle.js' : '[name].bundle.js',
-    sourceMapFilename: isProd ? '[name].[hash].map' : '[name].map',
-    chunkFilename: isProd ? '[id].[hash].chunk.js' : '[id].chunk.js'
-  };
+      path: root('dist/client'),
+      filename: 'index.js'
+    };
+
+  // if (!UNIVERSAL) {
+  //   config.output = {
+  //     path: root('dist/client'),
+  //     filename: isProd ? '[name].[hash].bundle.js' : '[name].bundle.js',
+  //     sourceMapFilename: isProd ? '[name].[hash].map' : '[name].map',
+  //     chunkFilename: isProd ? '[id].[hash].chunk.js' : '[id].chunk.js'
+  //   };
+  // } else {
+  //   config.output = {
+  //     path: root('dist/client'),
+  //     filename: 'index.js'
+  //   };
+  // }
+
+
 
   config.devServer = {
     contentBase: AOT ? './src/compiled' : './src',
@@ -152,9 +170,8 @@ const clientConfig = function webpackConfig(): WebpackConfig {
 
 } ();
 
-const serverConfig = {
+const serverConfig: WebpackConfig = {
   target: 'node',
-  // context: __dirname,
   entry: './src/server',
   output: {
     filename: 'index.js',
@@ -220,6 +237,7 @@ interface WebpackConfig {
   target?: string;
   devtool?: string;
   entry: any;
+  externals?: any;
   output: any;
   module?: any;
   plugins?: Array<any>;
@@ -245,6 +263,8 @@ interface WebpackConfig {
     clearImmediate?: boolean;
     setImmediate?: boolean
     clearTimeout?: boolean;
-    setTimeout?: boolean
+    setTimeout?: boolean;
+    __dirname?: boolean;
+    __filename?: boolean;
   };
 }

@@ -7,6 +7,7 @@ import * as path from 'path';
 import * as express from 'express';
 import * as bodyParser from 'body-parser';
 import * as cookieParser from 'cookie-parser';
+import * as compression from 'compression';
 
 // Angular 2
 import { enableProdMode } from '@angular/core';
@@ -15,6 +16,7 @@ import { createEngine } from 'angular2-express-engine';
 
 // App
 import { AppModule } from './app.module.universal.node';
+import { UNIVERSAL_PORT } from '../constants';
 
 // enable prod for faster renders
 enableProdMode();
@@ -26,17 +28,19 @@ const ROOT = path.join(path.resolve(__dirname, '..'));
 app.engine('.html', createEngine({}));
 app.set('views', __dirname);
 app.set('view engine', 'html');
-
+app.use(compression());
 app.use(cookieParser('Angular 2 Universal'));
 app.use(bodyParser.json());
 
 // Serve static files
+
 app.use('/assets', express.static(path.join(__dirname, 'assets'), {maxAge: 30}));
 app.use(express.static(path.join(ROOT, 'dist/client'), {index: false}));
 
+
 // For demo purposes only
-import { serverApi } from './mock-backend/api';
-app.get('/data.json', serverApi);
+// import { serverApi } from './mock-backend/api';
+// app.get('/data.json', serverApi);
 
 function ngApp(req, res) {
   res.render('index', {
@@ -66,6 +70,6 @@ app.get('*', function(req, res) {
 });
 
 // Server
-let server = app.listen(process.env.PORT || 3000, () => {
+let server = app.listen(process.env.PORT || UNIVERSAL_PORT, () => {
   console.log(`Listening on: http://localhost:${server.address().port}`);
 });
