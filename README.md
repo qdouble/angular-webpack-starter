@@ -50,7 +50,7 @@ the angular2-template-loader plugin will change it to require at build time.
 - Don’t use functions in your providers, routes or directives, export a function and then reference that function name
 
 ### Testing
-For unit tests, use `npm run test`. Code coverage results are output into coverage/ folder.
+For unit tests, use `npm run test` for continuous testing in watch mode and use
+`npm run test:once` for single test. Code coverage results are output into `coverage` folder.
 
-For e2e test, use `npm run e2e:server` to start a testing server for dist files (default port 4201), 
-and use `npm run e2e` to run actual e2e test.
+For e2e tests, use `npm run e2e`. To run unit test and e2e test at the same time, use `npm run ci`.
