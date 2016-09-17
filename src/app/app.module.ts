@@ -12,15 +12,15 @@ import { MdListModule } from '@angular2-material/list';
 import { MdSidenavModule } from '@angular2-material/sidenav';
 import { MdToolbarModule } from '@angular2-material/toolbar';
 
-import { App } from './app';
-import { Dashboard } from './features/dashboard';
+import { AppComponent } from './app.component';
+import { DashboardComponent } from './features/dashboard.component';
 import { NotFound404Component } from './not-found404.component';
-import { routes } from './app.routes';
+import { routes } from './app.routing';
 
 @NgModule({
   declarations: [
-    App,
-    Dashboard,
+    AppComponent,
+    DashboardComponent,
     NotFound404Component
   ],
   imports: [
@@ -36,7 +36,7 @@ import { routes } from './app.routes';
     MdToolbarModule,
     RouterModule.forRoot(routes)
   ],
-  bootstrap: [App],
+  bootstrap: [AppComponent],
   providers: []
 })
 export class AppModule { }

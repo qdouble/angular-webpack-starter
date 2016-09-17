@@ -10,10 +10,10 @@ import { MdListModule } from '@angular2-material/list';
 import { MdSidenavModule } from '@angular2-material/sidenav';
 import { MdToolbarModule } from '@angular2-material/toolbar';
 
-import { App } from './app';
-import { Dashboard } from './features/dashboard';
+import { AppComponent } from './app.component';
+import { DashboardComponent } from './features/dashboard.component';
 import { NotFound404Component } from './not-found404.component';
-import { routes } from './app.routes';
+import { routes } from './app.routing';
 
 describe('App Component', () => {
   beforeEach(() => {
@@ -28,12 +28,12 @@ describe('App Component', () => {
         MdToolbarModule,
         RouterTestingModule.withRoutes(routes)],
       providers: [],
-      declarations: [App, Dashboard, NotFound404Component]
+      declarations: [AppComponent, DashboardComponent, NotFound404Component]
     });
   });
 
   it('should contain Dashboard text', async(() => {
-    const fixture = TestBed.createComponent(App);
+    const fixture = TestBed.createComponent(AppComponent);
     fixture.detectChanges();
     expect(fixture.nativeElement).not.toContainText('Welcome to the Dashboard');
   }));

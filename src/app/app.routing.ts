@@ -1,10 +1,10 @@
-/* tslint:disable: variable-name max-line-length */
-import { Dashboard } from './features/dashboard';
+/* tslint:disable: max-line-length */
+import { DashboardComponent } from './features/dashboard.component';
 import { NotFound404Component } from './not-found404.component';
 import { Routes } from '@angular/router';
 
 export const routes: Routes = [
-  { path: '', component: Dashboard, pathMatch: 'full' },
+  { path: '', component: DashboardComponent, pathMatch: 'full' },
   { path: 'lazy', loadChildren: './features/lazy/index#LazyModule' },
   { path: '**', component: NotFound404Component }
 ];

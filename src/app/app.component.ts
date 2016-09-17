@@ -2,17 +2,17 @@ import { AfterContentInit, Component, ViewChild, ViewEncapsulation } from '@angu
 import { ActivatedRoute, Router } from '@angular/router';
 import { MdSidenav } from '@angular2-material/sidenav';
 
-import { views } from './app-nav.views';
+import { views } from './app-nav-views';
 
 import { MOBILE } from './services/constants';
 
 @Component({
-  selector: 'app',
-  styleUrls: ['./app.css'],
-  templateUrl: './app.html',
+  selector: 'my-app',
+  styleUrls: ['./app.component.css'],
+  templateUrl: './app.component.html',
   encapsulation: ViewEncapsulation.None
 })
-export class App implements AfterContentInit {
+export class AppComponent implements AfterContentInit {
   mobile = MOBILE;
   sideNavMode = MOBILE ? 'over' : 'side';
   views = views;
