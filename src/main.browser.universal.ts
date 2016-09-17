@@ -1,8 +1,9 @@
 import './polyfills.browser';
 import './rxjs.imports';
+import 'angular2-universal-polyfills';
 
 import { enableProdMode } from '@angular/core';
-import { platformBrowserDynamic } from '@angular/platform-browser-dynamic';
+import { platformUniversalDynamic } from 'angular2-universal';
 import { AppModule } from './app.module';
 
 if ('production' === ENV) {
@@ -10,7 +11,7 @@ if ('production' === ENV) {
 }
 
 export function main() {
-  return platformBrowserDynamic().bootstrapModule(AppModule)
+  return platformUniversalDynamic().bootstrapModule(AppModule)
     .catch(err => console.log(err));
 }
 

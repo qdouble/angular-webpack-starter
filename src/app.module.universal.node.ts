@@ -1,0 +1,33 @@
+/** 
+ * This module is the entry for your App SERVER when in UNIVERSAL mode.
+ * 
+ * Make sure to use the 3 constant APP_ imports so you don't have to keep
+ * track of your root app dependencies here. Only import directly in this file if
+ * there is something that is specific to the environment.  
+ */
+
+import { RouterModule } from '@angular/router';
+import { NgModule } from '@angular/core';
+import { UniversalModule } from 'angular2-universal';
+
+import { APP_DECLERATIONS } from './app/app.declerations';
+import { APP_IMPORTS } from './app/app.imports';
+import { APP_PROVIDERS } from './app/app.providers';
+
+import { AppComponent } from './app/app.component';
+import { routes } from './app/app.routing';
+
+@NgModule({
+  declarations: [
+    AppComponent,
+    APP_DECLERATIONS
+  ],
+  imports: [
+    APP_IMPORTS,
+    RouterModule.forRoot(routes),
+    UniversalModule // NodeModule, NodeHttpModule, and NodeJsonpModule are included
+  ],
+  bootstrap: [AppComponent],
+  providers: [APP_PROVIDERS]
+})
+export class AppModule { }

@@ -11,12 +11,19 @@
     "strictNullChecks": false,
     "baseUrl": "./src",
     "types": [
+      "body-parser",
+      "compression",
       "core-js",
+      "cookie-parser",
+      "express",
+      "express-serve-static-core",
       "hammerjs",
       "jasmine",
+      "mime",
       "node",
       "protractor",
       "selenium-webdriver",
+      "serve-static",
       "source-map"
     ],
     "outDir": "output"

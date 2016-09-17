@@ -17,11 +17,7 @@ npm-debug.log
 
 # Dist #
 /dist/
-/public/__build__/
-/src/*/__build__/
 /__build__/**
-/public/dist/
-/src/*/dist/
 .webpack.json
 /src/assets/bower_components/
 
