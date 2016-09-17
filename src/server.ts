@@ -15,7 +15,7 @@ import { enableProdMode } from '@angular/core';
 import { createEngine } from 'angular2-express-engine';
 
 // App
-import { AppModule } from './app.module.universal.node';
+import { AppModule } from './app/app.module.universal.node';
 import { UNIVERSAL_PORT } from '../constants';
 
 // enable prod for faster renders

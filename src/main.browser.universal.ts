@@ -4,7 +4,7 @@ import 'angular2-universal-polyfills';
 
 import { enableProdMode } from '@angular/core';
 import { platformUniversalDynamic } from 'angular2-universal';
-import { AppModule } from './app.module';
+import { AppModule } from './app/app.module';
 
 if ('production' === ENV) {
   enableProdMode();
