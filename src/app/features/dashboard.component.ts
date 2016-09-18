@@ -1,14 +1,11 @@
-import { AfterContentInit, Component, ViewChild } from '@angular/core';
-import { MdInput } from '@angular2-material/input';
+import { Component } from '@angular/core';
+import { FormControl }  from '@angular/forms';
 
 @Component({
   selector: 'my-dashboard',
   templateUrl: './dashboard.component.html'
 })
 
-export class DashboardComponent implements AfterContentInit {
-  @ViewChild(MdInput) input: MdInput;
-  ngAfterContentInit() {
-    this.input.value = 'Angular User';
-  }
+export class DashboardComponent {
+  userName = new FormControl('Angular User');
 }

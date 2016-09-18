@@ -1,7 +1,10 @@
-# Starter Seed Project for Angular 2, Material Design 2 and Webpack 2
-> A simple Angular 2 Seed featuring Angular 2 and Webpack 2 with AOT and Lazyloading.
+# Starter Project for Angular 2, Webpack 2, Universal (Server Side Rendering), and Material Design 2
+
+> A complete Angular 2 Seed featuring Angular 2 and Webpack 2 with AOT and Lazyloading.
 
 ```
+git clone https://github.com/qdouble/angular2webpack2-starter.git
+cd angular2webpack2-starter
 npm install
 npm start
 ```
@@ -11,6 +14,7 @@ npm start
 * TypeScript 2
   * @types
 * Material Design 2
+* Universal (Server Side Rendering)
 * Angular 2
   * Async loading
   * Treeshaking
@@ -19,6 +23,14 @@ npm start
 * Karma/Jasmine testing
 * Protractor for E2E testing
 
+## Project Philosophy & Goals
+ There are debates whether or not to keep starer seed projects minimal. After working on it and thinking about it for a while, the philosophy of this project is: 
+* There are more than enough minimal starters out there, there's no need for to replicate them here.
+* If this starter is designed based off what is a useful starting point for real projects that are being worked on, it will be easier to maintain and easier to implement best practices and tricks
+* The main goal is to provide an environment where you can have great dev tools and create a production application without worrying about adding a bunch of stuff yourself.
+* The goal of your design should be so that you can easily copy and paste your app folder and your constants file into to a seed new update of this project and have it still work. Use constants and proper seperation to make upgrades easy. If you have any suggestions on areas where on how starter can be designed to make updates more pluggable, file an issue.
+
+## Basic scripts
 Default dev port is `3000`.
 
 Default production port is `8088`.
@@ -34,6 +46,7 @@ Use `npm run server:prod` for production server and production watch.
 
 Use `npm run prod:build` for production build.
 
+Use `npm run universal` to run production build in Universal.
 
 To create AOT version, run `npm run compile`. This will compile and build script.
 Then you can use `npm run prodserver` to see to serve files.

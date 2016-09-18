@@ -27,6 +27,7 @@ declare var ENV: string;
 declare var HMR: boolean;
 declare var HOST: string;
 declare var System: SystemJS;
+declare var UNIVERSAL: boolean;
 
 interface SystemJS {
   import: (path?: string) => Promise<any>;
@@ -39,6 +40,7 @@ interface GlobalEnvironment {
   HOST;
   SystemJS: SystemJS;
   System: SystemJS;
+  UNIVERSAL;
 }
 
 interface WebpackModule {

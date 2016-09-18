@@ -1,6 +1,8 @@
 <header>
-  <h3> Welcome to the Dashboard {{input?.value}}!</h3>
+  <h3> Welcome to the Dashboard {{userName.value}}!!</h3>
 </header>
 <section>
-  <md-input [placeholder]="'Enter your name'">User</md-input>
+  <div class="mdl-textfield mdl-js-textfield">
+    <input class="mdl-textfield__input" type="text" [formControl]="userName" >
+  </div>
 </section>

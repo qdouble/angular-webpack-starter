@@ -1,5 +1,5 @@
 /** 
- * This module is the entry for your App when NOT using universal.
+ * This module is the entry for your App BROWSER when in UNIVERSAL mode.
  * 
  * Make sure to use the 3 constant APP_ imports so you don't have to keep
  * track of your root app dependencies here. Only import directly in this file if
@@ -7,8 +7,7 @@
  */
 
 import { NgModule } from '@angular/core';
-import { BrowserModule } from '@angular/platform-browser';
-import { HttpModule } from '@angular/http';
+import { UniversalModule } from 'angular2-universal';
 
 import { APP_DECLERATIONS } from './app.declerations';
 import { APP_IMPORTS } from './app.imports';
@@ -23,10 +22,10 @@ import { AppComponent } from './app.component';
   ],
   imports: [
     APP_IMPORTS,
-    BrowserModule,
-    HttpModule,
+    UniversalModule // NodeModule, NodeHttpModule, and NodeJsonpModule are included
   ],
   bootstrap: [AppComponent],
   providers: [APP_PROVIDERS]
 })
 export class AppModule { }
+

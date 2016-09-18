@@ -8,10 +8,10 @@ const app = express();
 const ROOT = path.join(path.resolve(__dirname, '..'));
 
 app.use(compression())
-app.use(express.static('dist'));
+app.use(express.static('dist/client'));
 
 const renderIndex = (req, res) => {
-  res.sendFile(path.resolve(__dirname, 'dist/index.html'));
+  res.sendFile(path.resolve(__dirname, 'dist/client/index.html'));
 }
 
 app.get('/*', renderIndex);
