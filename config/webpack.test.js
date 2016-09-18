@@ -107,7 +107,7 @@ module.exports = {
       {
         test: /\.ts$/,
         loaders: [
-          'awesome-typescript-loader',
+          'awesome-typescript-loader?sourceMap=false,inlineSourceMap=true,compilerOptions{}=removeComments:true',
           'angular2-template-loader'
         ],
         exclude: [/\.e2e\.ts$/]
@@ -187,7 +187,8 @@ module.exports = {
       AOT: false,
       ENV: JSON.stringify('test'),
       PORT: 3000,
-      HOST: JSON.stringify('localhost')
+      HOST: JSON.stringify('localhost'),
+      UNIVERSAL: false
     }),
     new NamedModulesPlugin()
   ],
