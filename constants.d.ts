@@ -1,10 +1,11 @@
 export declare const DEV_PORT: number;
 export declare const E2E_PORT: number;
 export declare const HOST: string;
-export declare const MY_CONFIG_PLUGINS: any[];
-export declare const MY_CONFIG_PRODUCTION_PLUGINS: any[];
+export declare const MY_PLUGINS: any[];
+export declare const MY_PRODUCTION_PLUGINS: any[];
 export declare const MY_LOADERS: any[];
 export declare const MY_PRE_LOADERS: any[];
+export declare const MY_POST_LOADERS: any[];
 export declare const PROD_PORT: number;
 export declare const UNIVERSAL_PORT: number;
 export declare const EXCLUDE_SOURCE_MAPS: any[];
