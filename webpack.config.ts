@@ -1,9 +1,13 @@
 /* tslint:disable: variable-name max-line-length */
+/**
+ * Try to not make your own edits to this file, use the constants folder instead. 
+ * If more constants should be added file an issue or create PR.
+ */
 import 'ts-helpers';
 
 import {
   DEV_PORT, EXCLUDE_SOURCE_MAPS, HOST,
-  MY_CONFIG_PLUGINS, MY_CONFIG_PRODUCTION_PLUGINS, MY_LOADERS, MY_PRE_LOADERS
+  MY_PLUGINS, MY_PRODUCTION_PLUGINS, MY_LOADERS, MY_PRE_LOADERS, MY_POST_LOADERS
 } from './constants';
 
 const {
@@ -68,6 +72,9 @@ const commonConfig = function webpackConfig(): WebpackConfig {
       { test: /\.css$/, loader: 'raw-loader' },
       ...MY_LOADERS
     ],
+    postLoaders: [
+      ...MY_POST_LOADERS
+    ]
   };
 
   config.plugins = [
@@ -86,7 +93,7 @@ const commonConfig = function webpackConfig(): WebpackConfig {
       from: 'src/index.html',
       to: ''
     }]),
-    ...MY_CONFIG_PLUGINS
+    ...MY_PLUGINS
   ];
 
   if (isProd) {
@@ -103,7 +110,7 @@ const commonConfig = function webpackConfig(): WebpackConfig {
         threshold: 10240,
         minRatio: 0.8
       }),
-      ...MY_CONFIG_PRODUCTION_PLUGINS
+      ...MY_PRODUCTION_PLUGINS
     );
   }
 
