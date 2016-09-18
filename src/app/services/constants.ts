@@ -1,2 +1,1 @@
-const mobile = (typeof window !== 'undefined') ? (window.screen.availWidth < 800) : true;
-export const MOBILE = mobile;
+export const MOBILE = (typeof window !== 'undefined') ? (window.screen.availWidth < 800) : true;
