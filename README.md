@@ -26,14 +26,15 @@ npm start
 ## Project Philosophy & Goals
  There are debates whether or not to keep starer seed projects minimal. After working on it and thinking about it for a while, the philosophy of this project is: 
 * There are more than enough minimal starters out there, there's no need for to replicate them here.
-* If this starter is designed based off what is a useful starting point for real projects that are being worked on, it will be easier to maintain and easier to implement best practices and tricks
 * The main goal is to provide an environment where you can have great dev tools and create a production application without worrying about adding a bunch of stuff yourself.
-* The goal of your design should be so that you can easily copy and paste your app folder and your constants file into to a seed new update of this project and have it still work. Use constants and proper seperation to make upgrades easy. If you have any suggestions on areas where on how starter can be designed to make updates more pluggable, file an issue.
+* The goal of your design should be so that you can easily copy and paste your app folder and your constants file into to a new update of this project and have it still work. Use constants and have proper seperation to make upgrades easy. If you have any suggestions on areas where this starter can be designed to make updates more easy, file an issue.
 
 ## Basic scripts
 Default dev port is `3000`.
 
 Default production port is `8088`.
+
+Default universal port is `8000`.
 
 These can be changed in constants.js
 
