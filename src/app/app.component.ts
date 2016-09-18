@@ -1,6 +1,6 @@
 import { AfterContentInit, Component, ViewChild, ViewEncapsulation } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
-// import { MdSidenav } from '@angular2-material/sidenav';
+import { MdSidenav } from '@angular2-material/sidenav';
 
 import { views } from './app-nav-views';
 
@@ -16,7 +16,7 @@ export class AppComponent implements AfterContentInit {
   mobile = MOBILE;
   sideNavMode = MOBILE ? 'over' : 'side';
   views = views;
-  // @ViewChild(MdSidenav) sidenav: MdSidenav;
+  @ViewChild(MdSidenav) sidenav: MdSidenav;
 
   constructor(
     public route: ActivatedRoute,
@@ -24,11 +24,11 @@ export class AppComponent implements AfterContentInit {
   ) { }
 
   ngAfterContentInit() {
-    // if (!MOBILE) {
-    //   setTimeout(() => {
-    //     this.sidenav.open();
-    //   }, 250);
-    // }
+    if (!MOBILE) {
+      setTimeout(() => {
+        this.sidenav.open();
+      }, 250);
+    }
   }
 
   activateEvent(event) {

@@ -37,11 +37,6 @@ app.use(bodyParser.json());
 app.use('/assets', express.static(path.join(__dirname, 'assets'), {maxAge: 30}));
 app.use(express.static(path.join(ROOT, 'dist/client'), {index: false}));
 
-
-// For demo purposes only
-// import { serverApi } from './mock-backend/api';
-// app.get('/data.json', serverApi);
-
 function ngApp(req, res) {
   res.render('index', {
     req,

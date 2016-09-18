@@ -12,3 +12,19 @@ exports.EXCLUDE_SOURCE_MAPS = [
   root('node_modules/@angular'),
   root('node_modules/rxjs')
 ]
+
+exports.MY_CONFIG_PLUGINS = [
+  // use this to import your own webpack config plugins.
+]
+
+exports.MY_CONFIG_PRODUCTION_PLUGINS = [
+  // use this to import your own webpack config plugins for production use.
+]
+
+exports.MY_LOADERS = [
+  // use this to import your own loaders for webpack config.
+]
+
+exports.MY_PRE_LOADERS = [
+  // use this to import your own preLoaders for webpack config.
+]

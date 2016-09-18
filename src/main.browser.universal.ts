@@ -1,10 +1,10 @@
+import 'angular2-universal-polyfills';
 import './polyfills.browser';
 import './rxjs.imports';
-import 'angular2-universal-polyfills';
 
 import { enableProdMode } from '@angular/core';
 import { platformUniversalDynamic } from 'angular2-universal';
-import { AppModule } from './app/app.module';
+import { AppModule } from './app/app.module.universal.browser';
 
 if ('production' === ENV) {
   enableProdMode();

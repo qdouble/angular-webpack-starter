@@ -1,4 +1,5 @@
-# Starter Project for Angular 2, Webpack 2, Universal, and Material Design 2
+# Starter Project for Angular 2, Webpack 2, Universal (Server Side Rendering), and Material Design 2
+
 > A complete Angular 2 Seed featuring Angular 2 and Webpack 2 with AOT and Lazyloading.
 
 ```
@@ -13,6 +14,7 @@ npm start
 * TypeScript 2
   * @types
 * Material Design 2
+* Universal (Server Side Rendering)
 * Angular 2
   * Async loading
   * Treeshaking
@@ -44,6 +46,7 @@ Use `npm run server:prod` for production server and production watch.
 
 Use `npm run prod:build` for production build.
 
+Use `npm run universal` to run production build in Universal.
 
 To create AOT version, run `npm run compile`. This will compile and build script.
 Then you can use `npm run prodserver` to see to serve files.

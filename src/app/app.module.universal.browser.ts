@@ -6,7 +6,6 @@
  * there is something that is specific to the environment.  
  */
 
-import { RouterModule } from '@angular/router';
 import { NgModule } from '@angular/core';
 import { UniversalModule } from 'angular2-universal';
 
@@ -15,7 +14,6 @@ import { APP_IMPORTS } from './app.imports';
 import { APP_PROVIDERS } from './app.providers';
 
 import { AppComponent } from './app.component';
-import { routes } from './app.routing';
 
 @NgModule({
   declarations: [
@@ -24,10 +22,10 @@ import { routes } from './app.routing';
   ],
   imports: [
     APP_IMPORTS,
-    RouterModule.forRoot(routes),
     UniversalModule // NodeModule, NodeHttpModule, and NodeJsonpModule are included
   ],
   bootstrap: [AppComponent],
   providers: [APP_PROVIDERS]
 })
 export class AppModule { }
+

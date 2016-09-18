@@ -9,6 +9,11 @@ export const views: Object[] = [
     icon: 'file_download',
     link: ['lazy']
   },
+    {
+    name: 'Sync',
+    icon: 'done',
+    link: ['sync']
+  },
   {
     name: 'Bad Link',
     icon: 'error',

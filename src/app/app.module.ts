@@ -6,7 +6,6 @@
  * there is something that is specific to the environment.  
  */
 
-import { RouterModule } from '@angular/router';
 import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
 import { HttpModule } from '@angular/http';
@@ -16,7 +15,6 @@ import { APP_IMPORTS } from './app.imports';
 import { APP_PROVIDERS } from './app.providers';
 
 import { AppComponent } from './app.component';
-import { routes } from './app.routing';
 
 @NgModule({
   declarations: [
@@ -27,7 +25,6 @@ import { routes } from './app.routing';
     APP_IMPORTS,
     BrowserModule,
     HttpModule,
-    RouterModule.forRoot(routes)
   ],
   bootstrap: [AppComponent],
   providers: [APP_PROVIDERS]
