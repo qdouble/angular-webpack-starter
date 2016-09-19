@@ -14,6 +14,12 @@ export function main() {
     .catch(err => console.log(err));
 }
 
+// if (document.readyState === 'complete') {
+//   main();
+// } else {
+//   document.addEventListener('DOMContentLoaded', main);
+// }
+
 export function bootstrapDomReady() {
   document.addEventListener('DOMContentLoaded', main);
 }
