@@ -8,4 +8,5 @@ import { FormControl }  from '@angular/forms';
 
 export class DashboardComponent {
   userName = new FormControl('Angular User');
+  userNameLabel = 'Enter your name';
 }
