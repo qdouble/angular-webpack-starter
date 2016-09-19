@@ -1,4 +1,6 @@
-#### Starter project for Angular 2, Webpack 2, Material Design 2, and optional server-side rendering with Universal.
+# Complete starter seed project for Angular 2
+
+> Featuring Material Design 2, Webpack 2, and optional server-side rendering with Universal.
 
 ```
 git clone https://github.com/qdouble/angular2webpack2-starter.git
@@ -8,16 +10,17 @@ npm start
 ```
 
 ## Features
+
 * Angular 2
+  * Async loading
+  * Treeshaking
+  * AOT (Ahead of Time/ Offline) Compilation
+  * AOT safe SASS compilation
 * Webpack 2
 * TypeScript 2
   * @types
 * Material Design 2
 * Universal (Server-side Rendering)
-  * Async loading
-  * Treeshaking
-  * AOT (Ahead of Time/ Offline) Compilation
-  * AOT safe SASS compilation
 * Karma/Jasmine testing
 * Protractor for E2E testing
 
