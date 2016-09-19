@@ -26,13 +26,12 @@ md-card-content {
   font-size: 15px !important;
 }
 
-md-input {
-  margin: 8px 0;
-  width: 100%;
+.md-input-ripple, .md-primary, .md-primary-button  {
+  background: $os-primary-color !important 
 }
 
-.md-primary { 
-  background: $os-primar-color !important 
+.md-input-placeholder.md-focused {
+  color: $os-primary-color !important 
 }
 
 .md-primary-button {
