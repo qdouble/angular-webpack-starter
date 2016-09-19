@@ -12,23 +12,7 @@
     "pretty": true,
     "sourceMap": true,
     "strictNullChecks": false,
-    "target": "es5",
-    "types": [
-      "body-parser",
-      "compression",
-      "core-js",
-      "cookie-parser",
-      "express",
-      "express-serve-static-core",
-      "hammerjs",
-      "jasmine",
-      "mime",
-      "node",
-      "protractor",
-      "selenium-webdriver",
-      "serve-static",
-      "source-map"
-    ]
+    "target": "es5"
   },
   "exclude": [
     "node_modules"
