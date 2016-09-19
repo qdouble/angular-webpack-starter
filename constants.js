@@ -32,3 +32,11 @@ exports.MY_PRE_LOADERS = [
 exports.MY_POST_LOADERS = [
   // use this to import your own preLoaders for webpack config.
 ]
+
+exports.MY_SERVER_PRE_LOADERS = [
+  // use this to import your own Universal server preLoaders for webpack config.
+]
+
+exports.MY_SERVER_INCLUDE_CLIENT_PACKAGES = [
+  // include these client packages so we can transform their source with webpack loaders
+]

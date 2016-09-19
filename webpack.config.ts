@@ -7,7 +7,8 @@ import 'ts-helpers';
 
 import {
   DEV_PORT, EXCLUDE_SOURCE_MAPS, HOST,
-  MY_PLUGINS, MY_PRODUCTION_PLUGINS, MY_LOADERS, MY_PRE_LOADERS, MY_POST_LOADERS
+  MY_PLUGINS, MY_PRODUCTION_PLUGINS, MY_LOADERS, MY_PRE_LOADERS, MY_POST_LOADERS,
+  MY_SERVER_PRE_LOADERS, MY_SERVER_INCLUDE_CLIENT_PACKAGES
 } from './constants';
 
 const {
@@ -184,7 +185,8 @@ const serverConfig: WebpackConfig = {
   },
   module: {
     preLoaders: [
-      { test: /angular2-material/, loader: 'imports-loader?window=>global' }
+      { test: /angular2-material/, loader: 'imports-loader?window=>global' },
+      ...MY_SERVER_PRE_LOADERS
     ],
   },
   externals: includeClientPackages([
@@ -207,7 +209,8 @@ const serverConfig: WebpackConfig = {
     '@angular2-material/slide',
     '@angular2-material/tabs',
     '@angular2-material/toolbar',
-    '@angular2-material/tooltip'
+    '@angular2-material/tooltip',
+    ...MY_SERVER_INCLUDE_CLIENT_PACKAGES
   ]),
   node: {
     global: true,
