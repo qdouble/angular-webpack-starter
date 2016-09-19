@@ -6,6 +6,8 @@ export declare const MY_PRODUCTION_PLUGINS: any[];
 export declare const MY_LOADERS: any[];
 export declare const MY_PRE_LOADERS: any[];
 export declare const MY_POST_LOADERS: any[];
+export declare const MY_SERVER_PRE_LOADERS: any[];
+export declare const MY_SERVER_INCLUDE_CLIENT_PACKAGES: any[];
 export declare const PROD_PORT: number;
 export declare const UNIVERSAL_PORT: number;
 export declare const EXCLUDE_SOURCE_MAPS: any[];
