@@ -26,11 +26,13 @@ const UglifyJsPlugin = require('webpack/lib/optimize/UglifyJsPlugin');
 const webpackMerge = require('webpack-merge');
 
 const includeClientPackages = require('./config/helpers.js').includeClientPackages;
+const hasProcessFlag = require('./config/helpers.js').hasProcessFlag;
 const root = require('./config/helpers.js').root;
 
 const ENV = process.env.npm_lifecycle_event;
 const AOT = ENV === 'build:aot' || ENV === 'build:aot:dev' || ENV === 'server:aot' || ENV === 'watch:aot' || ENV === 'build:universal:aot' || ENV === 'build:universal:server';
 const isProd = ENV === 'build:prod' || ENV === 'server:prod' || ENV === 'watch:prod' || ENV === 'build:aot' || ENV === 'build:universal' || ENV === 'build:universal:aot' || ENV === 'build:universal:server';
+const HMR = hasProcessFlag('hot');
 const UNIVERSAL = ENV === 'build:universal' || ENV === 'build:universal:aot' || ENV === 'build:universal:server';
 const UNIVERSAL_SERVER = ENV === 'build:universal:server';
 
@@ -40,8 +42,9 @@ console.log('AOT: ', AOT);
 const CONSTANTS = {
   AOT: AOT,
   ENV: isProd ? JSON.stringify('production') : JSON.stringify('development'),
-  PORT: DEV_PORT,
   HOST: JSON.stringify(HOST),
+  PORT: DEV_PORT,
+  HMR: HMR,
   UNIVERSAL: UNIVERSAL
 };
 
@@ -62,10 +65,10 @@ const commonConfig = function webpackConfig(): WebpackConfig {
       {
         test: /\.ts$/,
         loaders: [
+          '@angularclass/hmr-loader',
           'awesome-typescript-loader',
           'angular2-template-loader',
-          'angular2-router-loader?loader=system&genDir=src/compiled/src/app&aot=' + AOT,
-          '@angularclass/hmr-loader'
+          'angular2-router-loader?loader=system&genDir=src/compiled/src/app&aot=' + AOT
         ],
         exclude: [/\.(spec|e2e|d)\.ts$/]
       },

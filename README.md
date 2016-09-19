@@ -1,6 +1,6 @@
 # Complete starter seed project for Angular 2
 
-> Featuring Material Design 2, Webpack 2, and optional server-side rendering with Universal.
+> Featuring Material Design 2, Webpack 2, HMR (Hot Module Replacement), and optional server-side rendering with Universal.
 
 ```
 git clone https://github.com/qdouble/angular2webpack2-starter.git
@@ -17,6 +17,7 @@ npm start
   * AOT (Ahead of Time/ Offline) Compilation
   * AOT safe SASS compilation
 * Webpack 2
+* HMR (Hot Module Replacement)
 * TypeScript 2
   * @types
 * Material Design 2
@@ -35,9 +36,11 @@ npm start
 
 Use `npm start` for dev server. Default dev port is `3000`.
 
+Use `npm run start:hmr` to run dev server with in HMR mode.
+
 Use `npm run server:prod` for production server and production watch. Default production port is `8088`.
 
-Use `npm run prod:build` for production build.
+Use `npm run build` for production build.
 
 Use `npm run universal` to run production build in Universal. Default universal port is `8000`.
 
