@@ -10,6 +10,7 @@ import { MdSidenavModule } from '@angular2-material/sidenav';
 import { MdToolbarModule } from '@angular2-material/toolbar';
 
 import { EffectsModule } from '@ngrx/effects';
+import { RouterStoreModule } from '@ngrx/router-store';
 import { StoreModule } from '@ngrx/store';
 
 import { routes } from './app.routing';
@@ -28,6 +29,7 @@ export const APP_IMPORTS = [
   MdToolbarModule,
   ReactiveFormsModule,
   RouterModule.forRoot(routes),
+  RouterStoreModule.connectRouter(),
   StoreDevToolsModule,
   StoreModule.provideStore(rootReducer)
 ];
