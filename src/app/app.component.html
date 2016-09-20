@@ -17,6 +17,6 @@
   </md-toolbar>
 <md-card id="my-page-card">
   <router-outlet (activate)="activateEvent($event)" (deactivate)="deactivateEvent($event)"></router-outlet>
-  <pre *ngIf="devMode">this.appState.state = {{ appState.state | json }}</pre>
 </md-card>
 </md-sidenav-layout>
+<my-store-devtools *ngIf="devMode"></my-store-devtools>

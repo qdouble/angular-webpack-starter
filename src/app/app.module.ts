@@ -9,14 +9,32 @@
 import { ApplicationRef, NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
 import { HttpModule } from '@angular/http';
+
 import { removeNgStyles, createNewHosts, createInputTransfer } from '@angularclass/hmr';
+
+import { Store } from '@ngrx/store';
+import { StoreDevtoolsModule } from '@ngrx/store-devtools';
+import { StoreLogMonitorModule, useLogMonitor } from '@ngrx/store-log-monitor';
 
 import { APP_DECLERATIONS } from './app.declerations';
 import { APP_IMPORTS } from './app.imports';
 import { APP_PROVIDERS } from './app.providers';
 
 import { AppComponent } from './app.component';
-import { AppState, InteralStateType } from './app.service';
+import { InteralStateType } from './app.service';
+
+import { AppState } from './reducers';
+
+// // Enable HMR and ngrx/devtools in hot reload mode
+if (ENV === 'development') APP_IMPORTS.push(...[
+  StoreDevtoolsModule.instrumentStore({
+    monitor: useLogMonitor({
+      visible: true,
+      position: 'right'
+    })
+  }),
+  StoreLogMonitorModule,
+]);
 
 type StoreType = {
   state: InteralStateType,
@@ -35,45 +53,37 @@ type StoreType = {
     HttpModule,
   ],
   bootstrap: [AppComponent],
-  providers: [AppState, APP_PROVIDERS]
+  providers: [APP_PROVIDERS]
 })
 
 export class AppModule {
-  constructor(public appRef: ApplicationRef, public appState: AppState) {}
+  constructor(public appRef: ApplicationRef,
+    private _store: Store<AppState>) { }
 
-  hmrOnInit(store: StoreType) {
-    if (!store || !store.state) return;
-    console.log('HMR store', JSON.stringify(store, null, 2));
-    // set state
-    this.appState._state = store.state;
-    // set input values
-    if ('restoreInputValues' in store) {
-      let restoreInputValues = store.restoreInputValues;
-      setTimeout(restoreInputValues);
+  hmrOnInit(store) {
+    if (!store || !store.rootState) return;
+
+    // restore state by dispatch a SET_ROOT_STATE action
+    if (store.rootState) {
+      this._store.dispatch({
+        type: 'SET_ROOT_STATE',
+        payload: store.rootState
+      });
     }
 
+    if ('restoreInputValues' in store) { store.restoreInputValues(); }
     this.appRef.tick();
-    delete store.state;
-    delete store.restoreInputValues;
+    Object.keys(store).forEach(prop => delete store[prop]);
   }
-
-  hmrOnDestroy(store: StoreType) {
+  hmrOnDestroy(store) {
     const cmpLocation = this.appRef.components.map(cmp => cmp.location.nativeElement);
-    // save state
-    const state = this.appState._state;
-    store.state = state;
-    // recreate root elements
+    this._store.take(1).subscribe(s => store.rootState = s);
     store.disposeOldHosts = createNewHosts(cmpLocation);
-    // save input values
-    store.restoreInputValues  = createInputTransfer();
-    // remove styles
+    store.restoreInputValues = createInputTransfer();
     removeNgStyles();
   }
-
-  hmrAfterDestroy(store: StoreType) {
-    // display new elements
+  hmrAfterDestroy(store) {
     store.disposeOldHosts();
     delete store.disposeOldHosts;
   }
-
 }

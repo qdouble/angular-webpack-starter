@@ -6,7 +6,7 @@
 import 'ts-helpers';
 
 import {
-  DEV_PORT, EXCLUDE_SOURCE_MAPS, HOST,
+  DEV_PORT, PROD_PORT, UNIVERSAL_PORT, EXCLUDE_SOURCE_MAPS, HOST,
   MY_PLUGINS, MY_PRODUCTION_PLUGINS, MY_LOADERS, MY_PRE_LOADERS, MY_POST_LOADERS,
   MY_SERVER_PRE_LOADERS, MY_SERVER_INCLUDE_CLIENT_PACKAGES
 } from './constants';
@@ -36,6 +36,19 @@ const HMR = hasProcessFlag('hot');
 const UNIVERSAL = ENV === 'build:universal' || ENV === 'build:universal:aot' || ENV === 'build:universal:server';
 const UNIVERSAL_SERVER = ENV === 'build:universal:server';
 
+let port: number;
+if (!UNIVERSAL) {
+  if (isProd) {
+    port = PROD_PORT;
+  } else {
+    port = DEV_PORT;
+  }
+} else {
+  port = UNIVERSAL_PORT;
+}
+
+const PORT = port;
+
 console.log('PRODUCTION BUILD: ', isProd);
 console.log('AOT: ', AOT);
 
@@ -43,7 +56,7 @@ const CONSTANTS = {
   AOT: AOT,
   ENV: isProd ? JSON.stringify('production') : JSON.stringify('development'),
   HOST: JSON.stringify(HOST),
-  PORT: DEV_PORT,
+  PORT: PORT,
   HMR: HMR,
   UNIVERSAL: UNIVERSAL
 };

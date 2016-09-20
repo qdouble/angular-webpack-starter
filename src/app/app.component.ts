@@ -2,7 +2,6 @@ import { AfterContentInit, Component, ViewChild, ViewEncapsulation } from '@angu
 import { ActivatedRoute, Router } from '@angular/router';
 import { MdSidenav } from '@angular2-material/sidenav';
 
-import { AppState } from './app.service';
 import { views } from './app-nav-views';
 import { MOBILE } from './services/constants';
 
@@ -20,7 +19,6 @@ export class AppComponent implements AfterContentInit {
   @ViewChild(MdSidenav) sidenav: MdSidenav;
 
   constructor(
-    public appState: AppState,
     public route: ActivatedRoute,
     public router: Router
   ) { }
@@ -29,10 +27,9 @@ export class AppComponent implements AfterContentInit {
     if (HMR) {
       this.sidenav.open();
     } else if (!MOBILE) {
-      this.sidenav.open();
-      // setTimeout(() => {
-      //   this.sidenav.open();
-      // }, 250);
+      setTimeout(() => {
+        this.sidenav.open();
+      });
     }
   }
 
