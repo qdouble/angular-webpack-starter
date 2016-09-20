@@ -60,6 +60,18 @@ Use `npm run compile` instead, it compiles and builds:aot
 The scripts are set to compile css next to scss because ngc compiler does not support Sass.
 To compile scss, use `npm run sass`, but many of the scripts will either build or watch scss files.
 
+### Store Log Monitor
+
+In development mode, the store log monitor appears on the right hand of your screen. This allows
+you to view your stored state and manipulate your state history. By default, the monitor is NOT imported
+when you are in production mode. State history is also not saved in production mode.
+
+### HMR (Hot Module Replacement)
+
+HMR mode allows you to update a particular module without reloading the entire application.
+The current state of your app is also stored in @ngrx/store allowing you to make updates to your
+code without losing your currently stored state.
+
 ### AOT  Don'ts
 
 The following are some things that will make AOT compile fail.
