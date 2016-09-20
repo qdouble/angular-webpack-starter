@@ -25,6 +25,7 @@ npm start
 * @ngrx
   * store (RxJS powered state management for Angular2 apps, inspired by Redux)
   * effects (Side effect model for @ngrx/store)
+  * router-store (Bindings to connect angular/router to ngrx/store)
   * store-devtools (Developer Tools for @ngrx/store)
   * store-log-monitor (Log Monitor for @ngrx/store-devtools and Angular 2)
   * ngrx-store-freeze in dev mode (@ngrx/store meta reducer that prevents state from being mutated.)
