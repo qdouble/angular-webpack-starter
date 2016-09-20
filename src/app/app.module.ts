@@ -21,7 +21,6 @@ import { APP_IMPORTS } from './app.imports';
 import { APP_PROVIDERS } from './app.providers';
 
 import { AppComponent } from './app.component';
-import { InteralStateType } from './app.service';
 
 import { AppState } from './reducers';
 
@@ -35,12 +34,6 @@ if (ENV === 'development') APP_IMPORTS.push(...[
   }),
   StoreLogMonitorModule,
 ]);
-
-type StoreType = {
-  state: InteralStateType,
-  restoreInputValues: () => void,
-  disposeOldHosts: () => void
-};
 
 @NgModule({
   declarations: [
