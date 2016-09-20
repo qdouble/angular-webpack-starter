@@ -19,7 +19,7 @@ import { UserEffects } from './user/user.effects';
 
 export const APP_IMPORTS = [
   EffectsModule.run(UserEffects),
-  // MdButtonModule,
+  // MdButtonModule, // Uncomment after inital load in HMR mode or before doing AOT compile
   MdCardModule,
   MdIconModule.forRoot(),
   MdInputModule,
@@ -33,7 +33,7 @@ export const APP_IMPORTS = [
 ];
 
 /**
- * Currently MdButtonModule stops HMR from working properly 
+ * Currently, MdButtonModule stops HMR from working properly 
  * if it is imported on initial load. If you uncomment it after initial
  * load the page will refresh and MdButton will be fine.
  * If you find a better solution, please submit a PR or file an issue.
