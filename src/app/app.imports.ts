@@ -9,10 +9,17 @@ import { MdListModule } from '@angular2-material/list';
 import { MdSidenavModule } from '@angular2-material/sidenav';
 import { MdToolbarModule } from '@angular2-material/toolbar';
 
+import { EffectsModule } from '@ngrx/effects';
+import { StoreModule } from '@ngrx/store';
+
 import { routes } from './app.routing';
+import { rootReducer } from './reducers';
+import { StoreDevToolsModule } from './features/store-devtools.module';
+import { UserEffects } from './user/user.effects';
 
 export const APP_IMPORTS = [
-  MdButtonModule,
+  EffectsModule.run(UserEffects),
+  // MdButtonModule,
   MdCardModule,
   MdIconModule.forRoot(),
   MdInputModule,
@@ -20,5 +27,18 @@ export const APP_IMPORTS = [
   MdSidenavModule,
   MdToolbarModule,
   ReactiveFormsModule,
-  RouterModule.forRoot(routes)
+  RouterModule.forRoot(routes),
+  StoreDevToolsModule,
+  StoreModule.provideStore(rootReducer)
 ];
+
+/**
+ * Currently MdButtonModule stops HMR from working properly 
+ * if it is imported on initial load. If you uncomment it after initial
+ * load the page will refresh and MdButton will be fine.
+ * If you find a better solution, please submit a PR or file an issue.
+ */
+if (!HMR) {
+  APP_IMPORTS.push(MdButtonModule);
+}
+

@@ -19,3 +19,4 @@
   <router-outlet (activate)="activateEvent($event)" (deactivate)="deactivateEvent($event)"></router-outlet>
 </md-card>
 </md-sidenav-layout>
+<my-store-devtools *ngIf="devMode"></my-store-devtools>

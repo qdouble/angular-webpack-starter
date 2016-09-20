@@ -3,7 +3,6 @@ import { ActivatedRoute, Router } from '@angular/router';
 import { MdSidenav } from '@angular2-material/sidenav';
 
 import { views } from './app-nav-views';
-
 import { MOBILE } from './services/constants';
 
 @Component({
@@ -13,6 +12,7 @@ import { MOBILE } from './services/constants';
   encapsulation: ViewEncapsulation.None
 })
 export class AppComponent implements AfterContentInit {
+  devMode = (ENV === 'development');
   mobile = MOBILE;
   sideNavMode = MOBILE ? 'over' : 'side';
   views = views;
@@ -24,10 +24,12 @@ export class AppComponent implements AfterContentInit {
   ) { }
 
   ngAfterContentInit() {
-    if (!MOBILE) {
+    if (HMR) {
+      this.sidenav.open();
+    } else if (!MOBILE) {
       setTimeout(() => {
         this.sidenav.open();
-      }, 250);
+      });
     }
   }
 

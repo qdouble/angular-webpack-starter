@@ -6,7 +6,7 @@
 import 'ts-helpers';
 
 import {
-  DEV_PORT, EXCLUDE_SOURCE_MAPS, HOST,
+  DEV_PORT, PROD_PORT, UNIVERSAL_PORT, EXCLUDE_SOURCE_MAPS, HOST,
   MY_PLUGINS, MY_PRODUCTION_PLUGINS, MY_LOADERS, MY_PRE_LOADERS, MY_POST_LOADERS,
   MY_SERVER_PRE_LOADERS, MY_SERVER_INCLUDE_CLIENT_PACKAGES
 } from './constants';
@@ -26,13 +26,28 @@ const UglifyJsPlugin = require('webpack/lib/optimize/UglifyJsPlugin');
 const webpackMerge = require('webpack-merge');
 
 const includeClientPackages = require('./config/helpers.js').includeClientPackages;
+const hasProcessFlag = require('./config/helpers.js').hasProcessFlag;
 const root = require('./config/helpers.js').root;
 
 const ENV = process.env.npm_lifecycle_event;
 const AOT = ENV === 'build:aot' || ENV === 'build:aot:dev' || ENV === 'server:aot' || ENV === 'watch:aot' || ENV === 'build:universal:aot' || ENV === 'build:universal:server';
 const isProd = ENV === 'build:prod' || ENV === 'server:prod' || ENV === 'watch:prod' || ENV === 'build:aot' || ENV === 'build:universal' || ENV === 'build:universal:aot' || ENV === 'build:universal:server';
+const HMR = hasProcessFlag('hot');
 const UNIVERSAL = ENV === 'build:universal' || ENV === 'build:universal:aot' || ENV === 'build:universal:server';
 const UNIVERSAL_SERVER = ENV === 'build:universal:server';
+
+let port: number;
+if (!UNIVERSAL) {
+  if (isProd) {
+    port = PROD_PORT;
+  } else {
+    port = DEV_PORT;
+  }
+} else {
+  port = UNIVERSAL_PORT;
+}
+
+const PORT = port;
 
 console.log('PRODUCTION BUILD: ', isProd);
 console.log('AOT: ', AOT);
@@ -40,8 +55,9 @@ console.log('AOT: ', AOT);
 const CONSTANTS = {
   AOT: AOT,
   ENV: isProd ? JSON.stringify('production') : JSON.stringify('development'),
-  PORT: DEV_PORT,
   HOST: JSON.stringify(HOST),
+  PORT: PORT,
+  HMR: HMR,
   UNIVERSAL: UNIVERSAL
 };
 
@@ -62,6 +78,7 @@ const commonConfig = function webpackConfig(): WebpackConfig {
       {
         test: /\.ts$/,
         loaders: [
+          '@angularclass/hmr-loader',
           'awesome-typescript-loader',
           'angular2-template-loader',
           'angular2-router-loader?loader=system&genDir=src/compiled/src/app&aot=' + AOT

@@ -1,6 +1,11 @@
 <header>
-  <h3> Welcome to the Dashboard {{userName.value}}!!</h3>
+  <h3> Welcome to the Dashboard {{user.name}}!</h3>
 </header>
 <section>
-  <md-input [formControl]="userName" [placeholder]="userNameLabel"></md-input>
+  <form [formGroup]="form" (ngSubmit)="submitState()" autocomplete="off">
+    <md-input formControlName="name" [placeholder]="nameLabel"></md-input><br>
+    <button md-raised-button color="primary">Update store</button>
+  </form>
+  <br><br>
+    <button id="my-logout-button" md-raised-button color="accent" (click)="logout()">Logout</button>
 </section>

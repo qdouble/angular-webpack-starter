@@ -26,6 +26,7 @@ declare var AOT: boolean;
 declare var ENV: string;
 declare var HMR: boolean;
 declare var HOST: string;
+declare var PORT: number;
 declare var System: SystemJS;
 declare var UNIVERSAL: boolean;
 
@@ -38,6 +39,7 @@ interface GlobalEnvironment {
   ENV;
   HMR;
   HOST;
+  PORT;
   SystemJS: SystemJS;
   System: SystemJS;
   UNIVERSAL;
