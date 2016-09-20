@@ -42,9 +42,8 @@ export class DashboardComponent implements OnDestroy, OnInit {
   }
 
   submitState() {
-    const name = this.form.get('name').value;
     this.store.dispatch(this.userActions.editUser(Object.assign({}, this.user, {
-      name: name
+      name: this.form.get('name').value
     })));
   }
 

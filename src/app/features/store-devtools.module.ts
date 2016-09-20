@@ -7,7 +7,7 @@ import { StoreLogMonitorModule, useLogMonitor } from '@ngrx/store-log-monitor';
 import { StoreDevToolsComponent } from './store-devtools.component';
 
 const IMPORTS = [];
-// // Enable HMR and ngrx/devtools in hot reload mode
+// // Enable ngrx/devtools in dev mode
 if (ENV === 'development') IMPORTS.push(...[
   StoreDevtoolsModule.instrumentStore({
     monitor: useLogMonitor({

@@ -12,7 +12,7 @@ export const reducers = {
   user: userReducer
 };
 
-// Generate a reducer to set the root state
+// Generate a reducer to set the root state in dev mode for HMR
 function stateSetter(reducer: ActionReducer<any>): ActionReducer<any> {
   return function (state, action ) {
     if (action.type === 'SET_ROOT_STATE') {
