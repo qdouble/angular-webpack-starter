@@ -1,14 +1,17 @@
 import { compose } from '@ngrx/core/compose';
 import { ActionReducer, combineReducers } from '@ngrx/store';
 import { storeFreeze } from 'ngrx-store-freeze';
+import { routerReducer, RouterState } from '@ngrx/router-store';
 
 import { userReducer, UserState } from '../user/user.reducer';
 
 export interface AppState {
+  router: RouterState;
   user: UserState;
 }
 
 export const reducers = {
+  router: routerReducer,
   user: userReducer
 };
 
