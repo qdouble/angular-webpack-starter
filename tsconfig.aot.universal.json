@@ -10,7 +10,10 @@
     "lib": ["es5", "dom"],
     "strictNullChecks": false,
     "baseUrl": "./src",
-    "outDir": "output"
+    "outDir": "output",
+    "typeRoots": [
+      "node_modules/@types"
+    ]
   },
   "exclude": [
     "node_modules",
