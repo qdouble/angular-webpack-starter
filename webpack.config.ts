@@ -202,7 +202,6 @@ const serverConfig: WebpackConfig = {
   externals: includeClientPackages([
     // include these client packages so we can transform their source with webpack loaders
     '@angular2-material/button',
-    '@angular2-material/button',
     '@angular2-material/card',
     '@angular2-material/checkbox',
     '@angular2-material/core',
