@@ -1,5 +1,6 @@
 {
   "compilerOptions": {
+    "target": "es5",
     "allowSyntheticDefaultImports": false,
     "baseUrl": "./src",
     "declaration": false,
@@ -9,10 +10,13 @@
     "module": "commonjs",
     "moduleResolution": "node",
     "noEmitHelpers": true,
+    "skipDefaultLibCheck": true,
     "pretty": true,
     "sourceMap": true,
     "strictNullChecks": false,
-    "target": "es5"
+    "typeRoots": [
+      "node_modules/@types"
+    ]
   },
   "exclude": [
     "node_modules"
