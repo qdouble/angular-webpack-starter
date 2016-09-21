@@ -7,6 +7,12 @@ exports.E2E_PORT = 4201;
 exports.PROD_PORT = 8088;
 exports.UNIVERSAL_PORT = 8000;
 
+/**
+ * specifies which @ngrx dev tools will be available when you build and load
+ * your app in dev mode. Options are: monitor | logger | both | none
+ */
+exports.STORE_DEV_TOOLS = 'monitor'
+
 exports.EXCLUDE_SOURCE_MAPS = [
   // these packages have problems with their sourcemaps
   root('node_modules/@angular'),

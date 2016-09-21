@@ -6,7 +6,7 @@
 import 'ts-helpers';
 
 import {
-  DEV_PORT, PROD_PORT, UNIVERSAL_PORT, EXCLUDE_SOURCE_MAPS, HOST,
+  DEV_PORT, PROD_PORT, UNIVERSAL_PORT, EXCLUDE_SOURCE_MAPS, HOST, STORE_DEV_TOOLS,
   MY_CLIENT_PLUGINS, MY_CLIENT_PRODUCTION_PLUGINS, MY_CLIENT_RULES, MY_SERVER_RULES,
   MY_SERVER_INCLUDE_CLIENT_PACKAGES
 } from './constants';
@@ -55,9 +55,10 @@ console.log('AOT: ', AOT);
 const CONSTANTS = {
   AOT: AOT,
   ENV: isProd ? JSON.stringify('production') : JSON.stringify('development'),
+  HMR: HMR,
   HOST: JSON.stringify(HOST),
   PORT: PORT,
-  HMR: HMR,
+  STORE_DEV_TOOLS: JSON.stringify(STORE_DEV_TOOLS),
   UNIVERSAL: UNIVERSAL
 };
 

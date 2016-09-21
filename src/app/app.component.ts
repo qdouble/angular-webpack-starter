@@ -12,7 +12,9 @@ import { MOBILE } from './services/constants';
   encapsulation: ViewEncapsulation.None
 })
 export class AppComponent implements AfterContentInit {
-  devMode = (ENV === 'development');
+  showMonitor = (ENV === 'development' &&
+    ['monitor', 'both'].includes(STORE_DEV_TOOLS)
+  );
   mobile = MOBILE;
   sideNavMode = MOBILE ? 'over' : 'side';
   views = views;
