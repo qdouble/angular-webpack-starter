@@ -13,6 +13,8 @@ const ForkCheckerPlugin = require('awesome-typescript-loader').ForkCheckerPlugin
 const NamedModulesPlugin = require('webpack/lib/NamedModulesPlugin');
 
 const EXCLUDE_SOURCE_MAPS = require('../constants').EXCLUDE_SOURCE_MAPS;
+const MY_TEST_RULES = require('../constants').MY_TEST_RULES;
+const MY_TEST_PLUGINS = require('../constants').MY_TEST_PLUGINS;
 
 /**
  * Webpack configuration
@@ -20,6 +22,8 @@ const EXCLUDE_SOURCE_MAPS = require('../constants').EXCLUDE_SOURCE_MAPS;
  * See: http://webpack.github.io/docs/configuration.html#cli
  */
 module.exports = {
+
+  entry: {},
 
   /**
    * Source map for Karma from the help of karma-sourcemap-loader &  karma-webpack
@@ -41,12 +45,7 @@ module.exports = {
      *
      * See: http://webpack.github.io/docs/configuration.html#resolve-extensions
      */
-    extensions: ['', '.ts', '.js'],
-
-    /**
-     * Make sure root is src
-     */
-    root: helpers.root('src'),
+    extensions: ['.ts', '.js']
 
   },
 
@@ -62,7 +61,7 @@ module.exports = {
      *
      * See: http://webpack.github.io/docs/configuration.html#module-preloaders-module-postloaders
      */
-    preLoaders: [
+    rules: [
 
       /**
        * Tslint loader support for *.ts files
@@ -71,6 +70,7 @@ module.exports = {
        */
       {
         test: /\.ts$/,
+        enforce: 'pre',
         loader: 'tslint-loader',
         exclude: [helpers.root('node_modules')]
       },
@@ -83,21 +83,10 @@ module.exports = {
        */
       {
         test: /\.js$/,
+        enforce: 'pre',
         loader: 'source-map-loader',
         exclude: [EXCLUDE_SOURCE_MAPS]
-      }
-
-    ],
-
-    /**
-     * An array of automatically applied loaders.
-     *
-     * IMPORTANT: The loaders here are resolved relative to the resource which they are applied to.
-     * This means they are not resolved relative to the configuration file.
-     *
-     * See: http://webpack.github.io/docs/configuration.html#module-loaders
-     */
-    loaders: [
+      },
 
       /**
        * Typescript loader support for .ts and Angular 2 async routes via .async.ts
@@ -134,16 +123,7 @@ module.exports = {
        *
        * See: https://github.com/webpack/raw-loader
        */
-      { test: /\.html$/, loader: 'raw-loader', exclude: [helpers.root('src/index.html')] }
-
-    ],
-
-    /**
-     * An array of applied pre and post loaders.
-     *
-     * See: http://webpack.github.io/docs/configuration.html#module-preloaders-module-postloaders
-     */
-    postLoaders: [
+      { test: /\.html$/, loader: 'raw-loader', exclude: [helpers.root('src/index.html')] },
 
       /**
        * Instruments JS files with Istanbul for subsequent code coverage reporting.
@@ -153,13 +133,14 @@ module.exports = {
        */
       {
         test: /\.(js|ts)$/, loader: 'istanbul-instrumenter-loader',
+        enforce: 'post',
         include: helpers.root('src'),
         exclude: [
           /\.(e2e|spec)\.ts$/,
           /node_modules/
         ]
-      }
-
+      },
+      ...MY_TEST_RULES
     ]
   },
 
@@ -191,20 +172,18 @@ module.exports = {
       HOST: JSON.stringify('localhost'),
       UNIVERSAL: false
     }),
-    new NamedModulesPlugin()
+    new NamedModulesPlugin(),
+    new webpack.LoaderOptionsPlugin({
+      options: {
+        tslint: {
+          emitErrors: false,
+          failOnHint: false,
+          resourcePath: helpers.root('./src')
+        }
+      }
+    }),
+    ...MY_TEST_PLUGINS
   ],
-
-  /**
-   * Static analysis linter for TypeScript advanced options configuration
-   * Description: An extensible linter for the TypeScript language.
-   *
-   * See: https://github.com/wbuchwalter/tslint-loader
-   */
-  tslint: {
-    emitErrors: false,
-    failOnHint: false,
-    resourcePath: 'src'
-  },
 
   /**
    * Include polyfills or mocks for various node stuff
@@ -213,12 +192,11 @@ module.exports = {
    * See: https://webpack.github.io/docs/configuration.html#node
    */
   node: {
-    global: 'window',
+    global: true,
     process: false,
-    crypto: 'empty',
+    crypto: false,
     module: false,
     clearImmediate: false,
     setImmediate: false
   }
-
 };
