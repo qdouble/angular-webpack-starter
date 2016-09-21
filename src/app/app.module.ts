@@ -13,8 +13,6 @@ import { HttpModule } from '@angular/http';
 import { removeNgStyles, createNewHosts, createInputTransfer } from '@angularclass/hmr';
 
 import { Store } from '@ngrx/store';
-import { StoreDevtoolsModule } from '@ngrx/store-devtools';
-import { StoreLogMonitorModule, useLogMonitor } from '@ngrx/store-log-monitor';
 
 import { APP_DECLERATIONS } from './app.declerations';
 import { APP_IMPORTS } from './app.imports';
@@ -23,17 +21,6 @@ import { APP_PROVIDERS } from './app.providers';
 import { AppComponent } from './app.component';
 
 import { AppState } from './reducers';
-
-// // Enable HMR and ngrx/devtools in hot reload mode
-if (ENV === 'development') APP_IMPORTS.push(...[
-  StoreDevtoolsModule.instrumentStore({
-    monitor: useLogMonitor({
-      visible: true,
-      position: 'right'
-    })
-  }),
-  StoreLogMonitorModule,
-]);
 
 @NgModule({
   declarations: [
