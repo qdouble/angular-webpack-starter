@@ -7,8 +7,8 @@ import 'ts-helpers';
 
 import {
   DEV_PORT, PROD_PORT, UNIVERSAL_PORT, EXCLUDE_SOURCE_MAPS, HOST,
-  MY_PLUGINS, MY_PRODUCTION_PLUGINS, MY_LOADERS, MY_PRE_LOADERS, MY_POST_LOADERS,
-  MY_SERVER_PRE_LOADERS, MY_SERVER_INCLUDE_CLIENT_PACKAGES
+  MY_CLIENT_PLUGINS, MY_CLIENT_PRODUCTION_PLUGINS, MY_CLIENT_RULES, MY_SERVER_RULES,
+  MY_SERVER_INCLUDE_CLIENT_PACKAGES
 } from './constants';
 
 const {
@@ -63,18 +63,14 @@ const CONSTANTS = {
 
 const commonConfig = function webpackConfig(): WebpackConfig {
   let config: WebpackConfig = Object.assign({});
-  config.plugins = [];
 
   config.module = {
-    preLoaders: [
+    rules: [
       {
         test: /\.js$/,
         loader: 'source-map-loader',
         exclude: [EXCLUDE_SOURCE_MAPS]
       },
-      ...MY_PRE_LOADERS
-    ],
-    loaders: [
       {
         test: /\.ts$/,
         loaders: [
@@ -88,10 +84,7 @@ const commonConfig = function webpackConfig(): WebpackConfig {
       { test: /\.json$/, loader: 'json-loader' },
       { test: /\.html/, loader: 'raw-loader', exclude: [root('src/index.html')] },
       { test: /\.css$/, loader: 'raw-loader' },
-      ...MY_LOADERS
-    ],
-    postLoaders: [
-      ...MY_POST_LOADERS
+      ...MY_CLIENT_RULES
     ]
   };
 
@@ -111,7 +104,7 @@ const commonConfig = function webpackConfig(): WebpackConfig {
       from: 'src/index.html',
       to: ''
     }]),
-    ...MY_PLUGINS
+    ...MY_CLIENT_PLUGINS
   ];
 
   if (isProd) {
@@ -128,7 +121,7 @@ const commonConfig = function webpackConfig(): WebpackConfig {
         threshold: 10240,
         minRatio: 0.8
       }),
-      ...MY_PRODUCTION_PLUGINS
+      ...MY_CLIENT_PRODUCTION_PLUGINS
     );
   }
 
@@ -177,10 +170,10 @@ const clientConfig = function webpackConfig(): WebpackConfig {
   };
 
   config.node = {
-    global: 'window',
+    global: true,
     process: true,
     Buffer: false,
-    crypto: 'empty',
+    crypto: false,
     module: false,
     clearImmediate: false,
     setImmediate: false,
@@ -201,9 +194,9 @@ const serverConfig: WebpackConfig = {
     libraryTarget: 'commonjs2'
   },
   module: {
-    preLoaders: [
+    rules: [
       { test: /angular2-material/, loader: 'imports-loader?window=>global' },
-      ...MY_SERVER_PRE_LOADERS
+      ...MY_SERVER_RULES
     ],
   },
   externals: includeClientPackages([
@@ -240,9 +233,7 @@ const serverConfig: WebpackConfig = {
 
 const defaultConfig = {
   resolve: {
-    extensions: ['', '.ts', '.js', '.json'],
-    root: root('src'),
-    moduleDirectories: ['node_modules']
+    extensions: ['.ts', '.js', '.json']
   }
 };
 
@@ -298,9 +289,9 @@ interface WebpackConfig {
   };
   node?: {
     process?: boolean;
-    global?: boolean | string;
+    global?: boolean;
     Buffer?: boolean;
-    crypto?: string | boolean;
+    crypto?: boolean;
     module?: boolean;
     clearImmediate?: boolean;
     setImmediate?: boolean
