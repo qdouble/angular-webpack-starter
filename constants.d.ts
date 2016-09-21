@@ -4,6 +4,8 @@ export declare const E2E_PORT: number;
 export declare const PROD_PORT: number;
 export declare const UNIVERSAL_PORT: number;
 
+export declare const STORE_DEV_TOOLS: string;
+
 export declare const MY_CLIENT_PLUGINS: any[];
 export declare const MY_CLIENT_PRODUCTION_PLUGINS: any[];
 export declare const MY_CLIENT_RULES: any[];

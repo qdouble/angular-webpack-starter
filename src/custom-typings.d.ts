@@ -27,6 +27,7 @@ declare var ENV: string;
 declare var HMR: boolean;
 declare var HOST: string;
 declare var PORT: number;
+declare var STORE_DEV_TOOLS: string;
 declare var System: SystemJS;
 declare var UNIVERSAL: boolean;
 
@@ -40,6 +41,7 @@ interface GlobalEnvironment {
   HMR;
   HOST;
   PORT;
+  STORE_DEV_TOOLS;
   SystemJS: SystemJS;
   System: SystemJS;
   UNIVERSAL;
