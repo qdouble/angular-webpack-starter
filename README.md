@@ -1,4 +1,6 @@
-# Complete starter seed project for Angular 2 (No Universal Support Branch)
+# Complete starter seed project for Angular 2
+
+## No Universal Support Branch
 
 > Featuring Material Design 2, Webpack 2, HMR (Hot Module Replacement), and @ngrx.
 
