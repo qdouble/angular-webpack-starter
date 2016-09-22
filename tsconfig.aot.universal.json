@@ -3,13 +3,12 @@
     "target": "es5",
     "emitDecoratorMetadata": true,
     "experimentalDecorators": true,
-    "allowSyntheticDefaultImports": false,
     "noEmitHelpers": true,
     "pretty": false,
     "sourceMap": true,
     "lib": ["es5", "dom"],
     "strictNullChecks": false,
-    "baseUrl": "./src",
+    "skipDefaultLibCheck": true,
     "outDir": "output",
     "typeRoots": [
       "node_modules/@types"
