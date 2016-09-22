@@ -8,7 +8,6 @@ import { DashboardComponent } from './features/dashboard.component';
 import { NotFound404Component } from './not-found404.component';
 import { routes } from './app.routing';
 
-
 describe('App Component', () => {
   beforeEach(() => {
     TestBed.configureTestingModule({
@@ -26,5 +25,4 @@ describe('App Component', () => {
     fixture.detectChanges();
     expect(fixture.nativeElement).not.toContainText('Welcome to the Dashboard');
   }));
-
 });

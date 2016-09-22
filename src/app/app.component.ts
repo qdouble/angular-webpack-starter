@@ -1,5 +1,4 @@
 import { Component, ViewEncapsulation } from '@angular/core';
-import { ActivatedRoute, Router } from '@angular/router';
 
 import { views } from './app-nav-views';
 
@@ -12,10 +11,7 @@ import { views } from './app-nav-views';
 export class AppComponent {
   views = views;
 
-  constructor(
-    public route: ActivatedRoute,
-    public router: Router
-  ) { }
+  constructor() { }
 
   activateEvent(event) {
     if (ENV === 'development') {
