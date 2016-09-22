@@ -1,10 +1,11 @@
 # Complete starter seed project for Angular 2
 
-> Featuring Material Design 2, Webpack 2, HMR (Hot Module Replacement), @ngrx and optional server-side rendering with Universal.
-> For Branch without universal support go here: https://github.com/qdouble/angular2webpack2-starter/tree/no-universal-support
+## Minimal Branch
+
+> Featuring Webpack 2. Supports Lazy Loading and AOT compilation.
 
 ```
-git clone https://github.com/qdouble/angular2webpack2-starter.git
+git clone -b minimal https://github.com/qdouble/angular2webpack2-starter.git
 cd angular2webpack2-starter
 npm install
 npm start
@@ -16,28 +17,14 @@ npm start
   * Async loading
   * Treeshaking
   * AOT (Ahead of Time/ Offline) Compilation
-  * AOT safe SASS compilation
 * Webpack 2
-* HMR (Hot Module Replacement)
 * TypeScript 2
   * @types
-* Material Design 2
-* Universal (Server-side Rendering)
-* @ngrx
-  * store (RxJS powered state management for Angular2 apps, inspired by Redux)
-  * effects (Side effect model for @ngrx/store)
-  * router-store (Bindings to connect angular/router to ngrx/store)
-  * store-devtools (Developer Tools for @ngrx/store)
-  * store-log-monitor (Log Monitor for @ngrx/store-devtools and Angular 2)
-  * ngrx-store-logger (Advanced console logging for @ngrx/store applications, ported from redux-logger.)
-  * ngrx-store-freeze in dev mode (@ngrx/store meta reducer that prevents state from being mutated.)
 * Karma/Jasmine testing
 * Protractor for E2E testing
 
 ## Project Philosophy & Goals
 
- There are debates whether or not to keep starter seed projects minimal. After working on it and thinking about it for a while, the philosophy of this project is:
-* There are more than enough minimal starters out there, there's no need for to replicate them here.
 * The main goal is to provide an environment where you can have great dev tools and create a production application without worrying about adding a bunch of stuff yourself.
 * The goal of your design should be so that you can easily copy and paste your app folder and your constants file into to a new update of this project and have it still work. Use constants and have proper separation to make upgrades easy. If you have any suggestions on areas where this starter can be designed to make updates more easy, file an issue.
 
@@ -45,13 +32,9 @@ npm start
 
 Use `npm start` for dev server. Default dev port is `3000`.
 
-Use `npm run start:hmr` to run dev server in HMR mode.
-
 Use `npm run build` for production build.
 
 Use `npm run server:prod` for production server and production watch. Default production port is `8088`.
-
-Use `npm run universal` to run production build in Universal. Default universal port is `8000`.
 
 Default ports can be changed in constants.js file.
 
@@ -59,25 +42,6 @@ To create AOT version, run `npm run compile`. This will compile and build script
 Then you can use `npm run prodserver` to see to serve files.
 Do not use build:aot directly unless you have already compiled.
 Use `npm run compile` instead, it compiles and builds:aot
-
-The scripts are set to compile css next to scss because ngc compiler does not support Sass.
-To compile scss, use `npm run sass`, but many of the scripts will either build or watch scss files.
-
-### Store Log Monitor / Store Logger
-
-In development mode, the store log monitor appears on the right hand of your screen. This allows
-you to view your stored state and manipulate your state history. By default, the monitor is NOT imported
-when you are in production mode. State history is also not saved in production mode.
-
-There is also an option to use store-logger which outputs to the console instead of your application view.
-To set your development mode store logging preference, go to the constant.js file and edit the `STORE_DEV_TOOLS` constant.
-Available options are `monitor | logger | both | none`
-
-### HMR (Hot Module Replacement)
-
-HMR mode allows you to update a particular module without reloading the entire application.
-The current state of your app is also stored in @ngrx/store allowing you to make updates to your
-code without losing your currently stored state.
 
 ### AOT  Don'ts
 

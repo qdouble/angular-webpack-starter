@@ -20,10 +20,7 @@
     "src/**/*.e2e.ts",
     "src/**/*.spec.ts",
     "src/server.ts",
-    "src/main.browser.aot.ts",
-    "src/main.browser.universal.ts",
-    "src/app/app.module.universal.browser.ts",
-    "src/app/app.module.universal.node.ts"
+    "src/main.browser.aot.ts"
   ],
   "awesomeTypescriptLoaderOptions": {
     "useWebpackText": true,

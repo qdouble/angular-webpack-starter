@@ -6,9 +6,8 @@
 import 'ts-helpers';
 
 import {
-  DEV_PORT, PROD_PORT, UNIVERSAL_PORT, EXCLUDE_SOURCE_MAPS, HOST, STORE_DEV_TOOLS,
-  MY_CLIENT_PLUGINS, MY_CLIENT_PRODUCTION_PLUGINS, MY_CLIENT_RULES, MY_SERVER_RULES,
-  MY_SERVER_INCLUDE_CLIENT_PACKAGES
+  DEV_PORT, PROD_PORT, EXCLUDE_SOURCE_MAPS, HOST,
+  MY_CLIENT_PLUGINS, MY_CLIENT_PRODUCTION_PLUGINS, MY_CLIENT_RULES
 } from './constants';
 
 const {
@@ -18,33 +17,22 @@ const {
   NoErrorsPlugin
 } = require('webpack');
 
-const CompressionPlugin = require('compression-webpack-plugin');
 const CopyWebpackPlugin = require('copy-webpack-plugin');
 const { ForkCheckerPlugin } = require('awesome-typescript-loader');
 const NamedModulesPlugin = require('webpack/lib/NamedModulesPlugin');
 const UglifyJsPlugin = require('webpack/lib/optimize/UglifyJsPlugin');
-const webpackMerge = require('webpack-merge');
 
-const includeClientPackages = require('./config/helpers.js').includeClientPackages;
-const hasProcessFlag = require('./config/helpers.js').hasProcessFlag;
 const root = require('./config/helpers.js').root;
 
 const ENV = process.env.npm_lifecycle_event;
-const AOT = ENV === 'build:aot' || ENV === 'build:aot:dev' || ENV === 'server:aot' || ENV === 'watch:aot' || ENV === 'build:universal:aot' || ENV === 'build:universal:server';
-const isProd = ENV === 'build:prod' || ENV === 'server:prod' || ENV === 'watch:prod' || ENV === 'build:aot' || ENV === 'build:universal' || ENV === 'build:universal:aot' || ENV === 'build:universal:server';
-const HMR = hasProcessFlag('hot');
-const UNIVERSAL = ENV === 'build:universal' || ENV === 'build:universal:aot' || ENV === 'build:universal:server';
-const UNIVERSAL_SERVER = ENV === 'build:universal:server';
+const AOT = ENV === 'build:aot' || ENV === 'build:aot:dev' || ENV === 'server:aot' || ENV === 'watch:aot';
+const isProd = ENV === 'build:prod' || ENV === 'server:prod' || ENV === 'watch:prod' || ENV === 'build:aot';
 
 let port: number;
-if (!UNIVERSAL) {
-  if (isProd) {
-    port = PROD_PORT;
-  } else {
-    port = DEV_PORT;
-  }
+if (isProd) {
+  port = PROD_PORT;
 } else {
-  port = UNIVERSAL_PORT;
+  port = DEV_PORT;
 }
 
 const PORT = port;
@@ -55,14 +43,13 @@ console.log('AOT: ', AOT);
 const CONSTANTS = {
   AOT: AOT,
   ENV: isProd ? JSON.stringify('production') : JSON.stringify('development'),
-  HMR: HMR,
   HOST: JSON.stringify(HOST),
-  PORT: PORT,
-  STORE_DEV_TOOLS: JSON.stringify(STORE_DEV_TOOLS),
-  UNIVERSAL: UNIVERSAL
+  PORT: PORT
 };
 
-const commonConfig = function webpackConfig(): WebpackConfig {
+// type definition for WebpackConfig at the bottom
+const clientConfig = function webpackConfig(): WebpackConfig {
+
   let config: WebpackConfig = Object.assign({});
 
   config.module = {
@@ -75,7 +62,6 @@ const commonConfig = function webpackConfig(): WebpackConfig {
       {
         test: /\.ts$/,
         loaders: [
-          '@angularclass/hmr-loader',
           'awesome-typescript-loader',
           'angular2-template-loader',
           'angular2-router-loader?loader=system&genDir=src/compiled/src/app&aot=' + AOT
@@ -115,48 +101,21 @@ const commonConfig = function webpackConfig(): WebpackConfig {
         beautify: false,
         comments: false
       }),
-      new CompressionPlugin({
-        asset: '[path].gz[query]',
-        algorithm: 'gzip',
-        test: /\.js$|\.html$/,
-        threshold: 10240,
-        minRatio: 0.8
-      }),
       ...MY_CLIENT_PRODUCTION_PLUGINS
     );
   }
 
-  return config;
-} ();
-
-// type definition for WebpackConfig at the bottom
-const clientConfig = function webpackConfig(): WebpackConfig {
-
-  let config: WebpackConfig = Object.assign({});
-
   config.cache = true;
   isProd ? config.devtool = 'source-map' : config.devtool = 'eval';
 
-  if (!UNIVERSAL) {
-    if (AOT) {
-      config.entry = {
-        main: './src/main.browser.aot'
-      };
-    } else {
-      config.entry = {
-        main: './src/main.browser'
-      };
-    }
+  if (AOT) {
+    config.entry = {
+      main: './src/main.browser.aot'
+    };
   } else {
-    if (AOT) {
-      config.entry = {
-        main: './src/main.browser.universal.aot'
-      };
-    } else {
-      config.entry = {
-        main: './src/main.browser.universal'
-      };
-    }
+    config.entry = {
+      main: './src/main.browser'
+    };
   }
 
   config.output = {
@@ -182,87 +141,16 @@ const clientConfig = function webpackConfig(): WebpackConfig {
     setTimeout: true
   };
 
+  config.resolve = {
+    extensions: ['.ts', '.js', '.json']
+  };
+
   return config;
 
 } ();
 
-const serverConfig: WebpackConfig = {
-  target: 'node',
-  entry: './src/server',
-  output: {
-    filename: 'index.js',
-    path: root('dist/server'),
-    libraryTarget: 'commonjs2'
-  },
-  module: {
-    rules: [
-      { test: /angular2-material/, loader: 'imports-loader?window=>global' },
-      ...MY_SERVER_RULES
-    ],
-  },
-  externals: includeClientPackages([
-    // include these client packages so we can transform their source with webpack loaders
-    '@angular2-material/button',
-    '@angular2-material/card',
-    '@angular2-material/checkbox',
-    '@angular2-material/core',
-    '@angular2-material/grid',
-    '@angular2-material/icon',
-    '@angular2-material/input',
-    '@angular2-material/list',
-    '@angular2-material/menu',
-    '@angular2-material/progress',
-    '@angular2-material/progress',
-    '@angular2-material/radio',
-    '@angular2-material/sidenav',
-    '@angular2-material/slider',
-    '@angular2-material/slide',
-    '@angular2-material/tabs',
-    '@angular2-material/toolbar',
-    '@angular2-material/tooltip',
-    ...MY_SERVER_INCLUDE_CLIENT_PACKAGES
-  ]),
-  node: {
-    global: true,
-    __dirname: true,
-    __filename: true,
-    process: true,
-    Buffer: true
-  }
-};
-
-const defaultConfig = {
-  resolve: {
-    extensions: ['.ts', '.js', '.json']
-  }
-};
-
-if (!UNIVERSAL) {
-  console.log('BUILDING APP');
-  module.exports = webpackMerge({}, defaultConfig, commonConfig, clientConfig);
-} else {
-  if (!AOT) {
-    console.log('BUILDING UNIVERSAL');
-    module.exports = [
-      webpackMerge({}, defaultConfig, commonConfig, clientConfig),
-      webpackMerge({}, defaultConfig, commonConfig, serverConfig)
-    ];
-  } else {
-    if (UNIVERSAL_SERVER) {
-      console.log('BUILDING UNIVERSAL SERVER FOR AOT MODE');
-      throw 'Work in progress: Not yet implmented.';
-      //   module.exports = [
-      //     webpackMerge({}, defaultConfig, commonConfig, serverConfig)
-      // ];
-    } else {
-      console.log('BUILDING UNIVERSAL CLIENT FOR AOT MODE');
-      throw 'Work in progress: Not yet implemented.';
-      // module.exports = [
-      //   webpackMerge({}, defaultConfig, commonConfig, clientConfig)
-      // ];
-    }
-  }
-}
+console.log('BUILDING APP');
+module.exports = clientConfig;
 
 // // Types
 interface WebpackConfig {

@@ -167,10 +167,8 @@ module.exports = {
     new DefinePlugin({
       AOT: false,
       ENV: JSON.stringify('test'),
-      HMR: false,
       PORT: 3000,
-      HOST: JSON.stringify('localhost'),
-      UNIVERSAL: false
+      HOST: JSON.stringify('localhost')
     }),
     new NamedModulesPlugin(),
     new webpack.LoaderOptionsPlugin({

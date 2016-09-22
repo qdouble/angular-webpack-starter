@@ -1,9 +1,7 @@
-import { AfterContentInit, Component, ViewChild, ViewEncapsulation } from '@angular/core';
+import { Component, ViewEncapsulation } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
-import { MdSidenav } from '@angular2-material/sidenav';
 
 import { views } from './app-nav-views';
-import { MOBILE } from './services/constants';
 
 @Component({
   selector: 'my-app',
@@ -11,29 +9,13 @@ import { MOBILE } from './services/constants';
   templateUrl: './app.component.html',
   encapsulation: ViewEncapsulation.None
 })
-export class AppComponent implements AfterContentInit {
-  showMonitor = (ENV === 'development' &&
-    ['monitor', 'both'].includes(STORE_DEV_TOOLS)
-  );
-  mobile = MOBILE;
-  sideNavMode = MOBILE ? 'over' : 'side';
+export class AppComponent {
   views = views;
-  @ViewChild(MdSidenav) sidenav: MdSidenav;
 
   constructor(
     public route: ActivatedRoute,
     public router: Router
   ) { }
-
-  ngAfterContentInit() {
-    if (HMR) {
-      this.sidenav.open();
-    } else if (!MOBILE) {
-      setTimeout(() => {
-        this.sidenav.open();
-      });
-    }
-  }
 
   activateEvent(event) {
     if (ENV === 'development') {
