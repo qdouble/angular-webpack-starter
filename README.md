@@ -11,6 +11,12 @@ npm install
 npm start
 ```
 
+##### Master Branch with Material 2, @ngrx, HMR and support for Universal (Server-side rendering)
+https://github.com/qdouble/angular2webpack2-starter
+
+##### Branch with Material 2, @ngrx, HMR.
+https://github.com/qdouble/angular2webpack2-starter/tree/no-universal-support
+
 ## Features
 
 * Angular 2
