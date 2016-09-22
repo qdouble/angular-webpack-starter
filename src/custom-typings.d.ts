@@ -24,7 +24,6 @@ import * as _ from 'lodash'
 // Extra variables that live on Global that will be replaced by webpack DefinePlugin
 declare var AOT: boolean;
 declare var ENV: string;
-declare var HMR: boolean;
 declare var HOST: string;
 declare var PORT: number;
 declare var System: SystemJS;
@@ -36,7 +35,6 @@ interface SystemJS {
 interface GlobalEnvironment {
   AOT;
   ENV;
-  HMR;
   HOST;
   PORT;
   SystemJS: SystemJS;
@@ -61,11 +59,6 @@ interface WebpackModule {
 interface WebpackRequire extends NodeRequireFunction {
   context(file: string, flag?: boolean, exp?: RegExp): any;
 }
-
-
-// interface ErrorStackTraceLimit {
-//   stackTraceLimit: number;
-// }
 
 
 // Extend typings
