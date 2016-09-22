@@ -1,6 +1,6 @@
-# Complete starter seed project for Angular 2
+# Complete starter seed project for Angular 2 (Branch without Universal Support)
 
-> Featuring Material Design 2, Webpack 2, HMR (Hot Module Replacement), @ngrx and optional server-side rendering with Universal.
+> Featuring Material Design 2, Webpack 2, HMR (Hot Module Replacement), and @ngrx.
 
 ```
 git clone https://github.com/qdouble/angular2webpack2-starter.git
@@ -21,7 +21,6 @@ npm start
 * TypeScript 2
   * @types
 * Material Design 2
-* Universal (Server-side Rendering)
 * @ngrx
   * store (RxJS powered state management for Angular2 apps, inspired by Redux)
   * effects (Side effect model for @ngrx/store)
@@ -49,8 +48,6 @@ Use `npm run start:hmr` to run dev server in HMR mode.
 Use `npm run build` for production build.
 
 Use `npm run server:prod` for production server and production watch. Default production port is `8088`.
-
-Use `npm run universal` to run production build in Universal. Default universal port is `8000`.
 
 Default ports can be changed in constants.js file.
 
