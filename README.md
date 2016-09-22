@@ -1,7 +1,6 @@
 # Complete starter seed project for Angular 2
 
 > Featuring Material Design 2, Webpack 2, HMR (Hot Module Replacement), @ngrx and optional server-side rendering with Universal.
-> For Branch without universal support go here: https://github.com/qdouble/angular2webpack2-starter/tree/no-universal-support
 
 ```
 git clone https://github.com/qdouble/angular2webpack2-starter.git
@@ -9,6 +8,12 @@ cd angular2webpack2-starter
 npm install
 npm start
 ```
+
+##### Branch without Universal (Server-side rendering) support
+https://github.com/qdouble/angular2webpack2-starter/tree/no-universal-support
+
+##### Minimal Branch
+https://github.com/qdouble/angular2webpack2-starter/tree/minimal
 
 ## Features
 
@@ -34,10 +39,8 @@ npm start
 * Karma/Jasmine testing
 * Protractor for E2E testing
 
-## Project Philosophy & Goals
+## Project Goals
 
- There are debates whether or not to keep starter seed projects minimal. After working on it and thinking about it for a while, the philosophy of this project is:
-* There are more than enough minimal starters out there, there's no need for to replicate them here.
 * The main goal is to provide an environment where you can have great dev tools and create a production application without worrying about adding a bunch of stuff yourself.
 * The goal of your design should be so that you can easily copy and paste your app folder and your constants file into to a new update of this project and have it still work. Use constants and have proper separation to make upgrades easy. If you have any suggestions on areas where this starter can be designed to make updates more easy, file an issue.
 
