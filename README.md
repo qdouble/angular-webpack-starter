@@ -3,7 +3,7 @@
 > Featuring Material Design 2, Webpack 2, HMR (Hot Module Replacement), and @ngrx.
 
 ```
-git clone https://github.com/qdouble/angular2webpack2-starter.git
+git clone -b no-universal-support https://github.com/qdouble/angular2webpack2-starter.git
 cd angular2webpack2-starter
 npm install
 npm start
