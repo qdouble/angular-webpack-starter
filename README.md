@@ -10,10 +10,11 @@ cd angular2webpack2-starter
 npm install
 npm start
 ```
+
 ##### Master Branch with Universal (Server-side rendering) support
 https://github.com/qdouble/angular2webpack2-starter
 
-##### Minimal Branch.
+##### Minimal Branch
 https://github.com/qdouble/angular2webpack2-starter/tree/minimal
 
 ## Features
