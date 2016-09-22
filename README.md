@@ -29,7 +29,7 @@ https://github.com/qdouble/angular2webpack2-starter/tree/no-universal-support
 * Karma/Jasmine testing
 * Protractor for E2E testing
 
-## Project Philosophy & Goals
+## Project Goals
 
 * The main goal is to provide an environment where you can have great dev tools and create a production application without worrying about adding a bunch of stuff yourself.
 * The goal of your design should be so that you can easily copy and paste your app folder and your constants file into to a new update of this project and have it still work. Use constants and have proper separation to make upgrades easy. If you have any suggestions on areas where this starter can be designed to make updates more easy, file an issue.
