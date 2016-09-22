@@ -1,6 +1,7 @@
 # Complete starter seed project for Angular 2
 
 > Featuring Material Design 2, Webpack 2, HMR (Hot Module Replacement), @ngrx and optional server-side rendering with Universal.
+> For Branch without universal support go here: https://github.com/qdouble/angular2webpack2-starter/tree/no-universal-support
 
 ```
 git clone https://github.com/qdouble/angular2webpack2-starter.git
