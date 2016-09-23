@@ -89,7 +89,8 @@ The following are some things that will make AOT compile fail.
 - Don’t use default exports.
 - Don’t use form.controls.controlName, use form.get(‘controlName’)
 - Don’t use control.errors?.someError, use control.hasError(‘someError’)
-- Don’t use functions in your providers, routes or directives, export a function and then reference that function name
+- Don’t use functions in your providers, routes or declarations, export a function and then reference that function name
+- Inputs, Outputs, View or Content Child(ren), Hostbindings, and any field you use from the template or annotate for Angular should be public
 
 ### Testing
 
