@@ -4,6 +4,9 @@ export declare const E2E_PORT: number;
 export declare const PROD_PORT: number;
 export declare const UNIVERSAL_PORT: number;
 
+export declare const DEV_SOURCE_MAPS: string;
+export declare const PROD_SOURCE_MAPS: string;
+
 export declare const STORE_DEV_TOOLS: string;
 
 export declare const MY_CLIENT_PLUGINS: any[];
