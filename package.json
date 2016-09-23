@@ -50,7 +50,6 @@
     "build:dev": "npm run clean:dist && webpack",
     "build:prod": "npm run clean:dist && webpack",
     "watch": "npm run watch:dev",
-    "watch:aot": "npm run compile:watch -- --watch",
     "watch:dev": "npm run build:dev -- --watch",
     "watch:prod": "npm run build:prod -- --watch"
   },
