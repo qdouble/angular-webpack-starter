@@ -20,7 +20,6 @@ exports.PROD_SOURCE_MAPS = 'source-map';
  */
 exports.STORE_DEV_TOOLS = 'monitor'
 
-
 exports.EXCLUDE_SOURCE_MAPS = [
   // these packages have problems with their sourcemaps
   root('node_modules/@angular'),
