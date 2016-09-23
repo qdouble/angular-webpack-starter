@@ -27,7 +27,7 @@ function stateSetter(reducer: ActionReducer<any>): ActionReducer<any> {
 }
 
 const DEV_REDUCERS = [stateSetter, storeFreeze];
-if (['logger', 'both'].includes(STORE_DEV_TOOLS)) {
+if (['logger', 'both'].includes(STORE_DEV_TOOLS)) { // set in constants.js file of project root
     DEV_REDUCERS.push(storeLogger());
 }
 

@@ -13,7 +13,7 @@ import { MOBILE } from './services/constants';
 })
 export class AppComponent implements AfterContentInit {
   showMonitor = (ENV === 'development' &&
-    ['monitor', 'both'].includes(STORE_DEV_TOOLS)
+    ['monitor', 'both'].includes(STORE_DEV_TOOLS) // set in constants.js file in project root
   );
   mobile = MOBILE;
   sideNavMode = MOBILE ? 'over' : 'side';
