@@ -7,6 +7,7 @@ import 'ts-helpers';
 
 import {
   DEV_PORT, PROD_PORT, EXCLUDE_SOURCE_MAPS, HOST,
+  DEV_SOURCE_MAPS, PROD_SOURCE_MAPS,
   MY_CLIENT_PLUGINS, MY_CLIENT_PRODUCTION_PLUGINS, MY_CLIENT_RULES
 } from './constants';
 
@@ -106,7 +107,7 @@ const clientConfig = function webpackConfig(): WebpackConfig {
   }
 
   config.cache = true;
-  isProd ? config.devtool = 'source-map' : config.devtool = 'eval';
+  isProd ? config.devtool = PROD_SOURCE_MAPS : config.devtool =  DEV_SOURCE_MAPS;
 
   if (AOT) {
     config.entry = {

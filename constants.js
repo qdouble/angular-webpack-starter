@@ -6,6 +6,13 @@ exports.DEV_PORT = 3000;
 exports.E2E_PORT = 4201;
 exports.PROD_PORT = 8088;
 
+/**
+ * These constants set the source maps that will be used on build. For info on source map options,
+ * go to: https://webpack.github.io/docs/configuration.html#devtool
+ */
+exports.DEV_SOURCE_MAPS = 'eval';
+exports.PROD_SOURCE_MAPS = 'source-map';
+
 exports.EXCLUDE_SOURCE_MAPS = [
   // these packages have problems with their sourcemaps
   root('node_modules/@angular'),
