@@ -2,7 +2,7 @@
  * @author: @AngularClass and @qdouble
  */
 const webpack = require('webpack');
-const root = require('./helpers').root;
+const root = require('../helpers').root;
 
 /**
  * Webpack Plugins

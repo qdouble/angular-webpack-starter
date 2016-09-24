@@ -1,6 +1,6 @@
 require('ts-node/register');
 var ports = require('../constants')
-var helpers = require('./helpers');
+var helpers = require('../helpers');
 
 exports.config = {
   baseUrl: `http://localhost:${ports.E2E_PORT}/`,

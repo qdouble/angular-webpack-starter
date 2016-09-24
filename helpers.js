@@ -5,7 +5,7 @@
 var path = require('path');
 
 // Helper functions
-var _root = path.resolve(__dirname, '..');
+var _root = path.resolve(__dirname);
 
 function checkNodeImport(context, request, cb) {
   if (!path.isAbsolute(request) && request.charAt(0) !== '.') {
