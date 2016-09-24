@@ -1,5 +1,5 @@
 /**
- * @author: @AngularClass
+ * @authors: @qdouble and @AngularClass
  */
 
 /*

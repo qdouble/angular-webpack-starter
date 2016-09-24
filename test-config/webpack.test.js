@@ -1,5 +1,5 @@
 /**
- * @author: @AngularClass and @qdouble
+ * @authors: @qdouble and @AngularClass
  */
 const webpack = require('webpack');
 const root = require('../helpers').root;
