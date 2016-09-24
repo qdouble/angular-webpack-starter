@@ -1,5 +1,5 @@
 /**
- * @author: @AngularClass
+ * @authors: @qdouble and @AngularClass
  */
 
 /*
@@ -32,8 +32,8 @@ require('zone.js/dist/jasmine-patch');
 // RxJS
 require('rxjs/Rx');
 
-var testing = require('@angular/core/testing');
-var browser = require('@angular/platform-browser-dynamic/testing');
+const testing = require('@angular/core/testing');
+const browser = require('@angular/platform-browser-dynamic/testing');
 
 testing.getTestBed().initTestEnvironment(
   browser.BrowserDynamicTestingModule,
@@ -49,7 +49,7 @@ testing.getTestBed().initTestEnvironment(
  * any file that ends with spec.js and get its path. By passing in true
  * we say do this recursively
  */
-var testContext = require.context('../src/app', true, /\.spec\.ts/);
+const testContext = require.context('../src/app', true, /\.spec\.ts/);
 
 /*
  * get all the files, for each file, call the context function
@@ -61,4 +61,4 @@ function requireAll(requireContext) {
 }
 
 // requires and returns all modules that match
-var modules = requireAll(testContext);
+const modules = requireAll(testContext);

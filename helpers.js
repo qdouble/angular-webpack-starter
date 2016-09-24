@@ -1,11 +1,11 @@
 /**
- * @author: @AngularClass
+ * @authors: @qdouble and @AngularClass
  */
 
-var path = require('path');
+const path = require('path');
 
 // Helper functions
-var _root = path.resolve(__dirname, '..');
+const _root = path.resolve(__dirname);
 
 function hasProcessFlag(flag) {
   return process.argv.join('').indexOf(flag) > -1;
