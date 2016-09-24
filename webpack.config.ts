@@ -164,7 +164,7 @@ const clientConfig = function webpackConfig(): WebpackConfig {
     contentBase: AOT ? './src/compiled' : './src',
     port: CONSTANTS.PORT,
     historyApiFallback: true,
-    host: HOST
+    host: '0.0.0.0'
   };
 
   if (USE_DEV_SERVER_PROXY) {

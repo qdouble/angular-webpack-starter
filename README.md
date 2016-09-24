@@ -46,15 +46,15 @@ https://github.com/qdouble/angular2webpack2-starter/tree/minimal
 
 ## Basic scripts
 
-Use `npm start` for dev server. Default dev address is `http://${YOUR_LOCAL_IP}:3000`. (Exact address will be logged to the console on startup).
+Use `npm start` for dev server. Default dev port is `3000`.
 
 Use `npm run start:hmr` to run dev server in HMR mode.
 
 Use `npm run build` for production build.
 
-Use `npm run server:prod` for production server and production watch. Default production address is `http://${YOUR_LOCAL_IP}:8088`. (Exact address will be logged to the console on startup).
+Use `npm run server:prod` for production server and production watch. Default production port is `8088`.
 
-Use `npm run universal` to run production build in Universal. Default universal address is `http://${YOUR_LOCAL_IP}:8000`. (Exact address will be logged to the console on startup).
+Use `npm run universal` to run production build in Universal. Default universal port is `8000`.
 
 Default ports and option to use proxy backend for dev server can be changed in `constants.js` file.
 
