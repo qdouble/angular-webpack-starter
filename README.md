@@ -56,7 +56,7 @@ Use `npm run server:prod` for production server and production watch. Default pr
 
 Use `npm run universal` to run production build in Universal. Default universal port is `8000`.
 
-Default ports can be changed in constants.js file.
+Default ports and option to use proxy backend for dev server can be changed in `constants.js` file.
 
 To create AOT version, run `npm run compile`. This will compile and build script.
 Then you can use `npm run prodserver` to see to serve files.
