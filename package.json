@@ -14,7 +14,6 @@
     "webdev:hmr": "npm run webdev -- --inline --hot",
     "webpack": "webpack",
     "ngc": "./node_modules/.bin/ngc -p tsconfig.aot.json && npm run rimraf -- output",
-    "ngc:universal": "./node_modules/.bin/ngc -p tsconfig.aot.universal.json && npm run rimraf -- output",
     "webdriver-manager": "webdriver-manager",
     "webdriver:update": "npm run webdriver-manager update",
     "webdriver:start": "npm run webdriver-manager start",
@@ -60,17 +59,13 @@
     "build:dev": "npm run clean:dist && webpack",
     "build:prod": "npm run clean:dist && webpack",
     "build:universal": "npm run clean:dist && webpack",
-    "build:universal:aot": "npm run clean:dist && webpack",
-    "build:universal:server": "webpack",
     "watch": "npm run watch:dev",
     "watch:aot": "npm-run-all -p -r \"compile:watch -- --watch\" sass:watch",
     "watch:dev": "npm-run-all -p -r \"build:dev -- --watch\" sass:watch",
     "watch:prod": "npm-run-all -p -r \"build:prod -- --watch\" sass:watch",
     "watch:universal": "npm-run-all -p -r \"build:universal -- --watch\" sass:watch",
     "universal": "npm run build:universal && npm run server:universal",
-    "universal:watch": "npm run build:universal && npm-run-all -p -r watch:universal server:universal",
-    "universal:aot": "echo NOT YET IMPLEMENTED",
-    "WIP": "npm run compile:universal && npm run build:universal:server && server:universal"
+    "universal:watch": "npm run build:universal && npm-run-all -p -r watch:universal server:universal"
   },
   "dependencies": {
     "@angular/common": "2.0.1",
