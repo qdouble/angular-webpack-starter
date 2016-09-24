@@ -3,6 +3,7 @@ const express = require('express'),
 path = require('path');
 
 const E2E_PORT = require('./constants').E2E_PORT;
+const HOST = require('./constants').HOST;
 const PROD_PORT = require('./constants').PROD_PORT;
 
 const app = express();
@@ -23,5 +24,5 @@ if (ENV === 'e2e:server') { e2e = E2E_PORT };
 const PORT = e2e || PROD_PORT;
 
 app.listen(PORT, () => {
-  console.log(`Listening on: http://localhost:${PORT}`);
+  console.log(`Listening on: http://${HOST}:${PORT}`);
 });

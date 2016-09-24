@@ -52,6 +52,7 @@ const PORT = port;
 
 console.log('PRODUCTION BUILD: ', isProd);
 console.log('AOT: ', AOT);
+console.log(`IP: ${HOST}:${PORT}`);
 
 const CONSTANTS = {
   AOT: AOT,
