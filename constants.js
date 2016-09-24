@@ -8,8 +8,19 @@ exports.PROD_PORT = 8088;
 exports.UNIVERSAL_PORT = 8000;
 
 /**
- * These constants set the source maps that will be used on build. For info on source map options,
- * go to: https://webpack.github.io/docs/configuration.html#devtool
+ * These constants set whether or not you will use proxy for Webpack DevServer
+ * For advanced configuration details, go to:
+ * https://webpack.github.io/docs/webpack-dev-server.html#proxy
+ */
+exports.USE_DEV_SERVER_PROXY = false;
+exports.DEV_SERVER_PROXY_CONFIG = {
+  '**': 'http://localhost:8089'
+}
+
+/**
+ * These constants set the source maps that will be used on build. 
+ * For info on source map options, go to: 
+ * https://webpack.github.io/docs/configuration.html#devtool
  */
 exports.DEV_SOURCE_MAPS = 'eval';
 exports.PROD_SOURCE_MAPS = 'source-map';
