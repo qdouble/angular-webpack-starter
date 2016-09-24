@@ -52,6 +52,7 @@ const PORT = port;
 
 console.log('PRODUCTION BUILD: ', isProd);
 console.log('AOT: ', AOT);
+console.log(`Starting dev server on: http://${HOST}:${PORT}`);
 
 const CONSTANTS = {
   AOT: AOT,
@@ -162,7 +163,8 @@ const clientConfig = function webpackConfig(): WebpackConfig {
   config.devServer = {
     contentBase: AOT ? './src/compiled' : './src',
     port: CONSTANTS.PORT,
-    historyApiFallback: true
+    historyApiFallback: true,
+    host: '0.0.0.0'
   };
 
   if (USE_DEV_SERVER_PROXY) {
@@ -269,6 +271,7 @@ interface WebpackConfig {
     hot?: boolean;
     inline?: boolean;
     proxy?: any;
+    host?: string;
   };
   node?: {
     process?: boolean;

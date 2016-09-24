@@ -17,7 +17,7 @@ import { createEngine } from 'angular2-express-engine';
 // App
 import { AppModule } from './app/app.module.universal.node';
 import { routes } from './server.routes';
-import { UNIVERSAL_PORT } from '../constants';
+import { HOST, UNIVERSAL_PORT } from '../constants';
 
 // enable prod for faster renders
 enableProdMode();
@@ -65,5 +65,5 @@ app.get('*', function(req, res) {
 
 // Server
 let server = app.listen(process.env.PORT || UNIVERSAL_PORT, () => {
-  console.log(`Listening on: http://localhost:${server.address().port}`);
+  console.log(`Listening on: http://${HOST}:${server.address().port}`);
 });
