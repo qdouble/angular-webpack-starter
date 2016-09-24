@@ -52,7 +52,9 @@ const PORT = port;
 
 console.log('PRODUCTION BUILD: ', isProd);
 console.log('AOT: ', AOT);
-console.log(`Starting dev server on: http://${HOST}:${PORT}`);
+if (ENV === 'webdev') {
+  console.log(`Starting dev server on: http://${HOST}:${PORT}`);
+}
 
 const CONSTANTS = {
   AOT: AOT,
