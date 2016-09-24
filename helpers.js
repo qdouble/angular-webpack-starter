@@ -1,11 +1,11 @@
 /**
- * @author: @AngularClass
+ * @authors: @qdouble and @AngularClass
  */
 
-var path = require('path');
+const path = require('path');
 
 // Helper functions
-var _root = path.resolve(__dirname, '..');
+const _root = path.resolve(__dirname);
 
 function checkNodeImport(context, request, cb) {
   if (!path.isAbsolute(request) && request.charAt(0) !== '.') {

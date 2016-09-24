@@ -1,5 +1,5 @@
 "use strict";
-const root = require('./config/helpers.js').root
+const root = require('./helpers.js').root
 const ip = require('ip');
 
 exports.HOST = ip.address();
