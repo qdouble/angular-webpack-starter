@@ -24,7 +24,7 @@ const { ForkCheckerPlugin } = require('awesome-typescript-loader');
 const NamedModulesPlugin = require('webpack/lib/NamedModulesPlugin');
 const UglifyJsPlugin = require('webpack/lib/optimize/UglifyJsPlugin');
 
-const root = require('./config/helpers.js').root;
+const root = require('./helpers.js').root;
 
 const ENV = process.env.npm_lifecycle_event;
 const AOT = ENV === 'build:aot' || ENV === 'build:aot:dev' || ENV === 'server:aot' || ENV === 'watch:aot';
