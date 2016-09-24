@@ -1,8 +1,8 @@
 /**
- * @author: @AngularClass
+ * @author: @AngularClass and @qdouble
  */
 const webpack = require('webpack');
-const helpers = require('./helpers');
+const root = require('./helpers').root;
 
 /**
  * Webpack Plugins
@@ -15,6 +15,7 @@ const NamedModulesPlugin = require('webpack/lib/NamedModulesPlugin');
 const EXCLUDE_SOURCE_MAPS = require('../constants').EXCLUDE_SOURCE_MAPS;
 const MY_TEST_RULES = require('../constants').MY_TEST_RULES;
 const MY_TEST_PLUGINS = require('../constants').MY_TEST_PLUGINS;
+const STORE_DEV_TOOLS = require('../constants').STORE_DEV_TOOLS;
 
 /**
  * Webpack configuration
@@ -72,7 +73,7 @@ module.exports = {
         test: /\.ts$/,
         enforce: 'pre',
         loader: 'tslint-loader',
-        exclude: [helpers.root('node_modules')]
+        exclude: [root('node_modules')]
       },
 
       /**
@@ -107,7 +108,7 @@ module.exports = {
        *
        * See: https://github.com/webpack/json-loader
        */
-      { test: /\.json$/, loader: 'json-loader', exclude: [helpers.root('src/index.html')] },
+      { test: /\.json$/, loader: 'json-loader', exclude: [root('src/index.html')] },
 
       /**
        * Raw loader support for *.css files
@@ -115,7 +116,7 @@ module.exports = {
        *
        * See: https://github.com/webpack/raw-loader
        */
-      { test: /\.css$/, loaders: ['to-string-loader', 'css-loader'], exclude: [helpers.root('src/index.html')] },
+      { test: /\.css$/, loaders: ['to-string-loader', 'css-loader'], exclude: [root('src/index.html')] },
 
       /**
        * Raw loader support for *.html
@@ -123,7 +124,7 @@ module.exports = {
        *
        * See: https://github.com/webpack/raw-loader
        */
-      { test: /\.html$/, loader: 'raw-loader', exclude: [helpers.root('src/index.html')] },
+      { test: /\.html$/, loader: 'raw-loader', exclude: [root('src/index.html')] },
 
       /**
        * Instruments JS files with Istanbul for subsequent code coverage reporting.
@@ -134,7 +135,7 @@ module.exports = {
       {
         test: /\.(js|ts)$/, loader: 'istanbul-instrumenter-loader',
         enforce: 'post',
-        include: helpers.root('src'),
+        include: root('src'),
         exclude: [
           /\.(e2e|spec)\.ts$/,
           /node_modules/
@@ -152,7 +153,7 @@ module.exports = {
   plugins: [
     new webpack.ContextReplacementPlugin(
       /angular(\\|\/)core(\\|\/)(esm(\\|\/)src|src)(\\|\/)linker/,
-      helpers.root('./src')
+      root('./src')
     ),
     /**
      * Plugin: DefinePlugin
@@ -176,7 +177,7 @@ module.exports = {
         tslint: {
           emitErrors: false,
           failOnHint: false,
-          resourcePath: helpers.root('./src')
+          resourcePath: root('./src')
         }
       }
     }),
