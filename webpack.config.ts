@@ -6,8 +6,8 @@
 import 'ts-helpers';
 
 import {
-  DEV_PORT, PROD_PORT, UNIVERSAL_PORT, EXCLUDE_SOURCE_MAPS, HOST, 
-  DEV_SOURCE_MAPS, PROD_SOURCE_MAPS,  STORE_DEV_TOOLS,
+  DEV_PORT, PROD_PORT, UNIVERSAL_PORT, EXCLUDE_SOURCE_MAPS, HOST,
+  DEV_SOURCE_MAPS, PROD_SOURCE_MAPS, STORE_DEV_TOOLS,
   MY_CLIENT_PLUGINS, MY_CLIENT_PRODUCTION_PLUGINS, MY_CLIENT_RULES, MY_SERVER_RULES,
   MY_SERVER_INCLUDE_CLIENT_PACKAGES
 } from './constants';
@@ -31,11 +31,10 @@ const hasProcessFlag = require('./config/helpers.js').hasProcessFlag;
 const root = require('./config/helpers.js').root;
 
 const ENV = process.env.npm_lifecycle_event;
-const AOT = ENV === 'build:aot' || ENV === 'build:aot:dev' || ENV === 'server:aot' || ENV === 'watch:aot' || ENV === 'build:universal:aot' || ENV === 'build:universal:server';
-const isProd = ENV === 'build:prod' || ENV === 'server:prod' || ENV === 'watch:prod' || ENV === 'build:aot' || ENV === 'build:universal' || ENV === 'build:universal:aot' || ENV === 'build:universal:server';
+const AOT = ENV === 'build:aot' || ENV === 'build:aot:dev' || ENV === 'server:aot' || ENV === 'watch:aot';
+const isProd = ENV === 'build:prod' || ENV === 'server:prod' || ENV === 'watch:prod' || ENV === 'build:aot' || ENV === 'build:universal';
 const HMR = hasProcessFlag('hot');
-const UNIVERSAL = ENV === 'build:universal' || ENV === 'build:universal:aot' || ENV === 'build:universal:server';
-const UNIVERSAL_SERVER = ENV === 'build:universal:server';
+const UNIVERSAL = ENV === 'build:universal';
 
 let port: number;
 if (!UNIVERSAL) {
@@ -136,7 +135,7 @@ const clientConfig = function webpackConfig(): WebpackConfig {
   let config: WebpackConfig = Object.assign({});
 
   config.cache = true;
-  isProd ? config.devtool = PROD_SOURCE_MAPS : config.devtool =  DEV_SOURCE_MAPS;
+  isProd ? config.devtool = PROD_SOURCE_MAPS : config.devtool = DEV_SOURCE_MAPS;
 
   if (!UNIVERSAL) {
     if (AOT) {
@@ -149,15 +148,9 @@ const clientConfig = function webpackConfig(): WebpackConfig {
       };
     }
   } else {
-    if (AOT) {
-      config.entry = {
-        main: './src/main.browser.universal.aot'
-      };
-    } else {
-      config.entry = {
-        main: './src/main.browser.universal'
-      };
-    }
+    config.entry = {
+      main: './src/main.browser.universal'
+    };
   }
 
   config.output = {
@@ -242,27 +235,11 @@ if (!UNIVERSAL) {
   console.log('BUILDING APP');
   module.exports = webpackMerge({}, defaultConfig, commonConfig, clientConfig);
 } else {
-  if (!AOT) {
-    console.log('BUILDING UNIVERSAL');
-    module.exports = [
-      webpackMerge({}, defaultConfig, commonConfig, clientConfig),
-      webpackMerge({}, defaultConfig, commonConfig, serverConfig)
-    ];
-  } else {
-    if (UNIVERSAL_SERVER) {
-      console.log('BUILDING UNIVERSAL SERVER FOR AOT MODE');
-      throw 'Work in progress: Not yet implmented.';
-      //   module.exports = [
-      //     webpackMerge({}, defaultConfig, commonConfig, serverConfig)
-      // ];
-    } else {
-      console.log('BUILDING UNIVERSAL CLIENT FOR AOT MODE');
-      throw 'Work in progress: Not yet implemented.';
-      // module.exports = [
-      //   webpackMerge({}, defaultConfig, commonConfig, clientConfig)
-      // ];
-    }
-  }
+  console.log('BUILDING UNIVERSAL');
+  module.exports = [
+    webpackMerge({}, defaultConfig, commonConfig, clientConfig),
+    webpackMerge({}, defaultConfig, commonConfig, serverConfig)
+  ];
 }
 
 // // Types
