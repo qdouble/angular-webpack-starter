@@ -7,6 +7,7 @@ import 'ts-helpers';
 
 import {
   DEV_PORT, PROD_PORT, EXCLUDE_SOURCE_MAPS, HOST,
+  USE_DEV_SERVER_PROXY, DEV_SERVER_PROXY_CONFIG,
   DEV_SOURCE_MAPS, PROD_SOURCE_MAPS,
   MY_CLIENT_PLUGINS, MY_CLIENT_PRODUCTION_PLUGINS, MY_CLIENT_RULES
 } from './constants';
@@ -130,6 +131,12 @@ const clientConfig = function webpackConfig(): WebpackConfig {
     historyApiFallback: true
   };
 
+  if (USE_DEV_SERVER_PROXY) {
+    Object.assign(config.devServer, {
+      proxy: DEV_SERVER_PROXY_CONFIG
+    });
+  }
+
   config.node = {
     global: true,
     process: true,
@@ -164,10 +171,7 @@ interface WebpackConfig {
   module?: any;
   plugins?: Array<any>;
   resolve?: {
-    root?: string;
     extensions?: Array<string>;
-    moduleDirectories?: Array<string>;
-    mainFields?: Array<string>;
   };
   devServer?: {
     contentBase?: string;
@@ -175,6 +179,7 @@ interface WebpackConfig {
     historyApiFallback?: boolean;
     hot?: boolean;
     inline?: boolean;
+    proxy?: any;
   };
   node?: {
     process?: boolean;
