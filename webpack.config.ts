@@ -78,14 +78,40 @@ const commonConfig = function webpackConfig(): WebpackConfig {
       },
       {
         test: /\.ts$/,
-        loaders: [
-          '@angularclass/hmr-loader',
-          'awesome-typescript-loader',
-          'angular2-template-loader',
-          'angular2-router-loader?loader=system&genDir=src/compiled/src/app&aot=' + AOT
-        ],
+        loader: '@angularclass/hmr-loader',
         exclude: [/\.(spec|e2e|d)\.ts$/]
       },
+       {
+        test: /\.ts$/,
+        loader: 'awesome-typescript-loader',
+        query: {
+          'ignoreDiagnostics': [
+            2346, // 2346 -> Supplied parameters do not match any signature of call target
+          ]
+        },
+        exclude: [/\.(spec|e2e|d)\.ts$/]
+      },
+
+      {
+        test: /\.ts$/,
+        loader: 'angular2-template-loader',
+        exclude: [/\.(spec|e2e|d)\.ts$/]
+      },
+      {
+        test: /\.ts$/,
+        loader: 'angular2-router-loader?loader=system&genDir=src/app&aot=' + AOT,
+        exclude: [/\.(spec|e2e|d)\.ts$/]
+      },
+      // {
+      //   test: /\.ts$/,
+      //   loaders: [
+      //     '@angularclass/hmr-loader',
+      //     'awesome-typescript-loader',
+      //     'angular2-template-loader?ignoreDiagnostics=[2346]',
+      //     'angular2-router-loader?loader=system&genDir=src/compiled/src/app&aot=' + AOT
+      //   ],
+      //   exclude: [/\.(spec|e2e|d)\.ts$/]
+      // },
       { test: /\.json$/, loader: 'json-loader' },
       { test: /\.html/, loader: 'raw-loader', exclude: [root('src/index.html')] },
       { test: /\.css$/, loader: 'raw-loader' },
@@ -200,31 +226,10 @@ const serverConfig: WebpackConfig = {
     libraryTarget: 'commonjs2'
   },
   module: {
-    rules: [
-      { test: /angular2-material/, loader: 'imports-loader?window=>global' },
-      ...MY_SERVER_RULES
-    ],
+    rules: [...MY_SERVER_RULES],
   },
   externals: includeClientPackages([
     // include these client packages so we can transform their source with webpack loaders
-    '@angular2-material/button',
-    '@angular2-material/card',
-    '@angular2-material/checkbox',
-    '@angular2-material/core',
-    '@angular2-material/grid',
-    '@angular2-material/icon',
-    '@angular2-material/input',
-    '@angular2-material/list',
-    '@angular2-material/menu',
-    '@angular2-material/progress',
-    '@angular2-material/progress',
-    '@angular2-material/radio',
-    '@angular2-material/sidenav',
-    '@angular2-material/slider',
-    '@angular2-material/slide',
-    '@angular2-material/tabs',
-    '@angular2-material/toolbar',
-    '@angular2-material/tooltip',
     ...MY_SERVER_INCLUDE_CLIENT_PACKAGES
   ]),
   node: {

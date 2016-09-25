@@ -34,7 +34,7 @@
   "buildOnSave": false,
   "atom": { "rewriteTsconfig": false },
   "angularCompilerOptions": {
-   "genDir": "src/compiled",
+   "genDir": ".",
    "debug": true
  }
 }
