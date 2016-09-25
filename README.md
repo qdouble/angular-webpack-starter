@@ -66,3 +66,6 @@ For unit tests, use `npm run test` for continuous testing in watch mode and use
 `npm run test:once` for single test. To view code coverage after running test, open `coverage/html/index.html` in your browser.
 
 For e2e tests, use `npm run e2e`. To run unit test and e2e test at the same time, use `npm run ci`.
+
+### Wiki Links
+[Recommended Steps for merging this starter into existing project](https://github.com/qdouble/angular2webpack2-starter/wiki/Recommended-Steps-for-Merging-Starter-into-Existing-Project)
