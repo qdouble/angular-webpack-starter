@@ -149,6 +149,9 @@
     "import-destructuring-spacing": true,
     "directive-selector-prefix": [true],
     "component-selector-prefix": [true],
-    "pipe-naming": [true, "camelCase"]
+    "pipe-naming": [true, "camelCase"],
+    "no-access-missing-member": true,
+    "templates-use-public": true,
+    "invoke-injectable": true
   }
 }
