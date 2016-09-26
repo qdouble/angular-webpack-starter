@@ -32,6 +32,6 @@
   "atom": { "rewriteTsconfig": false },
   "angularCompilerOptions": {
    "genDir": "src/compiled",
-   "debug": true
+   "skipMetadataEmit" : true
  }
 }
