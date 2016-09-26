@@ -20,7 +20,7 @@ import { UserEffects } from './user/user.effects';
 
 export const APP_IMPORTS = [
   EffectsModule.run(UserEffects),
-  // MdButtonModule, // Uncomment after inital load in HMR mode or before doing AOT compile
+  // MdButtonModule, // Uncomment after initial load in HMR mode or before doing AOT compile
   MdCardModule,
   MdIconModule.forRoot(),
   MdInputModule,
