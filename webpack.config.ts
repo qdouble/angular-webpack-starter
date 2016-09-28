@@ -9,7 +9,7 @@ import {
   DEV_PORT, PROD_PORT, EXCLUDE_SOURCE_MAPS, HOST,
   USE_DEV_SERVER_PROXY, DEV_SERVER_PROXY_CONFIG,
   DEV_SOURCE_MAPS, PROD_SOURCE_MAPS, STORE_DEV_TOOLS,
-  MY_CLIENT_PLUGINS, MY_CLIENT_PRODUCTION_PLUGINS, MY_CLIENT_RULES
+  MY_COPY_FOLDERS, MY_CLIENT_PLUGINS, MY_CLIENT_PRODUCTION_PLUGINS, MY_CLIENT_RULES
 } from './constants';
 
 const {
@@ -100,7 +100,9 @@ const commonConfig = function webpackConfig(): WebpackConfig {
     }, {
       from: 'src/index.html',
       to: ''
-    }]),
+    },
+    ...MY_COPY_FOLDERS
+    ]),
     ...MY_CLIENT_PLUGINS
   ];
 
