@@ -9,6 +9,7 @@ export declare const DEV_SERVER_PROXY_CONFIG: any;
 export declare const DEV_SOURCE_MAPS: string;
 export declare const PROD_SOURCE_MAPS: string;
 
+export declare const MY_COPY_FOLDERS: any[];
 export declare const MY_CLIENT_PLUGINS: any[];
 export declare const MY_CLIENT_PRODUCTION_PLUGINS: any[];
 export declare const MY_CLIENT_RULES: any[];
