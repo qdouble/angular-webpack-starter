@@ -1,6 +1,6 @@
 import { AfterContentInit, Component, ViewChild, ViewEncapsulation } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
-import { MdSidenav } from '@angular2-material/sidenav';
+import { MdSidenav } from '@angular/material';
 
 import { views } from './app-nav-views';
 import { MOBILE } from './services/constants';

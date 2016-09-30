@@ -1,42 +1,4 @@
-@import './variables';
-* {
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
-}
-
-html, body {
-  height: 100%;
-  min-height: 100%;
-  margin: 0;
-  padding: 0; 
-}
-
-a.subview div.md-list-item {
-  background: rgba(194, 194, 194, 0.12);
-  &:hover {
-    background: rgba(194, 194, 194, 0.22);
-  }
-}
-
-a.subview div.md-list-item.md-list-item-focus {
-  background: #e6e6e6;
-}
-
-md-card-content {
-  font-size: 15px !important;
-}
-
-.md-input-ripple, .md-primary, .md-primary-button  {
-  background: $os-primary-color !important 
-}
-
-.md-input-placeholder.md-focused {
-  color: $os-primary-color !important 
-}
-
-md-sidenav-layout {
-  background: rgba(255,255,255, 1);
-}
+@import './styles.scss';
 
 #my-page-card {
   min-height: 100%;
