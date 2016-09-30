@@ -37,14 +37,22 @@ export class DashboardComponent implements OnDestroy, OnInit {
     this.form.get('name').setValue(this.user.name);
   }
 
+  clearName() {
+    this.store.dispatch(this.userActions.editUser(
+      Object.assign({}, this.user, { name: '' }
+      )));
+
+    this.form.get('name').setValue('');
+  }
+
   logout() {
     this.store.dispatch(this.userActions.logout());
   }
 
   submitState() {
-    this.store.dispatch(this.userActions.editUser(Object.assign({}, this.user, {
-      name: this.form.get('name').value
-    })));
+    this.store.dispatch(this.userActions.editUser(
+      Object.assign({}, this.user, { name: this.form.get('name').value }
+      )));
   }
 
   ngOnDestroy() {
