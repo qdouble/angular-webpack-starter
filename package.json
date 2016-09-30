@@ -43,7 +43,7 @@
     "compile:only": "npm run clean:compile && npm run sass && npm run ngc",
     "compile:watch": "watch-run -i npm run compile:only -p 'src/app/**/*.ts, src/app/**/*.scss' npm run compile:only",
     "prodserver": "node prodserver",
-    "sass": "node-sass src -o src --output-style compressed",
+    "sass": "node-sass src -o src --include-path node_modules --output-style compressed -q",
     "sass:watch": "node-sass -w src -o src",
     "start": "npm run server:dev",
     "start:hmr": "npm run server:hmr",
