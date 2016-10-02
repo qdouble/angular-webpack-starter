@@ -31,19 +31,19 @@ const root = require('./helpers.js').root;
 
 const AOT = hasProcessFlag('AOT');
 const DEVSERVER = hasProcessFlag('DEVSERVER');
-const isProd = hasProcessFlag('PROD');
 const HMR = hasProcessFlag('hot');
+const PROD = hasProcessFlag('PROD');
 
 let port: number;
-if (isProd) {
-    port = PROD_PORT;
-  } else {
-    port = DEV_PORT;
-  }
+if (PROD) {
+  port = PROD_PORT;
+} else {
+  port = DEV_PORT;
+}
 
 const PORT = port;
 
-console.log('PRODUCTION BUILD: ', isProd);
+console.log('PRODUCTION BUILD: ', PROD);
 console.log('AOT: ', AOT);
 if (DEVSERVER) {
   console.log(`Starting dev server on: http://${HOST}:${PORT}`);
@@ -51,7 +51,7 @@ if (DEVSERVER) {
 
 const CONSTANTS = {
   AOT: AOT,
-  ENV: isProd ? JSON.stringify('production') : JSON.stringify('development'),
+  ENV: PROD ? JSON.stringify('production') : JSON.stringify('development'),
   HMR: HMR,
   HOST: JSON.stringify(HOST),
   PORT: PORT,
@@ -104,7 +104,7 @@ const commonConfig = function webpackConfig(): WebpackConfig {
     ...MY_CLIENT_PLUGINS
   ];
 
-  if (isProd) {
+  if (PROD) {
     config.plugins.push(
       new NoErrorsPlugin(),
       new UglifyJsPlugin({
@@ -131,7 +131,7 @@ const clientConfig = function webpackConfig(): WebpackConfig {
   let config: WebpackConfig = Object.assign({});
 
   config.cache = true;
-  isProd ? config.devtool = PROD_SOURCE_MAPS : config.devtool =  DEV_SOURCE_MAPS;
+  PROD ? config.devtool = PROD_SOURCE_MAPS : config.devtool = DEV_SOURCE_MAPS;
 
   if (AOT) {
     config.entry = {
