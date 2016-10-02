@@ -10,7 +10,7 @@
   "scripts": {
     "postinstall": "npm run clean:overlaycss && npm run sass",
     "rimraf": "rimraf",
-    "webdev": "webpack-dev-server",
+    "webdev": "webpack-dev-server -- --DEVSERVER",
     "webdev:hmr": "npm run webdev -- --inline --hot",
     "webpack": "webpack",
     "ngc": "./node_modules/.bin/ngc -p tsconfig.aot.json && npm run rimraf -- output",
