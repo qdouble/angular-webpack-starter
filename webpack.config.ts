@@ -32,6 +32,7 @@ const hasProcessFlag = require('./helpers.js').hasProcessFlag;
 const root = require('./helpers.js').root;
 
 const AOT = hasProcessFlag('AOT');
+const DEVSERVER = hasProcessFlag('DEVSERVER');
 const isProd = hasProcessFlag('PROD');
 const HMR = hasProcessFlag('hot');
 const UNIVERSAL = hasProcessFlag('UNIVERSAL');
@@ -51,7 +52,7 @@ const PORT = port;
 
 console.log('PRODUCTION BUILD: ', isProd);
 console.log('AOT: ', AOT);
-if (ENV === 'webdev') {
+if (DEVSERVER) {
   console.log(`Starting dev server on: http://${HOST}:${PORT}`);
 }
 
