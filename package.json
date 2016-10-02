@@ -9,7 +9,7 @@
   },
   "scripts": {
     "rimraf": "rimraf",
-    "webdev": "webpack-dev-server",
+    "webdev": "webpack-dev-server -- --DEVSERVER",
     "webpack": "webpack",
     "ngc": "./node_modules/.bin/ngc -p tsconfig.aot.json && npm run rimraf -- output",
     "webdriver-manager": "webdriver-manager",
