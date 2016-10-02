@@ -29,9 +29,8 @@ const webpackMerge = require('webpack-merge');
 const hasProcessFlag = require('./helpers.js').hasProcessFlag;
 const root = require('./helpers.js').root;
 
-const ENV = process.env.npm_lifecycle_event;
-const AOT = ENV === 'build:aot' || ENV === 'build:aot:dev' || ENV === 'server:aot' || ENV === 'watch:aot';
-const isProd = ENV === 'build:prod' || ENV === 'server:prod' || ENV === 'watch:prod' || ENV === 'build:aot';
+const AOT = hasProcessFlag('AOT');
+const isProd = hasProcessFlag('PROD');
 const HMR = hasProcessFlag('hot');
 
 let port: number;
