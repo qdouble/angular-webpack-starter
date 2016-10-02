@@ -31,7 +31,6 @@ const includeClientPackages = require('./helpers.js').includeClientPackages;
 const hasProcessFlag = require('./helpers.js').hasProcessFlag;
 const root = require('./helpers.js').root;
 
-const ENV = process.env.npm_lifecycle_event;
 const AOT = hasProcessFlag('AOT');
 const isProd = hasProcessFlag('PROD');
 const HMR = hasProcessFlag('hot');
