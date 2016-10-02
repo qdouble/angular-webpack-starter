@@ -32,7 +32,7 @@ const hasProcessFlag = require('./helpers.js').hasProcessFlag;
 const root = require('./helpers.js').root;
 
 const ENV = process.env.npm_lifecycle_event;
-const AOT = ENV === 'build:aot' || ENV === 'build:aot:dev' || ENV === 'server:aot' || ENV === 'watch:aot';
+const AOT = hasProcessFlag('AOT');
 const isProd = ENV === 'build:prod' || ENV === 'server:prod' || ENV === 'watch:prod' || ENV === 'build:aot' || ENV === 'build:universal';
 const HMR = hasProcessFlag('hot');
 const UNIVERSAL = ENV === 'build:universal';
