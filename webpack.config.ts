@@ -102,14 +102,12 @@ const commonConfig = function webpackConfig(): WebpackConfig {
     new ForkCheckerPlugin(),
     new DefinePlugin(CONSTANTS),
     new NamedModulesPlugin(),
-    new CopyWebpackPlugin([{
-      from: 'src/assets',
-      to: 'assets'
-    }, {
-      from: 'src/index.html',
-      to: ''
-    },
-    ...MY_COPY_FOLDERS
+    new CopyWebpackPlugin([
+      { from: 'src/assets', to: 'assets' },
+      { from: 'src/index.html', to: '' },
+      { from: 'node_modules/hammerjs/hammer.min.js', to: '' },
+      { from: 'node_modules/hammerjs/hammer.min.js.map', to: '' },
+      ...MY_COPY_FOLDERS
     ]),
     ...MY_CLIENT_PLUGINS
   ];
