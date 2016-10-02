@@ -33,9 +33,9 @@ const root = require('./helpers.js').root;
 
 const ENV = process.env.npm_lifecycle_event;
 const AOT = hasProcessFlag('AOT');
-const isProd = ENV === 'build:prod' || ENV === 'server:prod' || ENV === 'watch:prod' || ENV === 'build:aot' || ENV === 'build:universal';
+const isProd = hasProcessFlag('PROD');
 const HMR = hasProcessFlag('hot');
-const UNIVERSAL = ENV === 'build:universal';
+const UNIVERSAL = hasProcessFlag('UNIVERSAL');
 
 let port: number;
 if (!UNIVERSAL) {
