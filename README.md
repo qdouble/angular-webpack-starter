@@ -1,8 +1,12 @@
 # Complete starter seed project for Angular 2
 
+<<<<<<< HEAD
 ## Minimal Branch
 
 > Featuring Webpack 2. Supports Lazy Loading and AOT compilation.
+=======
+> Featuring Material Design 2, Webpack 2 (and Webpack DLL plugin for faster dev builds), HMR (Hot Module Replacement), @ngrx for state management and optional server-side rendering with Universal.
+>>>>>>> 9133b34... feature(Webpack DLLs) Speeds up devServer builds (#87)
 
 ```
 git clone -b minimal https://github.com/qdouble/angular2webpack2-starter.git
@@ -24,6 +28,7 @@ https://github.com/qdouble/angular2webpack2-starter/tree/no-universal-support
   * Treeshaking
   * AOT (Ahead of Time/ Offline) Compilation
 * Webpack 2
+  * Webpack Dlls (Speeds up devServer builds)
 * TypeScript 2
   * @types
 * Karma/Jasmine testing

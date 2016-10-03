@@ -29,3 +29,6 @@ npm-debug.log
 .awcache/
 ts-node
 /**/*.ngfactory.ts
+/**/*.css.ts
+/**/*.css.shim.ts
+dll/

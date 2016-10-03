@@ -16,6 +16,15 @@ function root(args) {
   return path.join.apply(path, [_root].concat(args));
 }
 
+function testDll() {
+  try {
+    require('./dll/polyfill.dll.js');
+    require('./dll/vendor.dll.js');
+  } catch(err) {
+    throw `DLL files do not exist, please use 'npm run build:dll' once to generate dll files.`;
+  }
+};
+
 exports.hasProcessFlag = hasProcessFlag;
 exports.root = root;
-
+exports.testDll = testDll;
