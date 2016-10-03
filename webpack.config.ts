@@ -37,7 +37,6 @@ const DEVSERVER = EVENT.includes('webdev');
 const HMR = hasProcessFlag('hot');
 const PROD = EVENT.includes('prod');
 const UNIVERSAL = EVENT.includes('universal');
-console.log(process.env.npm_lifecycle_event);
 
 let port: number;
 if (!UNIVERSAL) {
