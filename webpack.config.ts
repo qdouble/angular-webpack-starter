@@ -75,12 +75,13 @@ const DLL_VENDORS = [
 
 const COPY_FOLDERS = [
   { from: 'src/assets', to: 'assets' },
-  { from: 'dll', to: '' },
   ...MY_COPY_FOLDERS
 ];
 
 if (!DEV_SERVER) {
-  COPY_FOLDERS.unshift({ from: 'src/index.html', to: '' });
+  COPY_FOLDERS.unshift({ from: 'src/index.html' });
+} else {
+  COPY_FOLDERS.push({ from: 'dll' });
 }
 
 const clientConfig = function webpackConfig(): WebpackConfig {
@@ -147,7 +148,8 @@ const clientConfig = function webpackConfig(): WebpackConfig {
     );
   } else {
     config.plugins.push(
-      new CopyWebpackPlugin(COPY_FOLDERS)
+      new CopyWebpackPlugin(COPY_FOLDERS, { ignore: ['*dist_root/*'] }),
+      new CopyWebpackPlugin([{ from: 'src/assets/dist_root' }])
     );
   }
 
