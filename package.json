@@ -8,7 +8,7 @@
     "url": "git+https://github.com/qdouble/angular2webpack2-starter.git"
   },
   "scripts": {
-    "postinstall": "npm run clean:overlaycss && npm run sass",
+    "postinstall": "npm run clean:overlaycss && npm run sass && npm run build:dll",
     "rimraf": "rimraf",
     "webdev": "webpack-dev-server",
     "webdev:hmr": "npm run webdev -- --inline --hot",
@@ -32,8 +32,9 @@
     "ci": "npm run e2e && npm run test:once:ci",
     "tslint": "tslint",
     "lint": "npm run tslint \"src/app/**/*.ts\" ",
-    "clean": "npm cache clean && npm run rimraf -- node_modules doc typings coverage dist .awcache && npm run clean:compile",
+    "clean": "npm cache clean && npm run rimraf -- node_modules doc typings coverage dist .awcache dll && npm run clean:compile",
     "clean:dist": "npm run rimraf -- dist .awcache",
+    "clean:dll": "npm run rimraf -- dll",
     "clean:compile": "npm run rimraf -- \"src/compiled\" ",
     "clean:overlaycss": "npm run rimraf -- \"node_modules/@angular/material/core/overlay/overlay.css\" ",
     "compile": "npm run compile:aot",
@@ -57,6 +58,7 @@
     "build:aot:prod": "npm run clean:dist && npm run sass && webpack",
     "build:aot:dev": "npm run clean:dist && npm run sass && webpack",
     "build:dev": "npm run clean:dist && npm run sass && webpack",
+    "build:dll": "npm run clean:dll && npm run sass && webpack",
     "build:prod": "npm run clean:dist && npm run sass && webpack",
     "watch": "npm run watch:dev",
     "watch:dev": "npm-run-all -p -r \"build:dev -- --watch\" sass:watch",

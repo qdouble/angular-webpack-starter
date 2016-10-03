@@ -2,7 +2,7 @@
 
 ## No Universal (Server-side rendering) Support Branch
 
-> Featuring Material Design 2, Webpack 2, HMR (Hot Module Replacement), and @ngrx.
+> Featuring Material Design 2, Webpack 2(and Webpack DLL plugin for faster dev builds), HMR (Hot Module Replacement), and @ngrx for state management.
 
 ```
 git clone -b no-universal-support https://github.com/qdouble/angular2webpack2-starter.git
@@ -25,6 +25,7 @@ https://github.com/qdouble/angular2webpack2-starter/tree/minimal
   * AOT (Ahead of Time/ Offline) Compilation
   * AOT safe SASS compilation
 * Webpack 2
+  * Webpack Dlls (Speeds up devServer builds)
 * HMR (Hot Module Replacement)
 * TypeScript 2
   * @types
