@@ -31,11 +31,12 @@ const includeClientPackages = require('./helpers.js').includeClientPackages;
 const hasProcessFlag = require('./helpers.js').hasProcessFlag;
 const root = require('./helpers.js').root;
 
-const AOT = hasProcessFlag('AOT');
-const DEVSERVER = hasProcessFlag('DEVSERVER');
+const EVENT = process.env.npm_lifecycle_event;
+const AOT = EVENT.includes('aot');
+const DEVSERVER = EVENT.includes('webdev');
 const HMR = hasProcessFlag('hot');
-const PROD = hasProcessFlag('PROD');
-const UNIVERSAL = hasProcessFlag('UNIVERSAL');
+const PROD = EVENT.includes('prod');
+const UNIVERSAL = EVENT.includes('universal');
 
 let port: number;
 if (!UNIVERSAL) {
