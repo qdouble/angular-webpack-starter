@@ -59,7 +59,7 @@
     "build:aot:prod": "npm run clean:dist && npm run sass && webpack",
     "build:aot:dev": "npm run clean:dist && npm run sass && webpack",
     "build:dev": "npm run clean:dist && npm run sass && webpack",
-    "build:prod": "npm_config_foo=bar npm run clean:dist && npm run sass && webpack",
+    "build:prod": "npm run clean:dist && npm run sass && webpack",
     "build:universal": "npm run build:universal:prod",
     "build:universal:dev": "npm run clean:dist && npm run sass && webpack",
     "build:universal:prod": "npm run clean:dist && npm run sass && webpack",
