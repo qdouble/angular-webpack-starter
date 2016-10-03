@@ -99,14 +99,15 @@ const DLL_VENDORS = [
 
 const COPY_FOLDERS = [
   { from: 'src/assets', to: 'assets' },
-  { from: 'node_modules/hammerjs/hammer.min.js', to: '' },
-  { from: 'node_modules/hammerjs/hammer.min.js.map', to: '' },
-  { from: 'dll', to: '' },
+  { from: 'node_modules/hammerjs/hammer.min.js' },
+  { from: 'node_modules/hammerjs/hammer.min.js.map' },
   ...MY_COPY_FOLDERS
 ];
 
 if (!DEV_SERVER) {
-  COPY_FOLDERS.unshift({ from: 'src/index.html', to: '' });
+  COPY_FOLDERS.unshift({ from: 'src/index.html' });
+} else {
+  COPY_FOLDERS.push({ from: 'dll' });
 }
 
 const commonConfig = function webpackConfig(): WebpackConfig {
@@ -174,7 +175,8 @@ const commonConfig = function webpackConfig(): WebpackConfig {
     );
   } else {
     config.plugins.push(
-      new CopyWebpackPlugin(COPY_FOLDERS)
+      new CopyWebpackPlugin(COPY_FOLDERS, { ignore: ['*dist_root/*'] }),
+      new CopyWebpackPlugin([{ from: 'src/assets/dist_root' }])
     );
   }
 
