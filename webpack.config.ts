@@ -166,7 +166,10 @@ const commonConfig = function webpackConfig(): WebpackConfig {
     );
   } else {
     config.plugins.push(
-      new CopyWebpackPlugin(COPY_FOLDERS)
+      // Copy our files, ignoring the assets files that need to be moved to the root
+      new CopyWebpackPlugin( COPY_FOLDERS, { ignore: [ 'robots.txt', 'humans.txt', 'manifest.json' ] } ),
+      // Copy asset files that need to be placed in the root
+      new CopyWebpackPlugin([ { from: 'src/assets/robots.txt' }, { from: 'src/assets/humans.txt' }, { from: 'src/assets/manifest.json' } ] )
     );
   }
 
