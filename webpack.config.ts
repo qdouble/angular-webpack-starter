@@ -169,7 +169,22 @@ const clientConfig = function webpackConfig(): WebpackConfig {
   if (DLL) {
     config.entry = {
       app_assets: ['./src/main.browser'],
-      polyfill: ['core-js'],
+      polyfill: [
+        'sockjs-client',
+        'ts-helpers',
+        'zone.js',
+        'core-js/client/shim.js',
+        'core-js/es6/reflect.js',
+        'core-js/es7/reflect.js',
+        'querystring-es3',
+        'strip-ansi',
+        'url',
+        'punycode',
+        'events',
+        'webpack-dev-server/client/socket.js',
+        'webpack/hot/emitter.js',
+        'zone.js/dist/long-stack-trace-zone.js'
+      ],
       vendor: [...DLL_VENDORS]
     };
   } else {
