@@ -9,13 +9,15 @@ import {
   DEV_PORT, PROD_PORT, UNIVERSAL_PORT, EXCLUDE_SOURCE_MAPS, HOST,
   USE_DEV_SERVER_PROXY, DEV_SERVER_PROXY_CONFIG,
   DEV_SOURCE_MAPS, PROD_SOURCE_MAPS, STORE_DEV_TOOLS,
-  MY_COPY_FOLDERS, MY_CLIENT_PLUGINS, MY_CLIENT_PRODUCTION_PLUGINS,
+  MY_COPY_FOLDERS, MY_VENDOR_DLLS, MY_CLIENT_PLUGINS, MY_CLIENT_PRODUCTION_PLUGINS,
   MY_CLIENT_RULES, MY_SERVER_RULES, MY_SERVER_INCLUDE_CLIENT_PACKAGES
 } from './constants';
 
 const {
   ContextReplacementPlugin,
   DefinePlugin,
+  DllPlugin,
+  DllReferencePlugin,
   ProgressPlugin,
   NoErrorsPlugin
 } = require('webpack');
@@ -23,6 +25,7 @@ const {
 const CompressionPlugin = require('compression-webpack-plugin');
 const CopyWebpackPlugin = require('copy-webpack-plugin');
 const { ForkCheckerPlugin } = require('awesome-typescript-loader');
+const HtmlWebpackPlugin = require('html-webpack-plugin');
 const NamedModulesPlugin = require('webpack/lib/NamedModulesPlugin');
 const UglifyJsPlugin = require('webpack/lib/optimize/UglifyJsPlugin');
 const webpackMerge = require('webpack-merge');
@@ -30,10 +33,12 @@ const webpackMerge = require('webpack-merge');
 const includeClientPackages = require('./helpers.js').includeClientPackages;
 const hasProcessFlag = require('./helpers.js').hasProcessFlag;
 const root = require('./helpers.js').root;
+const testDll = require('./helpers.js').testDll;
 
 const EVENT = process.env.npm_lifecycle_event;
 const AOT = EVENT.includes('aot');
-const DEVSERVER = EVENT.includes('webdev');
+const DEV_SERVER = EVENT.includes('webdev');
+const DLL = EVENT.includes('dll');
 const HMR = hasProcessFlag('hot');
 const PROD = EVENT.includes('prod');
 const UNIVERSAL = EVENT.includes('universal');
@@ -53,7 +58,8 @@ const PORT = port;
 
 console.log('PRODUCTION BUILD: ', PROD);
 console.log('AOT: ', AOT);
-if (DEVSERVER) {
+if (DEV_SERVER) {
+  testDll();
   console.log(`Starting dev server on: http://${HOST}:${PORT}`);
 }
 
@@ -66,6 +72,40 @@ const CONSTANTS = {
   STORE_DEV_TOOLS: JSON.stringify(STORE_DEV_TOOLS),
   UNIVERSAL: UNIVERSAL
 };
+
+const DLL_VENDORS = [
+  '@angular/common',
+  '@angular/compiler',
+  '@angular/core',
+  '@angular/forms',
+  '@angular/http',
+  '@angular/material',
+  '@angular/platform-browser',
+  '@angular/platform-browser-dynamic',
+  '@angular/platform-server',
+  '@angular/router',
+  '@ngrx/core',
+  '@ngrx/effects',
+  '@ngrx/router-store',
+  '@ngrx/store',
+  '@ngrx/store-devtools',
+  '@ngrx/store-log-monitor',
+  'ngrx-store-freeze',
+  'rxjs',
+  ...MY_VENDOR_DLLS
+];
+
+const COPY_FOLDERS = [
+  { from: 'src/assets', to: 'assets' },
+  { from: 'node_modules/hammerjs/hammer.min.js', to: '' },
+  { from: 'node_modules/hammerjs/hammer.min.js.map', to: '' },
+  { from: 'dll', to: '' },
+  ...MY_COPY_FOLDERS
+];
+
+if (!DEV_SERVER) {
+  COPY_FOLDERS.unshift({ from: 'src/index.html', to: '' });
+}
 
 const commonConfig = function webpackConfig(): WebpackConfig {
   let config: WebpackConfig = Object.assign({});
@@ -103,15 +143,38 @@ const commonConfig = function webpackConfig(): WebpackConfig {
     new ForkCheckerPlugin(),
     new DefinePlugin(CONSTANTS),
     new NamedModulesPlugin(),
-    new CopyWebpackPlugin([
-      { from: 'src/assets', to: 'assets' },
-      { from: 'src/index.html', to: '' },
-      { from: 'node_modules/hammerjs/hammer.min.js', to: '' },
-      { from: 'node_modules/hammerjs/hammer.min.js.map', to: '' },
-      ...MY_COPY_FOLDERS
-    ]),
     ...MY_CLIENT_PLUGINS
   ];
+
+  if (DEV_SERVER) {
+    config.plugins.push(
+      new DllReferencePlugin({
+        context: '.',
+        manifest: require(`./dll/polyfill-manifest.json`)
+      }),
+      new DllReferencePlugin({
+        context: '.',
+        manifest: require(`./dll/vendor-manifest.json`)
+      }),
+      new HtmlWebpackPlugin({
+        template: 'src/index.html',
+        inject: false
+      })
+    );
+  }
+
+  if (DLL) {
+    config.plugins.push(
+      new DllPlugin({
+        name: '[name]',
+        path: root('dll/[name]-manifest.json'),
+      })
+    );
+  } else {
+    config.plugins.push(
+      new CopyWebpackPlugin(COPY_FOLDERS)
+    );
+  }
 
   if (PROD) {
     config.plugins.push(
@@ -142,26 +205,42 @@ const clientConfig = function webpackConfig(): WebpackConfig {
   config.cache = true;
   PROD ? config.devtool = PROD_SOURCE_MAPS : config.devtool = DEV_SOURCE_MAPS;
 
-  if (!UNIVERSAL) {
-    if (AOT) {
-      config.entry = {
-        main: './src/main.browser.aot'
-      };
+  if (DLL) {
+    config.entry = {
+      app_assets: ['./src/main.browser'],
+      polyfill: ['core-js'],
+      vendor: [...DLL_VENDORS]
+    };
+  } else {
+    if (!UNIVERSAL) {
+      if (AOT) {
+        config.entry = {
+          main: './src/main.browser.aot'
+        };
+      } else {
+        config.entry = {
+          main: './src/main.browser'
+        };
+      }
     } else {
       config.entry = {
-        main: './src/main.browser'
+        main: './src/main.browser.universal'
       };
     }
-  } else {
-    config.entry = {
-      main: './src/main.browser.universal'
-    };
   }
 
-  config.output = {
-    path: root('dist/client'),
-    filename: 'index.js'
-  };
+  if (!DLL) {
+    config.output = {
+      path: root('dist/client'),
+      filename: 'index.js'
+    };
+  } else {
+    config.output = {
+      path: root('dll'),
+      filename: '[name].dll.js',
+      library: '[name]'
+    };
+  }
 
   config.devServer = {
     contentBase: AOT ? './src/compiled' : './src',
@@ -275,6 +354,8 @@ interface WebpackConfig {
     inline?: boolean;
     proxy?: any;
     host?: string;
+    quiet?: boolean;
+    noInfo?: boolean;
   };
   node?: {
     process?: boolean;
