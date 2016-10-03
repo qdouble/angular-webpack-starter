@@ -24,12 +24,12 @@ const { ForkCheckerPlugin } = require('awesome-typescript-loader');
 const NamedModulesPlugin = require('webpack/lib/NamedModulesPlugin');
 const UglifyJsPlugin = require('webpack/lib/optimize/UglifyJsPlugin');
 
-const hasProcessFlag = require('./helpers.js').hasProcessFlag;
 const root = require('./helpers.js').root;
 
-const AOT = hasProcessFlag('AOT');
-const DEVSERVER = hasProcessFlag('DEVSERVER');
-const PROD = hasProcessFlag('PROD');
+const EVENT = process.env.npm_lifecycle_event;
+const AOT = EVENT.includes('aot');
+const DEVSERVER = EVENT.includes('webdev');
+const PROD = EVENT.includes('prod');
 
 let port: number;
 if (PROD) {
