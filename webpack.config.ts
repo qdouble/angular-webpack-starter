@@ -85,12 +85,14 @@ const DLL_VENDORS = [
   '@angular/platform-server',
   '@angular/router',
   '@ngrx/core',
+  '@ngrx/core/add/operator/select.js',
   '@ngrx/effects',
   '@ngrx/router-store',
   '@ngrx/store',
   '@ngrx/store-devtools',
   '@ngrx/store-log-monitor',
   'ngrx-store-freeze',
+  'ngrx-store-logger',
   'rxjs',
   ...MY_VENDOR_DLLS
 ];
@@ -208,7 +210,23 @@ const clientConfig = function webpackConfig(): WebpackConfig {
   if (DLL) {
     config.entry = {
       app_assets: ['./src/main.browser'],
-      polyfill: ['core-js'],
+      polyfill: [
+        'sockjs-client',
+        '@angularclass/hmr',
+        'ts-helpers',
+        'zone.js',
+        'core-js/client/shim.js',
+        'core-js/es6/reflect.js',
+        'core-js/es7/reflect.js',
+        'querystring-es3',
+        'strip-ansi',
+        'url',
+        'punycode',
+        'events',
+        'webpack-dev-server/client/socket.js',
+        'webpack/hot/emitter.js',
+        'zone.js/dist/long-stack-trace-zone.js'
+      ],
       vendor: [...DLL_VENDORS]
     };
   } else {
