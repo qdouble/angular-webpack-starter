@@ -30,10 +30,7 @@ const NamedModulesPlugin = require('webpack/lib/NamedModulesPlugin');
 const UglifyJsPlugin = require('webpack/lib/optimize/UglifyJsPlugin');
 const webpackMerge = require('webpack-merge');
 
-const includeClientPackages = require('./helpers.js').includeClientPackages;
-const hasProcessFlag = require('./helpers.js').hasProcessFlag;
-const root = require('./helpers.js').root;
-const testDll = require('./helpers.js').testDll;
+const { hasProcessFlag, includeClientPackages, root, testDll } = require('./helpers.js');
 
 const EVENT = process.env.npm_lifecycle_event;
 const AOT = EVENT.includes('aot');
