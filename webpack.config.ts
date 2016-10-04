@@ -244,7 +244,7 @@ const clientConfig = function webpackConfig(): WebpackConfig {
 
 } ();
 
-console.log('BUILDING APP');
+DLL ? console.log('BUILDING DLLs') : console.log('BUILDING APP');
 module.exports = clientConfig;
 
 // // Types
