@@ -283,7 +283,7 @@ const defaultConfig = {
   }
 };
 
-console.log('BUILDING APP');
+DLL ? console.log('BUILDING DLLs') : console.log('BUILDING APP');
 module.exports = webpackMerge({}, defaultConfig, commonConfig, clientConfig);
 
 
