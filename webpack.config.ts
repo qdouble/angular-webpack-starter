@@ -215,7 +215,11 @@ const clientConfig = function webpackConfig(): WebpackConfig {
     contentBase: AOT ? './src/compiled' : './src',
     port: CONSTANTS.PORT,
     historyApiFallback: true,
-    host: '0.0.0.0'
+    host: '0.0.0.0',
+    watchOptions: {
+      aggregateTimeout: 0,
+      poll: 300
+    }
   };
 
   if (USE_DEV_SERVER_PROXY) {
@@ -270,6 +274,7 @@ interface WebpackConfig {
     host?: string;
     quiet?: boolean;
     noInfo?: boolean;
+    watchOptions?: any;
   };
   node?: {
     process?: boolean;
