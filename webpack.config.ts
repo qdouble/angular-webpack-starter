@@ -340,7 +340,7 @@ const defaultConfig = {
 };
 
 if (!UNIVERSAL) {
-  console.log('BUILDING APP');
+  DLL ? console.log('BUILDING DLLs') : console.log('BUILDING APP');
   module.exports = webpackMerge({}, defaultConfig, commonConfig, clientConfig);
 } else {
   console.log('BUILDING UNIVERSAL');
