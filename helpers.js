@@ -3,6 +3,7 @@
  */
 
 const path = require('path');
+const fs = require('fs');
 
 // Helper functions
 const _root = path.resolve(__dirname);
@@ -15,7 +16,7 @@ function checkNodeImport(context, request, cb) {
 }
 
 function includeClientPackages(packages) {
-  return function(context, request, cb) {
+  return function (context, request, cb) {
     if (packages && packages.indexOf(request) !== -1) {
       return cb();
     }
@@ -33,11 +34,8 @@ function root(args) {
 }
 
 function testDll() {
-  try {
-    require('./dll/polyfill.dll.js');
-    require('./dll/vendor.dll.js');
-  } catch(err) {
-    throw `DLL files do not exist, please use 'npm run build:dll' once to generate dll files.`;
+  if (!fs.existsSync('./dll/polyfill.dll.js') || !fs.existsSync('./dll/vendor.dll.js')) {
+    throw "DLL files do not exist, please use 'npm run build:dll' once to generate dll files.";
   }
 };
 
