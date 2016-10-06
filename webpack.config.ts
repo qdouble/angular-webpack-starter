@@ -7,7 +7,7 @@ import 'ts-helpers';
 
 import {
   DEV_PORT, PROD_PORT, UNIVERSAL_PORT, EXCLUDE_SOURCE_MAPS, HOST,
-  USE_DEV_SERVER_PROXY, DEV_SERVER_PROXY_CONFIG,
+  USE_DEV_SERVER_PROXY, DEV_SERVER_PROXY_CONFIG, DEV_SERVER_WATCH_OPTIONS,
   DEV_SOURCE_MAPS, PROD_SOURCE_MAPS, STORE_DEV_TOOLS,
   MY_COPY_FOLDERS, MY_VENDOR_DLLS, MY_CLIENT_PLUGINS, MY_CLIENT_PRODUCTION_PLUGINS,
   MY_CLIENT_RULES, MY_SERVER_RULES, MY_SERVER_INCLUDE_CLIENT_PACKAGES
@@ -264,10 +264,7 @@ const clientConfig = function webpackConfig(): WebpackConfig {
     port: CONSTANTS.PORT,
     historyApiFallback: true,
     host: '0.0.0.0',
-    watchOptions: {
-      aggregateTimeout: 0,
-      poll: 300
-    }
+    watchOptions: DEV_SERVER_WATCH_OPTIONS
   };
 
   if (USE_DEV_SERVER_PROXY) {
