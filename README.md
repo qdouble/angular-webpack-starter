@@ -3,7 +3,7 @@
 > Featuring Bootstrap and ng-bootstrap, Webpack 2 (and Webpack DLL plugin for faster dev builds), HMR (Hot Module Replacement), @ngrx for state management and optional server-side rendering with Universal.
 
 ```
-git clone https://github.com/qdouble/angular2webpack2-starter.git
+git clone -b bootstrap https://github.com/qdouble/angular2webpack2-starter.git
 cd angular2webpack2-starter
 npm install
 npm start
