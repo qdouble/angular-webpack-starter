@@ -15,7 +15,6 @@ describe('App Component', () => {
   beforeEach(() => {
     TestBed.configureTestingModule({
       imports: [
-
         ReactiveFormsModule,
         RouterTestingModule.withRoutes(routes),
         StoreDevToolsModule

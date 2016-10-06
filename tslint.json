@@ -141,14 +141,17 @@
     "use-output-property-decorator": true,
     "use-host-property-decorator": true,
     "no-attribute-parameter-decorator": true,
-    "no-input-rename": true,
-    "no-output-rename": true,
+    // "no-input-rename": true,
+    // "no-output-rename": true,
     "no-forward-ref" :true,
     "use-life-cycle-interface": true,
     "use-pipe-transform-interface": true,
     "import-destructuring-spacing": true,
     "directive-selector-prefix": [true],
     "component-selector-prefix": [true],
-    "pipe-naming": [true, "camelCase"]
+    "pipe-naming": [true, "camelCase"],
+    // "no-access-missing-member": true,
+    // "templates-use-public": true,
+    "invoke-injectable": true
   }
 }

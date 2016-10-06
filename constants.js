@@ -27,6 +27,17 @@ exports.DEV_SOURCE_MAPS = 'eval';
 exports.PROD_SOURCE_MAPS = 'source-map';
 
 /**
+ * Set watch options for Dev Server. For better HMR performance, you can 
+ * try setting poll to 1000 or as low as 300 and set aggregateTimeout to as low as 0. 
+ * These settings will effect CPU usage, so optimal setting will depend on your dev environment.
+ * https://github.com/webpack/docs/wiki/webpack-dev-middleware#watchoptionsaggregatetimeout
+ */
+exports.DEV_SERVER_WATCH_OPTIONS = {
+  poll: undefined,
+  aggregateTimeout: 300
+}
+
+/**
  * specifies which @ngrx dev tools will be available when you build and load
  * your app in dev mode. Options are: monitor | logger | both | none
  */
@@ -36,6 +47,18 @@ exports.EXCLUDE_SOURCE_MAPS = [
   // these packages have problems with their sourcemaps
   root('node_modules/@angular'),
   root('node_modules/rxjs')
+]
+
+exports.MY_COPY_FOLDERS = [
+  // use this for folders you want to be copied in to Client dist
+  // src/assets and index.html are already copied by default.
+  // format is { from: 'folder_name', to: 'folder_name' }
+]
+
+exports.MY_VENDOR_DLLS = [
+  // list vendors that you want to be included in your dlls files
+  // this will speed up initial dev server build and incremental builds.
+  // Be sure to run `npm run build:dll` if you make changes to this array.
 ]
 
 exports.MY_CLIENT_PLUGINS = [

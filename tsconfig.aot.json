@@ -7,9 +7,9 @@
     "pretty": false,
     "sourceMap": true,
     "lib": ["es5", "dom"],
+    "noEmit": true,
     "strictNullChecks": false,
     "skipDefaultLibCheck": true,
-    "outDir": "output",
     "typeRoots": [
       "node_modules/@types"
     ]
@@ -34,7 +34,7 @@
   "buildOnSave": false,
   "atom": { "rewriteTsconfig": false },
   "angularCompilerOptions": {
-   "genDir": ".",
-   "debug": true
+   "genDir": "src/compiled",
+   "skipMetadataEmit" : true
  }
 }
