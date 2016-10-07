@@ -66,7 +66,6 @@ const DLL_VENDORS = [
   '@angular/http',
   '@angular/platform-browser',
   '@angular/platform-browser-dynamic',
-  '@angular/platform-server',
   '@angular/router',
   'rxjs',
   ...MY_VENDOR_DLLS
