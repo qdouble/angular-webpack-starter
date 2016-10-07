@@ -93,7 +93,6 @@
     "zone.js": "0.6.25"
   },
   "devDependencies": {
-    "@types/compression": "~0.0.33",
     "@types/core-js": "~0.9.33",
     "@types/express": "~4.0.33",
     "@types/hammerjs": "~2.0.33",
