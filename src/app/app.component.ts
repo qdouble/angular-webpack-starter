@@ -12,7 +12,7 @@ import { MOBILE } from './services/constants';
   encapsulation: ViewEncapsulation.None
 })
 export class AppComponent implements AfterContentInit {
-  showMonitor = (ENV === 'development' &&
+  showMonitor = (ENV === 'development' && !AOT &&
     ['monitor', 'both'].includes(STORE_DEV_TOOLS) // set in constants.js file in project root
   );
   mobile = MOBILE;
