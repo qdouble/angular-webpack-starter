@@ -71,7 +71,6 @@ const DLL_VENDORS = [
   '@angular/material',
   '@angular/platform-browser',
   '@angular/platform-browser-dynamic',
-  '@angular/platform-server',
   '@angular/router',
   '@ngrx/core',
   '@ngrx/core/add/operator/select.js',
