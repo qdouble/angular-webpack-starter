@@ -1,6 +1,6 @@
 # Complete starter seed project for Angular 2
 
-> Featuring Bootstrap and ng-bootstrap, Webpack 2 (and Webpack DLL plugin for faster dev builds), HMR (Hot Module Replacement), @ngrx for state management and optional server-side rendering with Universal.
+> Featuring Bootstrap 4 and ng-bootstrap, Webpack 2 (and Webpack DLL plugin for faster dev builds), HMR (Hot Module Replacement), and @ngrx for state management.
 
 ```
 git clone -b bootstrap https://github.com/qdouble/angular2webpack2-starter.git
@@ -28,7 +28,6 @@ https://github.com/qdouble/angular2webpack2-starter/tree/minimal
 * TypeScript 2
   * @types
 * Bootstrap 4 and @ng-bootstrap
-* Universal (Server-side Rendering)
 * @ngrx
   * store (RxJS powered state management for Angular2 apps, inspired by Redux)
   * effects (Side effect model for @ngrx/store)

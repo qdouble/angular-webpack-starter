@@ -2,7 +2,6 @@ export declare const HOST: string;
 export declare const DEV_PORT: number;
 export declare const E2E_PORT: number;
 export declare const PROD_PORT: number;
-export declare const UNIVERSAL_PORT: number;
 
 export declare const USE_DEV_SERVER_PROXY: boolean;
 export declare const DEV_SERVER_PROXY_CONFIG: any;
@@ -19,9 +18,7 @@ export declare const MY_VENDOR_DLLS: any[];
 export declare const MY_CLIENT_PLUGINS: any[];
 export declare const MY_CLIENT_PRODUCTION_PLUGINS: any[];
 export declare const MY_CLIENT_RULES: any[];
-export declare const MY_SERVER_RULES: any[];
 export declare const MY_TEST_PLUGINS: any[];
 export declare const MY_TEST_RULES: any[];
-export declare const MY_SERVER_INCLUDE_CLIENT_PACKAGES: any[];
 
 export declare const EXCLUDE_SOURCE_MAPS: any[];
