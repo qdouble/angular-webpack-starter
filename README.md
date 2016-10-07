@@ -1,5 +1,7 @@
 # Complete starter seed project for Angular 2
 
+## Bootstrap Branch
+
 > Featuring Bootstrap 4 and ng-bootstrap, Webpack 2 (and Webpack DLL plugin for faster dev builds), HMR (Hot Module Replacement), and @ngrx for state management.
 
 ```
