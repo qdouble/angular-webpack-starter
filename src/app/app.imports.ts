@@ -1,5 +1,5 @@
 import { ReactiveFormsModule } from '@angular/forms';
-import { RouterModule, PreloadAllModules } from '@angular/router';
+import { RouterModule } from '@angular/router';
 
 import { EffectsModule } from '@ngrx/effects';
 import { RouterStoreModule } from '@ngrx/router-store';
@@ -16,7 +16,7 @@ export const APP_IMPORTS = [
   EffectsModule.run(UserEffects),
   NgbModule,
   ReactiveFormsModule,
-  RouterModule.forRoot(routes, { preloadingStrategy: PreloadAllModules }),
+  RouterModule.forRoot(routes),
   RouterStoreModule.connectRouter(),
   StoreDevToolsModule,
   StoreModule.provideStore(rootReducer)
