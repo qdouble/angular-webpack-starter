@@ -127,7 +127,6 @@
     "karma-sourcemap-loader": "~0.3.7",
     "karma-webpack": "~1.8.0",
     "node-sass": "~3.10.1",
-    "nodemon": "~1.11.0",
     "npm-run-all": "~3.1.0",
     "phantomjs-polyfill": "~0.0.2",
     "phantomjs-prebuilt": "~2.1.13",
@@ -146,8 +145,7 @@
     "watch-run": "~1.2.4",
     "webpack": "2.1.0-beta.25",
     "webpack-dev-middleware": "~1.8.1",
-    "webpack-dev-server": "2.1.0-beta.4",
-    "webpack-merge": "~0.14.1"
+    "webpack-dev-server": "2.1.0-beta.4"
   },
   "license": "Apache-2.0",
   "bugs": {

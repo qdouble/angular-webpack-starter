@@ -27,7 +27,6 @@ const { ForkCheckerPlugin } = require('awesome-typescript-loader');
 const HtmlWebpackPlugin = require('html-webpack-plugin');
 const NamedModulesPlugin = require('webpack/lib/NamedModulesPlugin');
 const UglifyJsPlugin = require('webpack/lib/optimize/UglifyJsPlugin');
-const webpackMerge = require('webpack-merge');
 
 const { hasProcessFlag, root, testDll } = require('./helpers.js');
 
@@ -100,7 +99,7 @@ if (!DEV_SERVER) {
   COPY_FOLDERS.push({ from: 'dll' });
 }
 
-const commonConfig = function webpackConfig(): WebpackConfig {
+const clientConfig = function webpackConfig(): WebpackConfig {
   let config: WebpackConfig = Object.assign({});
 
   config.module = {
@@ -188,14 +187,6 @@ const commonConfig = function webpackConfig(): WebpackConfig {
     );
   }
 
-  return config;
-} ();
-
-// type definition for WebpackConfig at the bottom
-const clientConfig = function webpackConfig(): WebpackConfig {
-
-  let config: WebpackConfig = Object.assign({});
-
   config.cache = true;
   PROD ? config.devtool = PROD_SOURCE_MAPS : config.devtool = DEV_SOURCE_MAPS;
 
@@ -223,14 +214,14 @@ const clientConfig = function webpackConfig(): WebpackConfig {
     };
   } else {
     if (AOT) {
-        config.entry = {
-          main: './src/main.browser.aot'
-        };
-      } else {
-        config.entry = {
-          main: './src/main.browser'
-        };
-      }
+      config.entry = {
+        main: './src/main.browser.aot'
+      };
+    } else {
+      config.entry = {
+        main: './src/main.browser'
+      };
+    }
   }
 
   if (!DLL) {
@@ -272,20 +263,16 @@ const clientConfig = function webpackConfig(): WebpackConfig {
     setTimeout: true
   };
 
-  return config;
+  config.resolve = {
+    extensions: ['.ts', '.js', '.json']
+  };
 
+  return config;
 } ();
 
 
-
-const defaultConfig = {
-  resolve: {
-    extensions: ['.ts', '.js', '.json']
-  }
-};
-
 DLL ? console.log('BUILDING DLLs') : console.log('BUILDING APP');
-module.exports = webpackMerge({}, defaultConfig, commonConfig, clientConfig);
+module.exports = clientConfig;
 
 
 // // Types
