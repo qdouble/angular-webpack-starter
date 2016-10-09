@@ -5,17 +5,17 @@
 > Featuring Webpack 2 (and Webpack DLL plugin for faster dev builds). Supports Lazy Loading and AOT compilation.
 
 ```bash
-git clone -b minimal https://github.com/qdouble/angular2webpack2-starter.git
-cd angular2webpack2-starter
+git clone -b minimal https://github.com/qdouble/angular-webpack2-starter.git
+cd angular-webpack2-starter
 npm install
 npm start
 ```
 
 ##### Master Branch with Material 2, @ngrx, HMR and support for Universal (Server-side rendering)
-https://github.com/qdouble/angular2webpack2-starter
+https://github.com/qdouble/angular-webpack2-starter
 
 ##### Branch with Material 2, @ngrx, HMR.
-https://github.com/qdouble/angular2webpack2-starter/tree/no-universal-support
+https://github.com/qdouble/angular-webpack2-starter/tree/no-universal-support
 
 ## Features
 
@@ -69,4 +69,5 @@ For unit tests, use `npm run test` for continuous testing in watch mode and use
 For e2e tests, use `npm run e2e`. To run unit test and e2e test at the same time, use `npm run ci`.
 
 ### Wiki Links
-[Recommended Steps for merging this starter into existing project](https://github.com/qdouble/angular2webpack2-starter/wiki/Recommended-Steps-for-Merging-Starter-into-Existing-Project)
+
+[Recommended Steps for merging this starter into existing project](https://github.com/qdouble/angular-webpack2-starter/wiki/Recommended-Steps-for-Merging-Starter-into-Existing-Project)
