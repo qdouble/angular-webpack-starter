@@ -1,11 +1,11 @@
 {
-  "name": "angular2webpack2-starter",
+  "name": "angular-webpack2-starter",
   "version": "1.4.4",
   "description": "Angular and Webpack 2 Starter",
   "author": "Qdouble <qdouble@gmail.com>",
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/qdouble/angular2webpack2-starter.git"
+    "url": "git+https://github.com/qdouble/angular-webpack2-starter.git"
   },
   "scripts": {
     "postinstall": "npm run sass && npm run build:dll",
@@ -149,7 +149,7 @@
   },
   "license": "Apache-2.0",
   "bugs": {
-    "url": "https://github.com/qdouble/angular2webpack2-starter/issues"
+    "url": "https://github.com/qdouble/angular-webpack2-starter/issues"
   },
-  "homepage": "https://github.com/qdouble/angular2webpack2-starter#readme"
+  "homepage": "https://github.com/qdouble/angular-webpack2-starter#readme"
 }
