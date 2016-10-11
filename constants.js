@@ -33,7 +33,8 @@ exports.PROD_SOURCE_MAPS = 'source-map';
  */
 exports.DEV_SERVER_WATCH_OPTIONS = {
   poll: undefined,
-  aggregateTimeout: 300
+  aggregateTimeout: 300,
+  ignored: /node_modules/
 }
 
 exports.EXCLUDE_SOURCE_MAPS = [
