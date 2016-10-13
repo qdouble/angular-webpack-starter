@@ -4,20 +4,18 @@
 
 > Featuring Bootstrap 4 and ng-bootstrap, Webpack 2 (and Webpack DLL plugin for faster dev builds), HMR (Hot Module Replacement), and @ngrx for state management.
 
-```
+```bash
 git clone -b bootstrap https://github.com/qdouble/angular-webpack2-starter.git
 cd angular-webpack2-starter
 npm install
 npm start
 ```
-##### Master Branch with Universal (Server-side rendering) support
-https://github.com/qdouble/angular-webpack2-starter
 
-##### Branch without Universal (Server-side rendering) support
-https://github.com/qdouble/angular-webpack2-starter/tree/no-universal-support
+### [Master Branch with Universal (Server-side rendering) support](https://github.com/qdouble/angular-webpack2-starter)
 
-##### Minimal Branch
-https://github.com/qdouble/angular-webpack2-starter/tree/minimal
+### [Branch without Universal (Server-side rendering) support](https://github.com/qdouble/angular-webpack2-starter/tree/no-universal-support)
+
+### [Minimal Branch](https://github.com/qdouble/angular-webpack2-starter/tree/minimal)
 
 ## Features
 
