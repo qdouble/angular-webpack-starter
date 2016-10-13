@@ -2,21 +2,18 @@
 
 > Featuring Material Design 2, Webpack 2 (and Webpack DLL plugin for faster dev builds), HMR (Hot Module Replacement), @ngrx for state management and optional server-side rendering with Universal.
 
-```
+```bash
 git clone https://github.com/qdouble/angular-webpack2-starter.git
 cd angular-webpack2-starter
 npm install
 npm start
 ```
 
-##### Branch without Universal (Server-side rendering) support
-https://github.com/qdouble/angular-webpack2-starter/tree/no-universal-support
+### [Branch without Universal (Server-side rendering) support](https://github.com/qdouble/angular-webpack2-starter/tree/no-universal-support)
 
-##### Bootstrap Branch
-https://github.com/qdouble/angular-webpack2-starter/tree/bootstrap
+### [Bootstrap Branch](https://github.com/qdouble/angular-webpack2-starter/tree/bootstrap)
 
-##### Minimal Branch
-https://github.com/qdouble/angular-webpack2-starter/tree/minimal
+### [Minimal Branch](https://github.com/qdouble/angular-webpack2-starter/tree/minimal)
 
 ## Features
 
