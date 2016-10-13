@@ -11,14 +11,11 @@ npm install
 npm start
 ```
 
-##### Master Branch with Material 2, @ngrx, HMR and support for Universal (Server-side rendering)
-https://github.com/qdouble/angular-webpack2-starter
+### [Master Branch with Material 2, @ngrx, HMR and support for Universal (Server-side rendering)](https://github.com/qdouble/angular-webpack2-starter)
 
-##### Branch with Material 2, @ngrx, HMR.
-https://github.com/qdouble/angular-webpack2-starter/tree/no-universal-support
+### [Branch with Material 2, @ngrx, HMR.](https://github.com/qdouble/angular-webpack2-starter/tree/no-universal-support)
 
-##### Bootstrap Branch
-https://github.com/qdouble/angular-webpack2-starter/tree/bootstrap
+### [Bootstrap Branch](https://github.com/qdouble/angular-webpack2-starter/tree/bootstrap)
 
 ## Features
 
