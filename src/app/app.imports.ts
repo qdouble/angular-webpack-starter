@@ -14,7 +14,7 @@ import { UserEffects } from './user/user.effects';
 
 export const APP_IMPORTS = [
   EffectsModule.run(UserEffects),
-  NgbModule,
+  NgbModule.forRoot(),
   ReactiveFormsModule,
   RouterModule.forRoot(routes),
   RouterStoreModule.connectRouter(),

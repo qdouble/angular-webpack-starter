@@ -80,7 +80,7 @@
     "@angular/tsc-wrapped": "0.3.0",
     "@angularclass/hmr": "1.2.1",
     "@angularclass/hmr-loader": "3.0.2",
-    "@ng-bootstrap/ng-bootstrap": "^1.0.0-alpha.6",
+    "@ng-bootstrap/ng-bootstrap": "1.0.0-alpha.7",
     "@ngrx/core": "1.2.0",
     "@ngrx/effects": "2.0.0",
     "@ngrx/router-store": "1.2.4",
