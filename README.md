@@ -17,6 +17,9 @@ https://github.com/qdouble/angular-webpack2-starter
 ##### Minimal Branch
 https://github.com/qdouble/angular-webpack2-starter/tree/minimal
 
+##### Bootstrap Branch
+https://github.com/qdouble/angular-webpack2-starter/tree/bootstrap
+
 ## Features
 
 * Angular 2
