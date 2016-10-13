@@ -12,6 +12,9 @@ npm start
 ##### Branch without Universal (Server-side rendering) support
 https://github.com/qdouble/angular-webpack2-starter/tree/no-universal-support
 
+##### Bootstrap Branch
+https://github.com/qdouble/angular-webpack2-starter/tree/bootstrap
+
 ##### Minimal Branch
 https://github.com/qdouble/angular-webpack2-starter/tree/minimal
 
