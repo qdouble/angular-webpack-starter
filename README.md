@@ -17,6 +17,9 @@ https://github.com/qdouble/angular-webpack2-starter
 ##### Branch with Material 2, @ngrx, HMR.
 https://github.com/qdouble/angular-webpack2-starter/tree/no-universal-support
 
+##### Bootstrap Branch
+https://github.com/qdouble/angular-webpack2-starter/tree/bootstrap
+
 ## Features
 
 * Angular 2
