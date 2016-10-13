@@ -240,9 +240,15 @@ const clientConfig = function webpackConfig(): WebpackConfig {
         };
       }
     } else {
-      config.entry = {
-        main: './src/main.browser.universal'
-      };
+      if (AOT) {
+        config.entry = {
+          main: './src/main.browser.universal.aot'
+        };
+      } else {
+        config.entry = {
+          main: './src/main.browser.universal'
+        };
+      }
     }
   }
 
