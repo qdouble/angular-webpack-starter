@@ -1,17 +1,21 @@
 # Complete starter seed project for Angular 2
 
-> Featuring Material Design 2, Webpack 2 (and Webpack DLL plugin for faster dev builds), HMR (Hot Module Replacement), @ngrx for state management and optional server-side rendering with Universal.
+## Bootstrap and Universal Branch
+
+> Featuring Bootstrap 4 and ng-bootstrap, Webpack 2 (and Webpack DLL plugin for faster dev builds), HMR (Hot Module Replacement), Universal for server-side rendering and @ngrx for state management.
 
 ```bash
-git clone https://github.com/qdouble/angular-webpack2-starter.git
+git clone -b bootstrap-and-universal https://github.com/qdouble/angular-webpack2-starter.git
 cd angular-webpack2-starter
 npm install
 npm start
 ```
 
-### [Branch without Universal (Server-side rendering) support](https://github.com/qdouble/angular-webpack2-starter/tree/no-universal-support)
+### [Bootstrap Branch without Universal](https://github.com/qdouble/angular-webpack2-starter/tree/bootstrap)
 
-### [Bootstrap Branch](https://github.com/qdouble/angular-webpack2-starter/tree/bootstrap)
+### [Master Branch with Universal (Server-side rendering) support](https://github.com/qdouble/angular-webpack2-starter)
+
+### [Branch without Universal (Server-side rendering) support](https://github.com/qdouble/angular-webpack2-starter/tree/no-universal-support)
 
 ### [Minimal Branch](https://github.com/qdouble/angular-webpack2-starter/tree/minimal)
 
@@ -27,7 +31,7 @@ npm start
 * HMR (Hot Module Replacement)
 * TypeScript 2
   * @types
-* Material Design 2
+* Bootstrap 4 and @ng-bootstrap
 * Universal (Server-side Rendering)
 * @ngrx
   * store (RxJS powered state management for Angular2 apps, inspired by Redux)
@@ -108,4 +112,4 @@ For e2e tests, use `npm run e2e`. To run unit test and e2e test at the same time
 
 ### License
 
-[MIT](https://github.com/qdouble/angular-webpack2-starter/blob/master/LICENSE)
+[MIT](https://github.com/qdouble/angular-webpack2-starter/blob/bootstrap-and-universal/LICENSE)

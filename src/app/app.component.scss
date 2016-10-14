@@ -1,5 +1,29 @@
 @import './styles.scss';
 
-#my-page-card {
-  min-height: 100%;
+* {
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
 }
+
+.nav>li {
+    position: relative;
+    display: block;
+    float: left;
+}
+
+
+#my-app-title, #my-nav-menu{
+  float: left;
+}
+
+#my-nav-menu {
+  @media screen and (min-width: $break-large) {
+    position: relative;
+    left: 14px;
+  }
+}
+
+section {
+  margin-left: 15px;
+}
+

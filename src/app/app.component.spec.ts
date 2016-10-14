@@ -3,8 +3,6 @@ import { TestBed, async } from '@angular/core/testing';
 import { RouterTestingModule } from '@angular/router/testing';
 import { ReactiveFormsModule } from '@angular/forms';
 
-import { MaterialModule } from '@angular/material';
-
 import { AppComponent } from './app.component';
 import { DashboardComponent } from './features/dashboard.component';
 import { NotFound404Component } from './not-found404.component';
@@ -17,7 +15,6 @@ describe('App Component', () => {
   beforeEach(() => {
     TestBed.configureTestingModule({
       imports: [
-        MaterialModule.forRoot(),
         ReactiveFormsModule,
         RouterTestingModule.withRoutes(routes),
         StoreDevToolsModule
