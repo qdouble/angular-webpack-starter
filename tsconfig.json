@@ -4,8 +4,6 @@
     "emitDecoratorMetadata": true,
     "experimentalDecorators": true,
     "lib": ["es5", "dom"],
-    "module": "commonjs",
-    "moduleResolution": "node",
     "noEmitHelpers": true,
     "skipDefaultLibCheck": true,
     "pretty": true,
