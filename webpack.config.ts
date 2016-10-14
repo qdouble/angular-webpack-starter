@@ -305,7 +305,6 @@ const serverConfig: WebpackConfig = {
   },
   module: {
     rules: [
-      { test: /angular2-material/, loader: 'imports-loader?window=>global' },
       ...MY_SERVER_RULES
     ],
   },
