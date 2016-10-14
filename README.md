@@ -1,6 +1,6 @@
 # Complete starter seed project for Angular 2
 
-## No Universal (Server-side rendering) Support Branch
+## Material Branch without Universal (Server-side rendering) support
 
 > Featuring Material Design 2, Webpack 2(and Webpack DLL plugin for faster dev builds), HMR (Hot Module Replacement), and @ngrx for state management.
 
