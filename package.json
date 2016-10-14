@@ -52,7 +52,7 @@
     "compile:watch": "watch-run -i npm run compile:only -p 'src/app/**/*.ts, src/app/**/*.scss' npm run compile:only",
     "prodserver": "node prodserver",
     "sass": "node-sass src -o src --include-path node_modules --output-style compressed -q",
-    "sass:watch": "node-sass -w src -o src",
+    "sass:watch": "node-sass -w src -o src --include-path node_modules --output-style compressed -q",
     "start": "npm run server:dev",
     "start:hmr": "npm run server:hmr",
     "serve80": "sudo PORT=80 node prodserver",
