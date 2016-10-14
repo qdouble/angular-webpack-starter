@@ -78,7 +78,7 @@
     "@types/core-js": "~0.9.33",
     "@types/express": "~4.0.33",
     "@types/ip": "~0.0.29",
-    "@types/jasmine": "~2.2.34",
+    "@types/jasmine": "~2.5.35",
     "@types/node": "~6.0.45",
     "@types/protractor": "~1.5.20",
     "@types/selenium-webdriver": "~2.44.29",
