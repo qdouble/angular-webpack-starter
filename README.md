@@ -4,11 +4,13 @@
 
 > Featuring Material Design 2, Webpack 2 (and Webpack DLL plugin for faster dev builds), HMR (Hot Module Replacement), @ngrx for state management and optional server-side rendering with Universal.
 
+###### You can use npm, but it's recommended to use yarn as it installs a lot faster and has other benefits https://yarnpkg.com/ . Make sure you are using yarn version 0.16.0 or newer (check with 'yarn --version')
+
 ```bash
 git clone https://github.com/qdouble/angular-webpack2-starter.git
 cd angular-webpack2-starter
-npm install
-npm start
+yarn
+yarn start
 ```
 
 ### [Material Branch without Universal (Server-side rendering) support](https://github.com/qdouble/angular-webpack2-starter/tree/no-universal-support)
@@ -51,26 +53,26 @@ npm start
 
 ## Basic scripts
 
-Use `npm start` for dev server. Default dev port is `3000`.
+Use `yarn start` for dev server. Default dev port is `3000`.
 
-Use `npm run start:hmr` to run dev server in HMR mode.
+Use `yarn run start:hmr` to run dev server in HMR mode.
 
-Use `npm run build` for production build.
+Use `yarn run build` for production build.
 
-Use `npm run server:prod` for production server and production watch. Default production port is `8088`.
+Use `yarn run server:prod` for production server and production watch. Default production port is `8088`.
 
-Use `npm run universal` to run production build in Universal. To run and build universal in AOT mode, use
-`npm run universal:aot`. Default universal port is `8000`.
+Use `yarn run universal` to run production build in Universal. To run and build universal in AOT mode, use
+`yarn run universal:aot`. Default universal port is `8000`.
 
 Default ports and option to use proxy backend for dev server can be changed in `constants.js` file.
 
-To create AOT version, run `npm run compile`. This will compile and build script.
-Then you can use `npm run prodserver` to see to serve files.
+To create AOT version, run `yarn run compile`. This will compile and build script.
+Then you can use `yarn run prodserver` to see to serve files.
 Do not use build:aot directly unless you have already compiled.
-Use `npm run compile` instead, it compiles and builds:aot
+Use `yarn run compile` instead, it compiles and builds:aot
 
 The scripts are set to compile css next to scss because ngc compiler does not support Sass.
-To compile scss, use `npm run sass`, but many of the scripts will either build or watch scss files.
+To compile scss, use `yarn run sass`, but many of the scripts will either build or watch scss files.
 
 ### Store Log Monitor / Store Logger
 
@@ -101,10 +103,10 @@ The following are some things that will make AOT compile fail.
 
 ### Testing
 
-For unit tests, use `npm run test` for continuous testing in watch mode and use
-`npm run test:once` for single test. To view code coverage after running test, open `coverage/html/index.html` in your browser.
+For unit tests, use `yarn run test` for continuous testing in watch mode and use
+`yarn run test:once` for single test. To view code coverage after running test, open `coverage/html/index.html` in your browser.
 
-For e2e tests, use `npm run e2e`. To run unit test and e2e test at the same time, use `npm run ci`.
+For e2e tests, use `yarn run e2e`. To run unit test and e2e test at the same time, use `yarn run ci`.
 
 ### Wiki Links
 
