@@ -4,8 +4,7 @@
 
 > Featuring Material Design 2, Webpack 2 (and Webpack DLL plugin for faster dev builds), HMR (Hot Module Replacement), @ngrx for state management and optional server-side rendering with Universal.
 
-You can use npm, but it's recommended to use yarn as it installs a lot faster and has other benefits https://yarnpkg.com/
-Make sure you are using yarn version 0.16.0 or newer (check with 'yarn --version')
+###### You can use npm, but it's recommended to use yarn as it installs a lot faster and has other benefits https://yarnpkg.com/ . Make sure you are using yarn version 0.16.0 or newer (check with 'yarn --version')
 
 ```bash
 git clone https://github.com/qdouble/angular-webpack2-starter.git
