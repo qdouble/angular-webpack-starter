@@ -1,3 +1,4 @@
+"use strict";
 const compression = require('compression')
 const express = require('express'),
 path = require('path');
