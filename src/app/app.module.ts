@@ -14,7 +14,7 @@ import { removeNgStyles, createNewHosts, createInputTransfer } from '@angularcla
 
 import { Store } from '@ngrx/store';
 
-import { APP_DECLERATIONS } from './app.declerations';
+import { APP_DECLARATIONS } from './app.declarations';
 import { APP_IMPORTS } from './app.imports';
 import { APP_PROVIDERS } from './app.providers';
 
@@ -25,7 +25,7 @@ import { AppState } from './reducers';
 @NgModule({
   declarations: [
     AppComponent,
-    APP_DECLERATIONS
+    APP_DECLARATIONS
   ],
   imports: [
     APP_IMPORTS,
