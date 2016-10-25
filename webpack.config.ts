@@ -29,7 +29,7 @@ const UglifyJsPlugin = require('webpack/lib/optimize/UglifyJsPlugin');
 
 const { root, testDll } = require('./helpers.js');
 
-const EVENT = process.env.npm_lifecycle_event;
+const EVENT = process.env.npm_lifecycle_event || '';
 const AOT = EVENT.includes('aot');
 const DEV_SERVER = EVENT.includes('webdev');
 const DLL = EVENT.includes('dll');
