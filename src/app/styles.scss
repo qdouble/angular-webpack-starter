@@ -35,6 +35,16 @@ html, body {
   padding: 0; 
 }
 
+pre {
+  font-family: $primary-font;
+  font-size: 14px;
+  white-space: pre-wrap;
+  white-space: -moz-pre-wrap;
+  white-space: -pre-wrap;
+  white-space: -o-pre-wrap;
+  word-wrap: break-word;
+}
+
 /**
   * Basic styles from Material Design Lite for HTML elements
   */
