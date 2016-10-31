@@ -178,7 +178,7 @@
     "watch-run": "~1.2.4",
     "webpack": "2.1.0-beta.25",
     "webpack-dev-middleware": "~1.8.1",
-    "webpack-dev-server": "2.1.0-beta.4",
+    "webpack-dev-server": "2.1.0-beta.9",
     "webpack-merge": "~0.14.1"
   },
   "license": "Apache-2.0",
