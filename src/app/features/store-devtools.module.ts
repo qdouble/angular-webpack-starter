@@ -1,8 +1,7 @@
 import { CUSTOM_ELEMENTS_SCHEMA, NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 
-import { StoreDevtoolsModule } from '@ngrx/store-devtools';
-import { StoreLogMonitorModule, useLogMonitor } from '@ngrx/store-log-monitor';
+import { StoreLogMonitorModule } from '@ngrx/store-log-monitor';
 
 import { StoreDevToolsComponent } from './store-devtools.component';
 
@@ -11,13 +10,7 @@ const IMPORTS = [];
 if (ENV === 'development' && !AOT &&
   ['monitor', 'both'].includes(STORE_DEV_TOOLS) // set in constants.js file in project root
 ) IMPORTS.push(...[
-  StoreDevtoolsModule.instrumentStore({
-    monitor: useLogMonitor({
-      visible: true,
-      position: 'right'
-    })
-  }),
-  StoreLogMonitorModule,
+  StoreLogMonitorModule
 ]);
 
 @NgModule({
