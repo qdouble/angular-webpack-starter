@@ -1,5 +1,5 @@
 <md-sidenav-layout fullscreen>
-  <md-sidenav #sidenav [mode]="sideNavMode">
+  <md-sidenav [opened]="!mobile" #sidenav [mode]="sideNavMode">
     <md-nav-list>
       <template ngFor let-view [ngForOf]="views" let-even="even" let-odd="odd" let-rowIndex="index">
         <a md-list-item [routerLink]="view.link" routerLinkActive="active-link" (click)="mobile ? sidenav.close() : {}">

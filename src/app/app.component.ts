@@ -1,4 +1,4 @@
-import { AfterContentInit, Component, ViewChild, ViewEncapsulation } from '@angular/core';
+import { Component, OnInit, ViewChild, ViewEncapsulation } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
 import { MdSidenav } from '@angular/material';
 
@@ -11,7 +11,7 @@ import { MOBILE } from './services/constants';
   templateUrl: './app.component.html',
   encapsulation: ViewEncapsulation.None
 })
-export class AppComponent implements AfterContentInit {
+export class AppComponent implements OnInit {
   showMonitor = (ENV === 'development' && !AOT &&
     ['monitor', 'both'].includes(STORE_DEV_TOOLS) // set in constants.js file in project root
   );
@@ -25,14 +25,12 @@ export class AppComponent implements AfterContentInit {
     public router: Router
   ) { }
 
-  ngAfterContentInit() {
-    if (HMR) {
-      this.sidenav.open();
-    } else if (!MOBILE) {
-      setTimeout(() => {
-        this.sidenav.open();
-      });
-    }
+  ngOnInit() {
+    // Prevent sidenav from generating promise error when closing
+    this.sidenav._onTransitionEnd = function () {
+      this._openPromise = null;
+      this._closePromise = null;
+    };
   }
 
   activateEvent(event) {
