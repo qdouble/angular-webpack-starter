@@ -268,7 +268,9 @@ const clientConfig = function webpackConfig(): WebpackConfig {
   config.devServer = {
     contentBase: AOT ? './src/compiled' : './src',
     port: CONSTANTS.PORT,
-    historyApiFallback: true,
+    historyApiFallback: {
+      disableDotRule: true,
+    },
     host: '0.0.0.0',
     watchOptions: DEV_SERVER_WATCH_OPTIONS
   };
