@@ -27,6 +27,7 @@ const { ForkCheckerPlugin } = require('awesome-typescript-loader');
 const HtmlWebpackPlugin = require('html-webpack-plugin');
 const NamedModulesPlugin = require('webpack/lib/NamedModulesPlugin');
 const UglifyJsPlugin = require('webpack/lib/optimize/UglifyJsPlugin');
+const BundleAnalyzerPlugin = require('webpack-bundle-analyzer').BundleAnalyzerPlugin;
 
 const { hasProcessFlag, root, testDll } = require('./helpers.js');
 
@@ -182,7 +183,8 @@ const clientConfig = function webpackConfig(): WebpackConfig {
         threshold: 10240,
         minRatio: 0.8
       }),
-      ...MY_CLIENT_PRODUCTION_PLUGINS
+      new BundleAnalyzerPlugin(),
+      ...MY_CLIENT_PRODUCTION_PLUGINS,
     );
   }
 
