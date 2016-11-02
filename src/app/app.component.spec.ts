@@ -27,10 +27,10 @@ describe('App Component', () => {
     });
   });
 
-  it('should contain Dashboard text', async(() => {
+  it('should contain app text', async(() => {
     const fixture = TestBed.createComponent(AppComponent);
     fixture.detectChanges();
-    expect(fixture.nativeElement).not.toContainText('Welcome to the Dashboard');
+    expect(fixture.nativeElement).toContainText('Angular Starter App');
   }));
 
 });
