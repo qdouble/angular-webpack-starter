@@ -89,6 +89,7 @@ const DLL_VENDORS = [
 
 const COPY_FOLDERS = [
   { from: 'src/assets', to: 'assets' },
+  { from: 'src/app/styles.css' },
   ...MY_COPY_FOLDERS
 ];
 
