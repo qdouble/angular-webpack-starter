@@ -27,7 +27,7 @@ describe('App Component', () => {
     });
   });
 
-  it('should contain Dashboard text', async(() => {
+  it('should not contain Dashboard text', async(() => {
     const fixture = TestBed.createComponent(AppComponent);
     fixture.detectChanges();
     expect(fixture.nativeElement).not.toContainText('Welcome to the Dashboard');
