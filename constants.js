@@ -56,6 +56,12 @@ exports.MY_COPY_FOLDERS = [
   // format is { from: 'folder_name', to: 'folder_name' }
 ]
 
+exports.MY_POLYFILL_DLLS = [
+  // list polyfills that you want to be included in your dlls files
+  // this will speed up initial dev server build and incremental builds.
+  // Be sure to run `npm run build:dll` if you make changes to this array.
+]
+
 exports.MY_VENDOR_DLLS = [
   // list vendors that you want to be included in your dlls files
   // this will speed up initial dev server build and incremental builds.
