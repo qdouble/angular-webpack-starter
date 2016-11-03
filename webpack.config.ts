@@ -9,7 +9,8 @@ import {
   DEV_PORT, PROD_PORT, EXCLUDE_SOURCE_MAPS, HOST,
   USE_DEV_SERVER_PROXY, DEV_SERVER_PROXY_CONFIG, DEV_SERVER_WATCH_OPTIONS,
   DEV_SOURCE_MAPS, PROD_SOURCE_MAPS, STORE_DEV_TOOLS,
-  MY_COPY_FOLDERS, MY_VENDOR_DLLS, MY_CLIENT_PLUGINS, MY_CLIENT_PRODUCTION_PLUGINS, MY_CLIENT_RULES
+  MY_COPY_FOLDERS, MY_POLYFILL_DLLS, MY_VENDOR_DLLS, MY_CLIENT_PLUGINS,
+  MY_CLIENT_PRODUCTION_PLUGINS, MY_CLIENT_RULES
 } from './constants';
 
 const {
@@ -216,7 +217,8 @@ const clientConfig = function webpackConfig(): WebpackConfig {
         'events',
         'webpack-dev-server/client/socket.js',
         'webpack/hot/emitter.js',
-        'zone.js/dist/long-stack-trace-zone.js'
+        'zone.js/dist/long-stack-trace-zone.js',
+        ...MY_POLYFILL_DLLS
       ],
       vendor: [...DLL_VENDORS]
     };
