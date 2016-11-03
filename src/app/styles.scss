@@ -23,6 +23,11 @@ $theme: md-light-theme($primary, $accent, $warn);
 // that you are using.
 @include angular-material-theme($theme);
 
+// using Modernizer CSS classes to detect if browser supports the W3C Touch Events API
+:host-context(.mod-touchevents) [md-button]:hover::after, [md-icon-button]:hover::after {
+    content: none;
+}
+
 * {
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
