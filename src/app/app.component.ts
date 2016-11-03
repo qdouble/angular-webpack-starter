@@ -8,8 +8,7 @@ import { MOBILE } from './services/constants';
 @Component({
   selector: 'my-app',
   styleUrls: ['./app.component.css'],
-  templateUrl: './app.component.html',
-  encapsulation: ViewEncapsulation.None
+  templateUrl: './app.component.html'
 })
 export class AppComponent implements OnInit {
   showMonitor = (ENV === 'development' && !AOT &&
