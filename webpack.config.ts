@@ -36,6 +36,7 @@ const EVENT = process.env.npm_lifecycle_event || '';
 const AOT = EVENT.includes('aot');
 const DEV_SERVER = EVENT.includes('webdev');
 const DLL = EVENT.includes('dll');
+const E2E = EVENT.includes('e2e');
 const HMR = hasProcessFlag('hot');
 const PROD = EVENT.includes('prod');
 
@@ -183,9 +184,13 @@ const clientConfig = function webpackConfig(): WebpackConfig {
         threshold: 10240,
         minRatio: 0.8
       }),
-      new BundleAnalyzerPlugin(),
       ...MY_CLIENT_PRODUCTION_PLUGINS,
     );
+    if (!E2E) {
+      config.plugins.push(
+        new BundleAnalyzerPlugin()
+      );
+    }
   }
 
   config.cache = true;
