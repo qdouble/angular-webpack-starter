@@ -91,6 +91,7 @@ const COPY_FOLDERS = [
   { from: 'src/assets', to: 'assets' },
   { from: 'node_modules/hammerjs/hammer.min.js' },
   { from: 'node_modules/hammerjs/hammer.min.js.map' },
+  { from: 'src/app/main.css' },
   { from: 'src/app/styles.css' },
   ...MY_COPY_FOLDERS
 ];
