@@ -164,7 +164,7 @@ const clientConfig = function webpackConfig(): WebpackConfig {
     );
     if (!E2E) {
       config.plugins.push(
-        new BundleAnalyzerPlugin()
+        new BundleAnalyzerPlugin({analyzerPort: 5000})
       );
     }
   }
