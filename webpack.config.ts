@@ -197,7 +197,7 @@ const commonConfig = function webpackConfig(): WebpackConfig {
       }),
       ...MY_CLIENT_PRODUCTION_PLUGINS,
     );
-    if (!E2E) {
+    if (!E2E && !UNIVERSAL) {
       config.plugins.push(
         new BundleAnalyzerPlugin({analyzerPort: 5000})
       );
