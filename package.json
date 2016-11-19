@@ -91,7 +91,7 @@
     "codelyzer": "~1.0.0-beta.1",
     "compression": "1.6.2",
     "copy-webpack-plugin": "~4.0.0",
-    "css-loader": "~0.25.0",
+    "css-loader": "~0.26.0",
     "es6-promise": "~3.3.0",
     "es6-promise-loader": "~1.0.2",
     "express": "4.14.0",
