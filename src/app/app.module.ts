@@ -11,6 +11,7 @@ import { BrowserModule } from '@angular/platform-browser';
 import { HttpModule } from '@angular/http';
 
 import { APP_DECLARATIONS } from './app.declarations';
+import { APP_ENTRY_COMPONENTS } from './app.entry-components';
 import { APP_IMPORTS } from './app.imports';
 import { APP_PROVIDERS } from './app.providers';
 
@@ -21,6 +22,7 @@ import { AppComponent } from './app.component';
     AppComponent,
     APP_DECLARATIONS
   ],
+  entryComponents: [APP_ENTRY_COMPONENTS],
   imports: [
     APP_IMPORTS,
     BrowserModule,
