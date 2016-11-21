@@ -15,6 +15,7 @@ import { removeNgStyles, createNewHosts, createInputTransfer } from '@angularcla
 import { Store } from '@ngrx/store';
 
 import { APP_DECLARATIONS } from './app.declarations';
+import { APP_ENTRY_COMPONENTS } from './app.entry-components';
 import { APP_IMPORTS } from './app.imports';
 import { APP_PROVIDERS } from './app.providers';
 
@@ -27,6 +28,7 @@ import { AppState } from './reducers';
     AppComponent,
     APP_DECLARATIONS
   ],
+  entryComponents: [APP_ENTRY_COMPONENTS],
   imports: [
     APP_IMPORTS,
     BrowserModule,
