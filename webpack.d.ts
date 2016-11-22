@@ -18,6 +18,7 @@ interface WebpackConfig {
     inline?: boolean;
     proxy?: any;
     host?: string;
+    stats?: string;
     quiet?: boolean;
     noInfo?: boolean;
     watchOptions?: any;
