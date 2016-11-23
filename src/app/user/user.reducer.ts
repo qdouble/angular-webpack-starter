@@ -10,7 +10,7 @@ export interface UserState {
   loaded: boolean;
 };
 
-const initialState: UserState = {
+export const initialState: UserState = {
   user: { name: 'Angular User' },
   loading: false,
   loaded: true,
