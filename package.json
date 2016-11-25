@@ -71,15 +71,15 @@
     "watch:prod": "npm-run-all -p -r \"build:prod -- --watch\" sass:watch"
   },
   "dependencies": {
-    "@angular/common": "2.2.1",
-    "@angular/compiler": "2.2.1",
-    "@angular/compiler-cli": "2.2.1",
-    "@angular/core": "2.2.1",
-    "@angular/forms": "2.2.1",
-    "@angular/http": "2.2.1",
-    "@angular/platform-browser": "2.2.1",
-    "@angular/platform-browser-dynamic": "2.2.1",
-    "@angular/router": "3.2.1",
+    "@angular/common": "2.2.3",
+    "@angular/compiler": "2.2.3",
+    "@angular/compiler-cli": "2.2.3",
+    "@angular/core": "2.2.3",
+    "@angular/forms": "2.2.3",
+    "@angular/http": "2.2.3",
+    "@angular/platform-browser": "2.2.3",
+    "@angular/platform-browser-dynamic": "2.2.3",
+    "@angular/router": "3.2.3",
     "@angular/tsc-wrapped": "0.3.0",
     "@angularclass/hmr": "1.2.2",
     "@angularclass/hmr-loader": "3.0.2",
@@ -95,7 +95,7 @@
     "ngrx-store-freeze": "0.1.4",
     "ngrx-store-logger": "0.1.7",
     "rxjs": "5.0.0-beta.12",
-    "zone.js": "0.6.26"
+    "zone.js": "0.7.2"
   },
   "devDependencies": {
     "@types/core-js": "~0.9.33",
