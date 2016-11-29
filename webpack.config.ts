@@ -40,6 +40,7 @@ const DLL = EVENT.includes('dll');
 const E2E = EVENT.includes('e2e');
 const HMR = hasProcessFlag('hot');
 const PROD = EVENT.includes('prod');
+const WATCH = hasProcessFlag('watch');
 const UNIVERSAL = EVENT.includes('universal');
 
 let port: number;
@@ -197,7 +198,7 @@ const commonConfig = function webpackConfig(): WebpackConfig {
       }),
       ...MY_CLIENT_PRODUCTION_PLUGINS,
     );
-    if (!E2E && !UNIVERSAL) {
+    if (!E2E && !WATCH && !UNIVERSAL) {
       config.plugins.push(
         new BundleAnalyzerPlugin({analyzerPort: 5000})
       );
