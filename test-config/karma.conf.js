@@ -40,7 +40,7 @@ module.exports = function(config) {
     webpack: testWebpackConfig,
 
     coverageReporter: {
-      type: 'in-memory'
+      type: 'text'
     },
 
     remapCoverageReporter: {
