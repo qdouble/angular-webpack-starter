@@ -44,7 +44,7 @@ const resetOnLogout = (reducer: Function) => {
 };
 
 const DEV_REDUCERS = [stateSetter, storeFreeze];
-if (['logger', 'both'].includes(STORE_DEV_TOOLS)) { // set in constants.js file of project root
+if (['logger', 'both'].indexOf(STORE_DEV_TOOLS) !== -1 ) { // set in constants.js file of project root
     DEV_REDUCERS.push(storeLogger());
 }
 
