@@ -121,7 +121,7 @@
     "express": "4.14.0",
     "hammerjs": "~2.0.8",
     "methods": "1.1.2",
-    "ngrx-store-freeze": "0.1.4",
+    "ngrx-store-freeze": "0.1.5",
     "ngrx-store-logger": "0.1.7",
     "rxjs": "5.0.0-beta.12",
     "zone.js": "0.6.26"
@@ -137,7 +137,7 @@
     "@types/ip": "~0.0.29",
     "@types/jasmine": "~2.5.35",
     "@types/mime": "~0.0.29",
-    "@types/node": "~0.0.2",
+    "@types/node": "~6.0.52",
     "@types/protractor": "~1.5.20",
     "@types/selenium-webdriver": "~2.44.29",
     "@types/serve-static": "~1.7.31",
@@ -183,9 +183,9 @@
     "watch-run": "~1.2.4",
     "webpack": "2.1.0-beta.27",
     "webpack-bundle-analyzer": "^2.1.1",
-    "webpack-dev-middleware": "~1.8.1",
+    "webpack-dev-middleware": "~1.9.0",
     "webpack-dev-server": "2.1.0-beta.11",
-    "webpack-merge": "~1.0.2"
+    "webpack-merge": "~1.1.1"
   },
   "license": "Apache-2.0",
   "bugs": {
