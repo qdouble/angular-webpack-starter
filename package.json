@@ -103,12 +103,7 @@
     "@types/hammerjs": "~2.0.33",
     "@types/ip": "~0.0.29",
     "@types/jasmine": "~2.5.35",
-<<<<<<< HEAD
-    "@types/node": "~0.0.2",
-=======
-    "@types/mime": "~0.0.29",
     "@types/node": "~6.0.52",
->>>>>>> a594ec9... update packages
     "@types/protractor": "~1.5.20",
     "@types/selenium-webdriver": "~2.44.29",
     "angular-router-loader": "~0.4.0",
