@@ -102,12 +102,8 @@
     "@types/express": "~4.0.33",
     "@types/ip": "~0.0.29",
     "@types/jasmine": "~2.5.35",
-<<<<<<< HEAD
-    "@types/node": "~0.0.2",
-=======
     "@types/mime": "~0.0.29",
     "@types/node": "~6.0.52",
->>>>>>> a594ec9... update packages
     "@types/protractor": "~1.5.20",
     "@types/selenium-webdriver": "~2.44.29",
     "angular-router-loader": "~0.4.0",
@@ -131,7 +127,7 @@
     "karma-jasmine": "~1.0.2",
     "karma-mocha-reporter": "~2.2.0",
     "karma-phantomjs-launcher": "~1.0.2",
-    "karma-remap-coverage": "~0.1.1",
+    "karma-remap-coverage": "0.1.1",
     "karma-sourcemap-loader": "~0.3.7",
     "karma-webpack": "~1.8.0",
     "node-sass": "~3.13.0",
