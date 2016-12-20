@@ -10,17 +10,11 @@
     "skipDefaultLibCheck": true,
     "pretty": true,
     "sourceMap": true,
-    "strictNullChecks": false,
-    "typeRoots": [
-      "node_modules/@types"
-    ]
+    "strictNullChecks": false
   },
   "exclude": [
     "node_modules",
-    "src/compiled",
-    "src/**/*.e2e.ts",
-    "src/**/*.spec.ts",
-    "src/server.ts",
+    "e2e/**/*.ts",
     "src/main.browser.aot.ts"
   ],
   "awesomeTypescriptLoaderOptions": {
