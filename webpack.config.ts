@@ -24,7 +24,7 @@ const {
 
 const CompressionPlugin = require('compression-webpack-plugin');
 const CopyWebpackPlugin = require('copy-webpack-plugin');
-const { ForkCheckerPlugin } = require('awesome-typescript-loader');
+const { CheckerPlugin } = require('awesome-typescript-loader');
 const HtmlWebpackPlugin = require('html-webpack-plugin');
 const NamedModulesPlugin = require('webpack/lib/NamedModulesPlugin');
 const UglifyJsPlugin = require('webpack/lib/optimize/UglifyJsPlugin');
@@ -135,7 +135,7 @@ const clientConfig = function webpackConfig(): WebpackConfig {
       root('./src')
     ),
     new ProgressPlugin(),
-    new ForkCheckerPlugin(),
+    new CheckerPlugin(),
     new DefinePlugin(CONSTANTS),
     new NamedModulesPlugin(),
     ...MY_CLIENT_PLUGINS
