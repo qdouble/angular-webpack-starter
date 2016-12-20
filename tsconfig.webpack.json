@@ -10,7 +10,10 @@
     "skipDefaultLibCheck": true,
     "pretty": true,
     "sourceMap": true,
-    "strictNullChecks": false
+    "strictNullChecks": false,
+    "typeRoots": [
+      "node_modules/@types"
+    ]
   },
   "exclude": [
     "node_modules",

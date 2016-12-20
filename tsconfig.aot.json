@@ -11,7 +11,10 @@
     "lib": ["es5", "dom"],
     "noEmit": true,
     "strictNullChecks": false,
-    "skipDefaultLibCheck": true
+    "skipDefaultLibCheck": true,
+    "typeRoots": [
+      "node_modules/@types"
+    ]
   },
   "exclude": [
     "node_modules",
