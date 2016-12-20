@@ -144,10 +144,10 @@
     "tslint-loader": "~3.3.0",
     "typescript": "~2.0.10",
     "watch-run": "~1.2.4",
-    "webpack": "2.1.0-beta.27",
+    "webpack": "2.2.0-rc.1",
     "webpack-bundle-analyzer": "^2.1.1",
     "webpack-dev-middleware": "~1.9.0",
-    "webpack-dev-server": "2.1.0-beta.11"
+    "webpack-dev-server": "2.2.0-rc.0"
   },
   "license": "Apache-2.0",
   "bugs": {
