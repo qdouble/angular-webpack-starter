@@ -17,7 +17,6 @@
     "node_modules",
     "src/compiled",
     "e2e/**/*.ts",
-    "src/**/*.e2e.ts",
     "src/**/*.spec.ts",
     "src/server.ts"
   ],

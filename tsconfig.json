@@ -14,8 +14,7 @@
   },
   "exclude": [
     "node_modules",
-    "e2e/**/*.ts",
-    "src/main.browser.aot.ts"
+    "e2e/**/*.ts"
   ],
   "awesomeTypescriptLoaderOptions": {
     "useWebpackText": true,
