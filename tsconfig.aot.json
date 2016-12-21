@@ -19,10 +19,9 @@
   "exclude": [
     "node_modules",
     "src/compiled",
-    "src/**/*.e2e.ts",
+    "e2e/**/*.ts",
     "src/**/*.spec.ts",
-    "src/server.ts",
-    "src/main.browser.aot.ts"
+    "src/server.ts"
   ],
   "awesomeTypescriptLoaderOptions": {
     "useWebpackText": true,
