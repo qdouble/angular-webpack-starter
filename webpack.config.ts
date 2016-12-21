@@ -24,7 +24,7 @@ const {
 
 const CompressionPlugin = require('compression-webpack-plugin');
 const CopyWebpackPlugin = require('copy-webpack-plugin');
-const { ForkCheckerPlugin } = require('awesome-typescript-loader');
+const { CheckerPlugin } = require('awesome-typescript-loader');
 const HtmlWebpackPlugin = require('html-webpack-plugin');
 const NamedModulesPlugin = require('webpack/lib/NamedModulesPlugin');
 const UglifyJsPlugin = require('webpack/lib/optimize/UglifyJsPlugin');
@@ -118,7 +118,7 @@ const clientConfig = function webpackConfig(): WebpackConfig {
         test: /\.ts$/,
         loaders: [
           '@angularclass/hmr-loader',
-          'awesome-typescript-loader?tsconfig=tsconfig.webpack.json',
+          'awesome-typescript-loader?{configFileName: "tsconfig.webpack.json"}',
           'angular2-template-loader',
           'angular-router-loader?loader=system&genDir=src/compiled/src/app&aot=' + AOT
         ],
@@ -137,7 +137,7 @@ const clientConfig = function webpackConfig(): WebpackConfig {
       root('./src')
     ),
     new ProgressPlugin(),
-    new ForkCheckerPlugin(),
+    new CheckerPlugin(),
     new DefinePlugin(CONSTANTS),
     new NamedModulesPlugin(),
     ...MY_CLIENT_PLUGINS
