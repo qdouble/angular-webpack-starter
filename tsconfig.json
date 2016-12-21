@@ -17,7 +17,7 @@
   },
   "exclude": [
     "node_modules",
-    "src/compiled"
+    "e2e/**/*.ts"
   ],
   "awesomeTypescriptLoaderOptions": {
     "useWebpackText": true,
