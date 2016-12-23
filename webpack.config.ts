@@ -27,6 +27,7 @@ const HtmlWebpackPlugin = require('html-webpack-plugin');
 const NamedModulesPlugin = require('webpack/lib/NamedModulesPlugin');
 const UglifyJsPlugin = require('webpack/lib/optimize/UglifyJsPlugin');
 const BundleAnalyzerPlugin = require('webpack-bundle-analyzer').BundleAnalyzerPlugin;
+const WebpackMd5Hash = require('webpack-md5-hash');
 
 const { hasProcessFlag, root, testDll } = require('./helpers.js');
 
@@ -120,6 +121,11 @@ const clientConfig = function webpackConfig(): WebpackConfig {
     new CheckerPlugin(),
     new DefinePlugin(CONSTANTS),
     new NamedModulesPlugin(),
+    new WebpackMd5Hash(),
+    new HtmlWebpackPlugin({
+      template: 'src/index.html',
+      metadata: { isDevServer: DEV_SERVER }
+    }),
     ...MY_CLIENT_PLUGINS
   ];
 
@@ -132,10 +138,6 @@ const clientConfig = function webpackConfig(): WebpackConfig {
       new DllReferencePlugin({
         context: '.',
         manifest: require(`./dll/vendor-manifest.json`)
-      }),
-      new HtmlWebpackPlugin({
-        template: 'src/index.html',
-        inject: false
       })
     );
   }
@@ -209,7 +211,9 @@ const clientConfig = function webpackConfig(): WebpackConfig {
   if (!DLL) {
     config.output = {
       path: root('dist/client'),
-      filename: 'index.js'
+      filename: '[name].[chunkhash].bundle.js',
+      sourceMapFilename: '[name].[chunkhash].bundle.map',
+      chunkFilename: '[id].[chunkhash].chunk.js'
     };
   } else {
     config.output = {
