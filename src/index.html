@@ -21,10 +21,10 @@
 	<script type="text/javascript" src="hammer.min.js"></script>
 	<script type="text/javascript" src="modernizer-touch-events.min.js"></script>
 	<script src="https://cdn.polyfill.io/v2/polyfill.min.js?features=console.*,Intl.~locale.en&gated=1"></script>
-	<div id="str-dlls">
-		<%= '<' %>script src="/polyfill.dll.js"<%= '>' %><%= '<' %>/script<%= '>' %>
-		<%= '<' %>script src="/vendor.dll.js"<%= '>' %><%= '<' %>/script<%= '>' %>
-	</div>
-	<script src="/index.js"></script>
+	<% if (htmlWebpackPlugin.options.metadata.isDevServer) { %>
+  <!-- DLL files -->
+		<script src="/polyfill.dll.js"></script>
+		<script src="/vendor.dll.js"></script>
+  <% } %>
 </body>
 </html>
