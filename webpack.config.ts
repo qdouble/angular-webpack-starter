@@ -240,6 +240,10 @@ const clientConfig = function webpackConfig(): WebpackConfig {
     });
   }
 
+  config.performance = {
+    hints: false
+  };
+
   config.node = {
     global: true,
     process: true,

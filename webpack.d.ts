@@ -23,6 +23,9 @@ interface WebpackConfig {
     noInfo?: boolean;
     watchOptions?: any;
   };
+  performance?: {
+    hints?: boolean;
+  }
   node?: {
     process?: boolean;
     global?: boolean;
