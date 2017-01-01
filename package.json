@@ -122,7 +122,7 @@
     "tslint": "~4.1.1",
     "tslint-loader": "~3.3.0",
     "typescript": "~2.0.10",
-    "webpack": "2.2.0-rc.2",
+    "webpack": "2.2.0-rc.3",
     "webpack-bundle-analyzer": "^2.1.1",
     "webpack-dev-middleware": "~1.9.0",
     "webpack-dev-server": "2.2.0-rc.0",
