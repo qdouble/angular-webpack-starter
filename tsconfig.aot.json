@@ -18,7 +18,7 @@
   },
   "exclude": [
     "node_modules",
-    "src/compiled",
+    "compiled",
     "e2e/**/*.ts",
     "src/**/*.e2e.ts",
     "src/**/*.spec.ts",
@@ -38,7 +38,7 @@
   "buildOnSave": false,
   "atom": { "rewriteTsconfig": false },
   "angularCompilerOptions": {
-   "genDir": "src/compiled",
+   "genDir": "compiled",
    "skipMetadataEmit" : true
  }
 }
