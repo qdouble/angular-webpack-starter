@@ -1,5 +1,6 @@
 import { ReactiveFormsModule } from '@angular/forms';
-import { RouterModule, PreloadAllModules } from '@angular/router';
+import { RouterModule } from '@angular/router';
+import { IdlePreload, IdlePreloadModule } from '@angularclass/idle-preload';
 import { MaterialModule } from '@angular/material';
 
 import { EffectsModule } from '@ngrx/effects';
@@ -29,7 +30,8 @@ export const APP_IMPORTS = [
   EffectsModule.run(UserEffects),
   MaterialModule.forRoot(),
   ReactiveFormsModule,
-  RouterModule.forRoot(routes, { preloadingStrategy: PreloadAllModules }),
+  IdlePreloadModule.forRoot(), // forRoot ensures the providers are only created once
+  RouterModule.forRoot(routes, { useHash: false, preloadingStrategy: IdlePreload }),
   RouterStoreModule.connectRouter(),
   StoreModule.provideStore(rootReducer),
   STORE_DEV_TOOLS_IMPORTS,
