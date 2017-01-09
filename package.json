@@ -73,6 +73,7 @@
     "@angular/platform-browser-dynamic": "2.4.2",
     "@angular/router": "3.4.2",
     "@angular/tsc-wrapped": "0.5.1",
+    "@angularclass/idle-preload": "^1.0.4",
     "core-js": "2.4.1",
     "rxjs": "5.0.0-beta.12",
     "zone.js": "~0.7.4"

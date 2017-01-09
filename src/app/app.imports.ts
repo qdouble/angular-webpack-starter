@@ -1,10 +1,12 @@
 import { ReactiveFormsModule } from '@angular/forms';
-import { RouterModule, PreloadAllModules } from '@angular/router';
+import { RouterModule } from '@angular/router';
+import { IdlePreload, IdlePreloadModule } from '@angularclass/idle-preload';
 
 import { routes } from './app.routing';
 
 export const APP_IMPORTS = [
   ReactiveFormsModule,
-  RouterModule.forRoot(routes, { preloadingStrategy: PreloadAllModules })
+  IdlePreloadModule.forRoot(), // forRoot ensures the providers are only created once
+  RouterModule.forRoot(routes, { useHash: false, preloadingStrategy: IdlePreload })
 ];
 
