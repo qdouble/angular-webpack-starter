@@ -119,7 +119,7 @@ const clientConfig = function webpackConfig(): WebpackConfig {
           '@angularclass/hmr-loader',
           'awesome-typescript-loader?{configFileName: "tsconfig.webpack.json"}',
           'angular2-template-loader',
-          'angular-router-loader?loader=system&genDir=src/compiled/src/app&aot=' + AOT
+          'angular-router-loader?loader=system&genDir=compiled&aot=' + AOT
         ],
         exclude: [/\.(spec|e2e|d)\.ts$/]
       },
@@ -251,7 +251,7 @@ const clientConfig = function webpackConfig(): WebpackConfig {
   }
 
   config.devServer = {
-    contentBase: AOT ? './src/compiled' : './src',
+    contentBase: AOT ? './compiled' : './src',
     port: CONSTANTS.PORT,
     historyApiFallback: {
       disableDotRule: true,
