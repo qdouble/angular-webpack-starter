@@ -138,7 +138,7 @@
     "@types/jasmine": "~2.5.35",
     "@types/mime": "~0.0.29",
     "@types/node": "~6.0.52",
-    "@types/selenium-webdriver": "~2.44.29",
+    "@types/selenium-webdriver": "~2.53.29",
     "@types/serve-static": "~1.7.31",
     "angular-router-loader": "~0.5.0",
     "angular2-template-loader": "~0.6.0",
