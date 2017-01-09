@@ -4,7 +4,7 @@ declare var ENV: string;
 
 import { enableProdMode } from '@angular/core';
 import { platformBrowser } from '@angular/platform-browser';
-import { AppModuleNgFactory } from './compiled/src/app/app.module.ngfactory';
+import { AppModuleNgFactory } from '../compiled/src/app/app.module.ngfactory';
 
 if ('production' === ENV) {
   enableProdMode();
