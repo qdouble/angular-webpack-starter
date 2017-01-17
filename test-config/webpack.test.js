@@ -24,8 +24,6 @@ const STORE_DEV_TOOLS = require('../constants').STORE_DEV_TOOLS;
  */
 module.exports = {
 
-  entry: {},
-
   /**
    * Source map for Karma from the help of karma-sourcemap-loader &  karma-webpack
    *
