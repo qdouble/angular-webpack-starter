@@ -18,6 +18,7 @@
   "exclude": [
     "node_modules",
     "compiled",
+    "src/main.browser.aot.ts",
     "e2e/**/*.ts"
   ],
   "awesomeTypescriptLoaderOptions": {
