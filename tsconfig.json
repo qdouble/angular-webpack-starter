@@ -5,7 +5,7 @@
     "moduleResolution": "node",
     "emitDecoratorMetadata": true,
     "experimentalDecorators": true,
-    "lib": ["es5", "dom"],
+    "lib": ["es7","dom"],
     "noEmitHelpers": true,
     "skipDefaultLibCheck": true,
     "pretty": true,
