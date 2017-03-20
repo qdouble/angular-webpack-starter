@@ -136,7 +136,7 @@
     "@types/express-serve-static-core": "~4.0.37",
     "@types/hammerjs": "~2.0.33",
     "@types/ip": "~0.0.29",
-    "@types/jasmine": "~2.5.35",
+    "@types/jasmine": "2.5.41",
     "@types/mime": "~0.0.29",
     "@types/node": "~6.0.52",
     "@types/selenium-webdriver": "~2.44.29",
