@@ -8,7 +8,7 @@
     "noEmitHelpers": true,
     "pretty": false,
     "sourceMap": true,
-    "lib": ["es5", "dom"],
+    "lib": ["dom", "es6", "es2015", "es2016", "es2017"],
     "strictNullChecks": false,
     "skipDefaultLibCheck": true,
     "outDir": "output",
