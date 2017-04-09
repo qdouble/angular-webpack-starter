@@ -219,6 +219,7 @@ const clientConfig = function webpackConfig(): WebpackConfig {
         'url',
         'punycode',
         'events',
+        'web-animations-js/web-animations.min',
         'webpack-dev-server/client/socket.js',
         'webpack/hot/emitter.js',
         'zone.js/dist/long-stack-trace-zone.js',
