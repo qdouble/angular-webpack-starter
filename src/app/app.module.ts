@@ -3,7 +3,7 @@
  * 
  * Make sure to use the 3 constant APP_ imports so you don't have to keep
  * track of your root app dependencies here. Only import directly in this file if
- * there is something that is specific to the environment.  
+ * there is something that is specific to the environment.
  */
 
 import { ApplicationRef, NgModule } from '@angular/core';

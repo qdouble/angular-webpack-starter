@@ -1,3 +1,4 @@
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { ReactiveFormsModule } from '@angular/forms';
 import { RouterModule } from '@angular/router';
 import { IdlePreload, IdlePreloadModule } from '@angularclass/idle-preload';
@@ -27,8 +28,9 @@ if (ENV === 'development' && !AOT &&
 ]);
 
 export const APP_IMPORTS = [
+  BrowserAnimationsModule,
   EffectsModule.run(UserEffects),
-  MaterialModule.forRoot(),
+  // MaterialModule,
   ReactiveFormsModule,
   IdlePreloadModule.forRoot(), // forRoot ensures the providers are only created once
   RouterModule.forRoot(routes, { useHash: false, preloadingStrategy: IdlePreload }),
@@ -37,4 +39,3 @@ export const APP_IMPORTS = [
   STORE_DEV_TOOLS_IMPORTS,
   StoreDevToolsModule
 ];
-

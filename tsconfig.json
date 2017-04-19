@@ -19,7 +19,11 @@
     "node_modules",
     "compiled",
     "e2e/**/*.ts",
+    "src/server.ts",
+    "src/main.browser.aot.ts",
+    "src/main.browser.universal.ts",
     "src/main.browser.universal.aot.ts",
+    "src/app/app.module.universal.browser.ts",
     "src/app/app.module.universal.node.ts"
   ],
   "awesomeTypescriptLoaderOptions": {

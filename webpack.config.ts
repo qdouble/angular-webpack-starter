@@ -141,7 +141,7 @@ const commonConfig = function webpackConfig(): WebpackConfig {
 
   config.plugins = [
     new ContextReplacementPlugin(
-      /angular(\\|\/)core(\\|\/)(esm(\\|\/)src|src)(\\|\/)linker/,
+      /angular(\\|\/)core(\\|\/)@angular/,
       root('./src')
     ),
     new ProgressPlugin(),
