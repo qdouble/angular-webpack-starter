@@ -16,6 +16,9 @@
     </button> Angular Starter App
   </md-toolbar>
 <md-card id="my-page-card">-->
+  <ul *ngFor="let view of views">
+    <li><a [routerLink]="view.link">{{view.name}}</a></li>
+  </ul>
   <router-outlet (activate)="activateEvent($event)" (deactivate)="deactivateEvent($event)"></router-outlet>
 <!--</md-card>
 </md-sidenav-container>-->

@@ -1,69 +1,50 @@
-// the polyfills must be the first thing imported in node.js
+/* tslint:disable no-console */
+const compression = require('compression');
+import 'zone.js/dist/zone-node';
 import './polyfills.server';
 import './rxjs.imports';
-import 'angular2-universal-polyfills';
-
-import * as path from 'path';
 import * as express from 'express';
-import * as bodyParser from 'body-parser';
-import * as cookieParser from 'cookie-parser';
-import * as compression from 'compression';
-
-// Angular 2
-import { enableProdMode } from '@angular/core';
-// Angular 2 Universal
-import { createEngine } from 'angular2-express-engine';
-
-// App
-import { AppModule } from './app/app.module.universal.node';
+import * as path from 'path';
+import { platformServer, renderModuleFactory } from '@angular/platform-server';
+import { ServerAppModule } from './server.app.module';
+import { ngExpressEngine } from '@nguniversal/express-engine';
 import { routes } from './server.routes';
-import { HOST, UNIVERSAL_PORT } from '../constants';
-
-// enable prod for faster renders
+import { App } from './api/app';
+import { enableProdMode } from '@angular/core';
+import { UNIVERSAL_PORT } from '../constants';
 enableProdMode();
-
 const app = express();
-const ROOT = path.join(path.resolve(__dirname, '..'));
+const api = new App();
+const baseUrl = `http://localhost:${UNIVERSAL_PORT}`;
 
-// Express View
-app.engine('.html', createEngine({}));
-app.set('views', __dirname);
+app.engine('html', ngExpressEngine({
+  bootstrap: ServerAppModule
+}));
+
 app.set('view engine', 'html');
+app.set('views', 'src');
+
 app.use(compression());
-app.use(cookieParser('Angular 2 Universal'));
-app.use(bodyParser.json());
+app.use('/', express.static('dist', { index: false }));
+app.use('/assets', express.static(path.join(__dirname, 'assets'), { maxAge: 30 }));
 
-// Serve static files
-
-app.use('/assets', express.static(path.join(__dirname, 'assets'), {maxAge: 30}));
-app.use(express.static(path.join(ROOT, 'dist/client'), {index: false}));
-
-function ngApp(req, res) {
-  res.render('index', {
-    req,
-    res,
-    ngModule: AppModule,
-    preboot: true,
-    baseUrl: '/',
-    requestUrl: req.originalUrl,
-    originUrl: req.hostname
-  });
-}
-
-app.get('/', ngApp);
 routes.forEach(route => {
-  app.get(`/${route}`, ngApp);
-  app.get(`/${route}/*`, ngApp);
+  app.get('/' + route, (req, res) => {
+    console.time(`GET: ${req.originalUrl}`);
+    res.render('../dist/index', {
+      req: req,
+      res: res
+    });
+    console.timeEnd(`GET: ${req.originalUrl}`);
+  });
 });
 
-app.get('*', function(req, res) {
-  res.setHeader('Content-Type', 'application/json');
-  const pojo = { status: 404, message: 'No Content' };
-  const json = JSON.stringify(pojo, null, 2);
-  res.status(404).send(json);
+app.get('/data', (req, res) => {
+  console.time(`GET: ${req.originalUrl}`);
+  res.json(api.getData());
+  console.timeEnd(`GET: ${req.originalUrl}`);
 });
 
-// Server
-let server = app.listen(process.env.PORT || UNIVERSAL_PORT, () => {
-  console.log(`Listening on: http://${HOST}:${server.address().port}`);
+app.listen(UNIVERSAL_PORT, () => {
+  console.log(`Listening at ${baseUrl}`);
 });
