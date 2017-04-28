@@ -8,7 +8,7 @@
     "noEmitHelpers": true,
     "pretty": false,
     "sourceMap": true,
-    "lib": ["es5", "dom"],
+    "lib": ["dom", "es6", "es2015", "es2016", "es2017"],
     "noEmit": true,
     "strictNullChecks": false,
     "skipDefaultLibCheck": true,
@@ -23,11 +23,8 @@
     "src/**/*.e2e.ts",
     "src/**/*.spec.ts",
     "src/server.ts",
-    "src/main.browser.aot.ts",
-    "src/main.browser.universal.ts",
-    "src/main.browser.universal.aot.ts",
-    "src/app/app.module.universal.browser.ts",
-    "src/app/app.module.universal.node.ts"
+    "src/server.aot.ts",
+    "src/main.browser.aot.ts"
   ],
   "awesomeTypescriptLoaderOptions": {
     "useWebpackText": true,

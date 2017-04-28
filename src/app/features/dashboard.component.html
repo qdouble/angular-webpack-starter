@@ -1,5 +1,6 @@
 <section>
 	<h3> Welcome to the Dashboard {{user.name}}!</h3>
+  <ng-container *ngIf="testSub$ | async">Api test sub: {{ testSub$ | async }}</ng-container>
 	<form class="form-group" [formGroup]="form" (ngSubmit)="submitState()" autocomplete="off">
 		<div class="form-group">
 			<label for="password">Enter your name</label>

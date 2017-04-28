@@ -6,7 +6,7 @@ import './rxjs.imports';
 import * as express from 'express';
 import * as path from 'path';
 import { platformServer, renderModuleFactory } from '@angular/platform-server';
-import { ServerAppModule } from './app/server.app.module';
+import { ServerAppModuleNgFactory } from '../compiled/src/app/server.app.module.ngfactory';
 import { ngExpressEngine } from '@nguniversal/express-engine';
 import { routes } from './server.routes';
 import { App } from './mock-api/app';
@@ -18,7 +18,7 @@ const api = new App();
 const baseUrl = `http://localhost:${UNIVERSAL_PORT}`;
 
 app.engine('html', ngExpressEngine({
-  bootstrap: ServerAppModule
+  bootstrap: ServerAppModuleNgFactory
 }));
 
 app.set('view engine', 'html');
