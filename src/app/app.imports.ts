@@ -1,4 +1,3 @@
-import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { ReactiveFormsModule } from '@angular/forms';
 import { RouterModule, PreloadAllModules } from '@angular/router';
 
@@ -29,7 +28,6 @@ if (ENV === 'development' && !AOT &&
 ]);
 
 export const APP_IMPORTS = [
-  // BrowserAnimationsModule,
   EffectsModule.run(UserEffects),
   NgbModule.forRoot(),
   ReactiveFormsModule,

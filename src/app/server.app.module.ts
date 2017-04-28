@@ -1,3 +1,4 @@
+import { NoopAnimationsModule } from '@angular/platform-browser/animations';
 import { NgModule, APP_BOOTSTRAP_LISTENER, ApplicationRef } from '@angular/core';
 import { ServerModule } from '@angular/platform-server';
 import { ServerTransferStateModule } from '../modules/transfer-state/server-transfer-state.module';
@@ -34,6 +35,7 @@ export function onBootstrap(appRef: ApplicationRef, transferState: TransferState
     BrowserModule.withServerTransition({
       appId: 'my-app-id'
     }),
+    NoopAnimationsModule,
     ServerModule,
     ServerTransferStateModule,
     AppModule
