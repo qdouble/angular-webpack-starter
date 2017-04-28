@@ -6,7 +6,7 @@ import './rxjs.imports';
 import * as express from 'express';
 import * as path from 'path';
 import { platformServer, renderModuleFactory } from '@angular/platform-server';
-import { ServerAppModule } from './server.app.module';
+import { ServerAppModule } from './app/server.app.module';
 import { ngExpressEngine } from '@nguniversal/express-engine';
 import { routes } from './server.routes';
 import { App } from './api/app';

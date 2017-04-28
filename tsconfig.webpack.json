@@ -20,6 +20,7 @@
     "compiled",
     "e2e/**/*.ts",
     "src/server.ts",
+    "src/server.aot.ts",
     "src/main.browser.aot.ts"
   ],
   "awesomeTypescriptLoaderOptions": {
