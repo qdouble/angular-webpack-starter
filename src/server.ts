@@ -9,7 +9,7 @@ import { platformServer, renderModuleFactory } from '@angular/platform-server';
 import { ServerAppModule } from './app/server.app.module';
 import { ngExpressEngine } from '@nguniversal/express-engine';
 import { routes } from './server.routes';
-import { App } from './api/app';
+import { App } from './mock-api/app';
 import { enableProdMode } from '@angular/core';
 import { UNIVERSAL_PORT } from '../constants';
 enableProdMode();

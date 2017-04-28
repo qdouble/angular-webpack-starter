@@ -3,7 +3,9 @@
   <h3> Welcome to the Dashboard {{user.name}}!</h3>
 </header>
 <section>
+  <ng-container *ngIf="testSub$ | async">Api test sub: {{ testSub$ | async }}</ng-container>
   <form [formGroup]="form" (ngSubmit)="submitState()" autocomplete="off">
+    <input formControlName="name" [placeholder]="nameLabel">
     <!--<md-input-container> 
       <input mdInput formControlName="name" [placeholder]="nameLabel">
     </md-input-container>    -->
