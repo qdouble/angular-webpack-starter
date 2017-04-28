@@ -4,14 +4,14 @@ declare var ENV: string;
 
 import { enableProdMode } from '@angular/core';
 import { platformBrowser } from '@angular/platform-browser';
-import { AppModuleNgFactory } from '../compiled/src/app/app.module.ngfactory';
+import { BrowserAppModuleNgFactory } from '../compiled/src/app/browser.app.module.ngfactory';
 
 if ('production' === ENV) {
   enableProdMode();
 }
 
 export function main() {
-  return platformBrowser().bootstrapModuleFactory(AppModuleNgFactory)
+  return platformBrowser().bootstrapModuleFactory(BrowserAppModuleNgFactory)
     .catch(err => console.log(err));
 }
 

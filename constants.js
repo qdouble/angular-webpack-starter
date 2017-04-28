@@ -8,6 +8,8 @@ exports.E2E_PORT = 4201;
 exports.PROD_PORT = 8088;
 exports.UNIVERSAL_PORT = 8000;
 
+exports.SHOW_WEBPACK_BUNDLE_ANALYZER = false;
+
 /**
  * These constants set whether or not you will use proxy for Webpack DevServer
  * For advanced configuration details, go to:
