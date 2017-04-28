@@ -318,7 +318,7 @@ const clientConfig = function webpackConfig(): WebpackConfig {
 
 const serverConfig: WebpackConfig = {
   target: 'node',
-  entry: './src/server',
+  entry: AOT ? './src/server.aot' : './src/server',
   output: {
     filename: 'server.js',
     path: root('dist')

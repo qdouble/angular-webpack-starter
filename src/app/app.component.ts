@@ -19,13 +19,13 @@ export class AppComponent implements OnInit {
   views = views;
 
   constructor(
-    // private cache: TransferState,
+    private cache: TransferState,
     public route: ActivatedRoute,
     public router: Router
   ) { }
 
   ngOnInit() {
-    // this.cache.set('cached', true);
+    this.cache.set('cached', true);
   }
 
   activateEvent(event) {
