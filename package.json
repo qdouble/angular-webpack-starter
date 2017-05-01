@@ -1,6 +1,6 @@
 {
   "name": "angular-webpack2-starter",
-  "version": "2.0.0",
+  "version": "2.0.1",
   "description": "Angular and Webpack 2 Starter",
   "author": "Qdouble <qdouble@gmail.com>",
   "repository": {
@@ -180,6 +180,7 @@
     "tslint-loader": "~3.5.2",
     "typescript": "~2.3.1",
     "watch-run": "~1.2.5",
+    "web-animations-js": "^2.2.2",
     "webpack": "2.4.1",
     "webpack-bundle-analyzer": "^2.3.1",
     "webpack-dev-middleware": "~1.10.1",
