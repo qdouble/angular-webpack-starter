@@ -13,7 +13,6 @@ import { BrowserTransferStateModule } from '../modules/transfer-state/browser-tr
     BrowserModule.withServerTransition({
       appId: 'my-app-id'
     }),
-    BrowserTransferStateModule,
     AppModule
   ]
 })
