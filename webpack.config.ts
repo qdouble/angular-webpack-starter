@@ -217,6 +217,7 @@ const clientConfig = function webpackConfig(): WebpackConfig {
         'url',
         'punycode',
         'events',
+        'web-animations-js/web-animations.min.js',
         'webpack-dev-server/client/socket.js',
         'webpack/hot/emitter.js',
         'zone.js/dist/long-stack-trace-zone.js',
@@ -257,7 +258,7 @@ const clientConfig = function webpackConfig(): WebpackConfig {
     historyApiFallback: {
       disableDotRule: true,
     },
-    stats: 'minimal',
+    // stats: 'minimal',
     host: '0.0.0.0',
     watchOptions: DEV_SERVER_WATCH_OPTIONS
   };
