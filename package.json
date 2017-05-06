@@ -98,6 +98,7 @@
     "ngrx-store-freeze": "0.1.9",
     "ngrx-store-logger": "0.1.7",
     "rxjs": "~5.3.1",
+    "web-animations-js": "^2.2.2",
     "zone.js": "~0.8.9"
   },
   "devDependencies": {
@@ -145,7 +146,6 @@
     "tslint-loader": "~3.5.2",
     "typescript": "~2.3.2",
     "watch-run": "~1.2.5",
-    "web-animations-js": "^2.2.2",
     "webpack": "~2.5.0",
     "webpack-bundle-analyzer": "^2.3.1",
     "webpack-dev-middleware": "~1.10.1",
