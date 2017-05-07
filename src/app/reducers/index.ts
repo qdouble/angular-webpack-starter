@@ -15,10 +15,26 @@ export interface AppState {
   user: fromUser.UserState;
 }
 
-export const reducers = {
+export const EAGER_REDUCERS = {
   router: routerReducer,
   user: fromUser.userReducer
 };
+
+function deepCombineReducers(allReducers: any): ActionReducer<any> {
+  Object.getOwnPropertyNames(allReducers).forEach((prop) => {
+    if (allReducers.hasOwnProperty(prop)
+      && allReducers[prop] !== null
+      && typeof allReducers[prop] !== 'function') {
+      allReducers[prop] = deepCombineReducers(allReducers[prop]);
+    }
+  });
+  return combineReducers(allReducers);
+};
+
+export function createReducer(asyncReducers = {}): ActionReducer<any> {
+  let allReducers = Object.assign(EAGER_REDUCERS, asyncReducers);
+  return deepCombineReducers(allReducers);
+}
 
 // Generate a reducer to set the root state in dev mode for HMR
 function stateSetter(reducer: ActionReducer<any>): ActionReducer<any> {
@@ -49,8 +65,9 @@ if (['logger', 'both'].indexOf(STORE_DEV_TOOLS) !== -1 ) {
     DEV_REDUCERS.push(storeLogger());
 }
 
-const developmentReducer = compose(...DEV_REDUCERS, resetOnLogout, combineReducers)(reducers);
-const productionReducer = compose(resetOnLogout, combineReducers)(reducers);
+// tslint:disable-next-line:max-line-length
+const developmentReducer = compose(...DEV_REDUCERS, resetOnLogout)(createReducer());
+const productionReducer = compose(resetOnLogout)(createReducer());
 
 export function rootReducer(state: any, action: any) {
   if (ENV !== 'development') {
@@ -58,4 +75,4 @@ export function rootReducer(state: any, action: any) {
   } else {
     return developmentReducer(state, action);
   }
-}
+};
