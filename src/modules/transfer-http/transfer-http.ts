@@ -1,3 +1,4 @@
+/* tslint:disable: max-line-length no-shadowed-variable */
 import { Injectable } from '@angular/core';
 import {
   ConnectionBackend, Http, Request, RequestOptions,
@@ -82,10 +83,10 @@ export class TransferHttp {
     let url = uri;
 
     if (typeof uri !== 'string') {
-      url = uri.url
+      url = uri.url;
     }
 
-    const key = url + JSON.stringify(options)
+    const key = url + JSON.stringify(options);
 
     try {
       return this.resolveData(key);
@@ -104,10 +105,10 @@ export class TransferHttp {
     let url = uri;
 
     if (typeof uri !== 'string') {
-      url = uri.url
+      url = uri.url;
     }
 
-    const key = url + JSON.stringify(body) + JSON.stringify(options)
+    const key = url + JSON.stringify(body) + JSON.stringify(options);
 
     try {
 
