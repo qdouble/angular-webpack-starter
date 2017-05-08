@@ -20,7 +20,7 @@ export const EAGER_REDUCERS = {
   user: fromUser.userReducer
 };
 
-function deepCombineReducers(allReducers: any): ActionReducer<any> {
+const deepCombineReducers = (allReducers: any) => {
   Object.getOwnPropertyNames(allReducers).forEach((prop) => {
     if (allReducers.hasOwnProperty(prop)
       && allReducers[prop] !== null
@@ -31,7 +31,7 @@ function deepCombineReducers(allReducers: any): ActionReducer<any> {
   return combineReducers(allReducers);
 };
 
-export function createReducer(asyncReducers = {}): ActionReducer<any> {
+const createReducer = (asyncReducers = {}) => {
   let allReducers = { ...EAGER_REDUCERS, ...asyncReducers };
   return deepCombineReducers(allReducers);
 }

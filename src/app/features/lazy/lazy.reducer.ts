@@ -1,4 +1,4 @@
-import { AppState, createReducer, createNewRootReducer } from './../../reducers/index';
+import { AppState, createNewRootReducer } from './../../reducers/index';
 import { Store, ActionReducer, Action } from '@ngrx/store';
 
 export const INCREMENT = 'INCREMENT';
