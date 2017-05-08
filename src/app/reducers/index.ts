@@ -69,20 +69,16 @@ if (['logger', 'both'].indexOf(STORE_DEV_TOOLS) !== -1) {
 const developmentReducer = compose(...DEV_REDUCERS, resetOnLogout);
 const productionReducer = compose(resetOnLogout);
 
-export function rootReducer(state: any, action: any) {
+export function rootReducer(state: any, action: any, asyncReducer) {
   if (ENV !== 'development') {
-    return productionReducer(createReducer())(state, action);
+    return productionReducer(createReducer(asyncReducer))(state, action);
   } else {
-    return developmentReducer(createReducer())(state, action);
+    return developmentReducer(createReducer(asyncReducer))(state, action);
   }
 };
 
 export function createNewRootReducer(reducer: any): ActionReducer<any> {
   return function (state, action) {
-    if (ENV !== 'development') {
-      return productionReducer(createReducer(reducer))(state, action);
-    } else {
-      return developmentReducer(createReducer(reducer))(state, action);
-    }
+    return rootReducer(state, action, reducer);
   };
 }
