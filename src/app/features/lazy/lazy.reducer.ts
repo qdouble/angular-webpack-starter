@@ -1,5 +1,4 @@
-import { LazyState } from './lazy.reducer';
-import { AppState, createReducer, rootReducer, EAGER_REDUCERS } from './../../reducers/index';
+import { AppState, createReducer, createNewRootReducer } from './../../reducers/index';
 import { Store, ActionReducer, Action } from '@ngrx/store';
 
 export const INCREMENT = 'INCREMENT';
@@ -41,11 +40,9 @@ export interface AppStateWithLazy extends AppState {
     lazy: LazyState;
 };
 
-export const appReducerWithLazy = createReducer({ lazy: lazyReducer });
-
 export class StoreWithLazy extends Store<AppStateWithLazy> { }
 
 export function lazyStoreFactory(appStore: Store<AppState>) {
-    appStore.replaceReducer(appReducerWithLazy);
+    appStore.replaceReducer(createNewRootReducer({ lazy: lazyReducer }));
     return appStore;
 }

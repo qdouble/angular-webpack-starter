@@ -1,15 +1,18 @@
 import {
   StoreWithLazy,
+  lazyStoreFactory,
   INCREMENT,
   DECREMENT,
   RESET
 } from './lazy.reducer';
 import { Observable } from 'rxjs/Observable';
 import { Component } from '@angular/core';
+import { Store } from '@ngrx/store';
 
 @Component({
   selector: 'my-lazy',
-  templateUrl: './lazy.component.html'
+  templateUrl: './lazy.component.html',
+  providers: [ { provide: StoreWithLazy, useFactory: lazyStoreFactory, deps: [Store]}]
 })
 
 export class LazyComponent {

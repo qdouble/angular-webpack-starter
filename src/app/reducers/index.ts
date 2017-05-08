@@ -32,7 +32,7 @@ function deepCombineReducers(allReducers: any): ActionReducer<any> {
 };
 
 export function createReducer(asyncReducers = {}): ActionReducer<any> {
-  let allReducers = Object.assign(EAGER_REDUCERS, asyncReducers);
+  let allReducers = { ...EAGER_REDUCERS, ...asyncReducers };
   return deepCombineReducers(allReducers);
 }
 
@@ -61,18 +61,28 @@ const resetOnLogout = (reducer: Function) => {
 
 const DEV_REDUCERS = [stateSetter, storeFreeze];
 // set in constants.js file of project root
-if (['logger', 'both'].indexOf(STORE_DEV_TOOLS) !== -1 ) {
-    DEV_REDUCERS.push(storeLogger());
+if (['logger', 'both'].indexOf(STORE_DEV_TOOLS) !== -1) {
+  DEV_REDUCERS.push(storeLogger());
 }
 
 // tslint:disable-next-line:max-line-length
-const developmentReducer = compose(...DEV_REDUCERS, resetOnLogout)(createReducer());
-const productionReducer = compose(resetOnLogout)(createReducer());
+const developmentReducer = compose(...DEV_REDUCERS, resetOnLogout);
+const productionReducer = compose(resetOnLogout);
 
 export function rootReducer(state: any, action: any) {
   if (ENV !== 'development') {
-    return productionReducer(state, action);
+    return productionReducer(createReducer())(state, action);
   } else {
-    return developmentReducer(state, action);
+    return developmentReducer(createReducer())(state, action);
   }
 };
+
+export function createNewRootReducer(reducer: any): ActionReducer<any> {
+  return function (state, action) {
+    if (ENV !== 'development') {
+      return productionReducer(createReducer(reducer))(state, action);
+    } else {
+      return developmentReducer(createReducer(reducer))(state, action);
+    }
+  };
+}
