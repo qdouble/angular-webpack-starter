@@ -34,7 +34,7 @@ const deepCombineReducers = (allReducers: any) => {
 const createReducer = (asyncReducers = {}) => {
   let allReducers = { ...EAGER_REDUCERS, ...asyncReducers };
   return deepCombineReducers(allReducers);
-}
+};
 
 // Generate a reducer to set the root state in dev mode for HMR
 function stateSetter(reducer: ActionReducer<any>): ActionReducer<any> {
