@@ -1,9 +1,8 @@
-import { AppState, createNewRootReducer } from './../../reducers/index';
 import { Store, ActionReducer, Action } from '@ngrx/store';
 
-export const INCREMENT = 'INCREMENT';
-export const DECREMENT = 'DECREMENT';
-export const RESET = 'RESET';
+import { AppState, createNewRootReducer } from './../../reducers/index';
+
+import { LazyActions } from './lazy.actions';
 
 export interface LazyState {
     counter: number;
@@ -15,22 +14,25 @@ const initialState: LazyState = {
 
 export function lazyReducer(state: LazyState = initialState, action: Action) {
     switch (action.type) {
-        case INCREMENT:
+
+        case LazyActions.DECREMENT:
+            return {
+                ...state,
+                counter: state.counter - 1
+            };
+
+        case LazyActions.INCREMENT:
             return {
                 ...state,
                 counter: state.counter + 1
             };
 
-        case DECREMENT:
-            return {
-                ...state,
-                counter: state.counter - 1
-            };
-        case RESET:
+        case LazyActions.RESET:
             return {
                 ...state,
                 counter: 0
             };
+
         default:
             return state;
     }

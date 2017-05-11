@@ -20,9 +20,10 @@ export function userReducer(state = initialState, action: Action): UserState {
   switch (action.type) {
 
     case UserActions.EDIT_USER: {
-      return Object.assign({}, state, {
+      return {
+        ...state,
         user: action.payload
-      });
+      };
     }
 
     default: {
@@ -30,4 +31,3 @@ export function userReducer(state = initialState, action: Action): UserState {
     }
   }
 }
-
