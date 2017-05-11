@@ -1,5 +1,10 @@
 <header>
   <h5>
     This module is being loaded lazily.
+
+		<div>Current Count: {{ counter | async }}</div>
+    <button (click)="increment()">Increment</button>
+		<button (click)="decrement()">Decrement</button>
+		<button (click)="reset()">Reset Counter</button>
   </h5>
 </header>
