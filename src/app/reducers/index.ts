@@ -15,7 +15,7 @@ export interface AppState {
   user: fromUser.UserState;
 }
 
-export const EAGER_REDUCERS = {
+export const syncReducers = {
   router: routerReducer,
   user: fromUser.userReducer
 };
@@ -32,7 +32,7 @@ const deepCombineReducers = (allReducers: any) => {
 };
 
 const createReducer = (asyncReducers = {}) => {
-  let allReducers = { ...EAGER_REDUCERS, ...asyncReducers };
+  let allReducers = { ...syncReducers, ...asyncReducers };
   return deepCombineReducers(allReducers);
 };
 
