@@ -15,9 +15,25 @@ export interface AppState {
   user: fromUser.UserState;
 }
 
-export const reducers = {
+export const EAGER_REDUCERS = {
   router: routerReducer,
   user: fromUser.userReducer
+};
+
+const deepCombineReducers = (allReducers: any) => {
+  Object.getOwnPropertyNames(allReducers).forEach((prop) => {
+    if (allReducers.hasOwnProperty(prop)
+      && allReducers[prop] !== null
+      && typeof allReducers[prop] !== 'function') {
+      allReducers[prop] = deepCombineReducers(allReducers[prop]);
+    }
+  });
+  return combineReducers(allReducers);
+};
+
+const createReducer = (asyncReducers = {}) => {
+  let allReducers = { ...EAGER_REDUCERS, ...asyncReducers };
+  return deepCombineReducers(allReducers);
 };
 
 // Generate a reducer to set the root state in dev mode for HMR
@@ -45,17 +61,24 @@ const resetOnLogout = (reducer: Function) => {
 
 const DEV_REDUCERS = [stateSetter, storeFreeze];
 // set in constants.js file of project root
-if (['logger', 'both'].indexOf(STORE_DEV_TOOLS) !== -1 ) {
-    DEV_REDUCERS.push(storeLogger());
+if (['logger', 'both'].indexOf(STORE_DEV_TOOLS) !== -1) {
+  DEV_REDUCERS.push(storeLogger());
 }
 
-const developmentReducer = compose(...DEV_REDUCERS, resetOnLogout, combineReducers)(reducers);
-const productionReducer = compose(resetOnLogout, combineReducers)(reducers);
+// tslint:disable-next-line:max-line-length
+const developmentReducer = compose(...DEV_REDUCERS, resetOnLogout);
+const productionReducer = compose(resetOnLogout);
 
-export function rootReducer(state: any, action: any) {
+export function rootReducer(state: any, action: any, asyncReducer) {
   if (ENV !== 'development') {
-    return productionReducer(state, action);
+    return productionReducer(createReducer(asyncReducer))(state, action);
   } else {
-    return developmentReducer(state, action);
+    return developmentReducer(createReducer(asyncReducer))(state, action);
   }
+};
+
+export function createNewRootReducer(reducer: any): ActionReducer<any> {
+  return function (state, action) {
+    return rootReducer(state, action, reducer);
+  };
 }
