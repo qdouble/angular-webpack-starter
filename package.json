@@ -97,7 +97,7 @@
     "ip": "~1.1.5",
     "ngrx-store-freeze": "0.1.9",
     "ngrx-store-logger": "0.1.7",
-    "rxjs": "~5.3.1",
+    "rxjs": "~5.4.0",
     "web-animations-js": "^2.2.2",
     "zone.js": "~0.8.9"
   },
