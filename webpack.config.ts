@@ -316,7 +316,7 @@ const clientConfig = function webpackConfig(): WebpackConfig {
 
   return config;
 
-} ();
+}();
 
 const serverConfig: WebpackConfig = {
   target: 'node',
@@ -324,7 +324,22 @@ const serverConfig: WebpackConfig = {
   output: {
     filename: 'server.js',
     path: root('dist')
-  }
+  },
+  module: {
+    rules: [
+      {
+        test: /@angular(\\|\/)material/,
+        loader: 'imports-loader',
+        options: {
+          window: '>global',
+          'CSS': '>null',
+          navigator: '>{get userAgent(){ return \'Chrome\'; }}',
+          document: '>global.document',
+        },
+      },
+    ]
+  },
+
 };
 
 const defaultConfig = {
