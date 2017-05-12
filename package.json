@@ -78,7 +78,7 @@
     "@angular/core": "~4.1.0",
     "@angular/forms": "~4.1.0",
     "@angular/http": "~4.1.0",
-    "@angular/material": "2.0.0-beta.3",
+    "@angular/material": "2.0.0-beta.4",
     "@angular/platform-browser": "~4.1.0",
     "@angular/platform-browser-dynamic": "~4.1.0",
     "@angular/router": "~4.1.0",
@@ -97,7 +97,7 @@
     "ip": "~1.1.5",
     "ngrx-store-freeze": "0.1.9",
     "ngrx-store-logger": "0.1.7",
-    "rxjs": "~5.3.1",
+    "rxjs": "~5.4.0",
     "web-animations-js": "^2.2.2",
     "zone.js": "~0.8.9"
   },
