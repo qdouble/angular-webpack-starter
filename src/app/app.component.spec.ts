@@ -22,7 +22,7 @@ describe('App Component', () => {
     TestBed.configureTestingModule({
       imports: [
         BrowserTransferStateModule,
-        MaterialModule.forRoot(),
+        MaterialModule,
         ReactiveFormsModule,
         RouterTestingModule.withRoutes(routes),
         StoreDevToolsModule
