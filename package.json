@@ -111,7 +111,7 @@
     "@ngrx/store": "2.2.2",
     "@ngrx/store-devtools": "3.2.4",
     "@ngrx/store-log-monitor": "3.0.2",
-    "@nguniversal/express-engine": "1.0.0-beta.0",
+    "@nguniversal/express-engine": "1.0.0-beta.1",
     "body-parser": "1.17.1",
     "bootstrap": "4.0.0-alpha.6",
     "compression": "1.6.2",
@@ -123,7 +123,7 @@
     "methods": "1.1.2",
     "ngrx-store-freeze": "0.1.9",
     "ngrx-store-logger": "0.1.7",
-    "rxjs": "~5.3.1",
+    "rxjs": "~5.4.0",
     "script-ext-html-webpack-plugin": "^1.7.1",
     "web-animations-js": "^2.2.2",
     "zone.js": "~0.8.9"
