@@ -31,6 +31,7 @@ const NamedModulesPlugin = require('webpack/lib/NamedModulesPlugin');
 const ScriptExtPlugin = require('script-ext-html-webpack-plugin');
 const UglifyJsPlugin = require('webpack/lib/optimize/UglifyJsPlugin');
 const webpackMerge = require('webpack-merge');
+const { getAotPlugin } = require('./webpack.aot');
 
 const { hasProcessFlag, includeClientPackages, root, testDll } = require('./helpers.js');
 
@@ -128,9 +129,10 @@ const commonConfig = function webpackConfig(): WebpackConfig {
         test: /\.ts$/,
         loaders: [
           '@angularclass/hmr-loader',
-          'awesome-typescript-loader?{configFileName: "tsconfig.webpack.json"}',
-          'angular2-template-loader',
-          'angular-router-loader?loader=system&genDir=compiled&aot=' + AOT
+          // 'awesome-typescript-loader?{configFileName: "tsconfig.webpack.json"}',
+          // 'angular2-template-loader',
+          '@ngtools/webpack',
+          'angular-router-loader?loader=system&genDir=compiled&aot=' + AOT,
         ],
         exclude: [/\.(spec|e2e|d)\.ts$/]
       },
@@ -213,7 +215,7 @@ const clientConfig = function webpackConfig(): WebpackConfig {
 
   config.cache = true;
   PROD ? config.devtool = PROD_SOURCE_MAPS : config.devtool = DEV_SOURCE_MAPS;
-  config.plugins = [];
+  config.plugins = [getAotPlugin('client', AOT)];
 
   if (PROD) {
     config.plugins.push(
