@@ -40,7 +40,7 @@ export function lazyReducer(state: LazyState = initialState, action: Action) {
 
 export interface AppStateWithLazy extends AppState {
     lazy: LazyState;
-};
+}
 
 export class StoreWithLazy extends Store<AppStateWithLazy> { }
 

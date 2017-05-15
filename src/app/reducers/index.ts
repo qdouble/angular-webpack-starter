@@ -75,7 +75,7 @@ export function rootReducer(state: any, action: any, asyncReducer) {
   } else {
     return developmentReducer(createReducer(asyncReducer))(state, action);
   }
-};
+}
 
 export function createNewRootReducer(reducer: any): ActionReducer<any> {
   return function (state, action) {
