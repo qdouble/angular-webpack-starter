@@ -8,7 +8,7 @@ export interface UserState {
   user: User;
   loading: boolean;
   loaded: boolean;
-};
+}
 
 export const initialState: UserState = {
   user: { name: 'Angular User' },
