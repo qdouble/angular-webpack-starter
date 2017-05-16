@@ -6,9 +6,14 @@ const tsconfigs = {
   server: root('./src/tsconfig.server.json')
 };
 
+const aotTsconfigs = {
+  client: root('./src/tsconfig.browser.json'),
+  server: root('./src/tsconfig.server.aot.json')
+};
+
 function getAotPlugin(platform, aot) {
   return new AotPlugin({
-    tsConfigPath: tsconfigs[platform],
+    tsConfigPath: aot ? aotTsconfigs[platform] : tsconfigs[platform],
     skipCodeGeneration: !aot
   });
 }
