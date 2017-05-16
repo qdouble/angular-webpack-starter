@@ -41,7 +41,6 @@ const DLL = EVENT.includes('dll');
 const E2E = EVENT.includes('e2e');
 const HMR = hasProcessFlag('hot');
 const PROD = EVENT.includes('prod');
-const SERVER = EVENT.includes('server');
 const WATCH = hasProcessFlag('watch');
 
 let port: number;
