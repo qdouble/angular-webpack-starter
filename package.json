@@ -12,7 +12,10 @@
     "rimraf": "rimraf",
     "webdev": "webpack-dev-server",
     "webpack": "webpack",
+<<<<<<< HEAD
     "ngc": "./node_modules/.bin/ngc -p tsconfig.aot.json && npm run rimraf -- output",
+=======
+>>>>>>> b7aebd5... cleanup and fix sass script
     "webdriver-manager": "webdriver-manager",
     "webdriver:update": "npm run webdriver-manager update",
     "webdriver:start": "npm run webdriver-manager start",
