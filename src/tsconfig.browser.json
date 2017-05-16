@@ -1,0 +1,9 @@
+{
+  "extends": "../tsconfig.webpack.json",
+  "angularCompilerOptions": {
+    "entryModule": "./app/browser.app.module#BrowserAppModule"
+  },
+  "exclude": [
+    "./server.aot.ts"
+  ]
+}

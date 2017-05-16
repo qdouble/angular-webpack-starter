@@ -120,6 +120,11 @@ module.exports = {
        */
       { test: /\.css$/, loaders: ['to-string-loader', 'css-loader'], exclude: [root('src/index.html')] },
 
+      {
+        test: /\.scss$/,
+        loaders: ['to-string-loader', 'css-loader', 'sass-loader']
+      },
+
       /**
        * Raw loader support for *.html
        * Returns file content as string

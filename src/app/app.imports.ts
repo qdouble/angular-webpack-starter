@@ -10,7 +10,6 @@ import { useLogMonitor } from '@ngrx/store-log-monitor';
 import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 import { TransferHttpModule } from '../modules/transfer-http/transfer-http.module';
 
-import { routes } from './app.routing';
 import { rootReducer } from './reducers';
 import { StoreDevToolsModule } from './features/store-devtools.module';
 import { UserEffects } from './user/user.effects';
@@ -31,7 +30,6 @@ export const APP_IMPORTS = [
   EffectsModule.run(UserEffects),
   NgbModule.forRoot(),
   ReactiveFormsModule,
-  RouterModule.forRoot(routes, { preloadingStrategy: PreloadAllModules }),
   RouterStoreModule.connectRouter(),
   StoreModule.provideStore(rootReducer),
   STORE_DEV_TOOLS_IMPORTS,
