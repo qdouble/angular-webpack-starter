@@ -27,7 +27,7 @@ npm-debug.log
 /output/
 /compiled/
 .awcache/
-/src/app/**/*.css
+/src/app/styles.css
 ts-node
 /**/*.ngfactory.ts
 /**/*.css.ts
