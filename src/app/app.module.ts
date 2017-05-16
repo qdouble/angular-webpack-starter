@@ -9,11 +9,15 @@
 import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
 import { HttpModule } from '@angular/http';
+import { RouterModule, PreloadAllModules } from '@angular/router';
+import { IdlePreload, IdlePreloadModule } from '@angularclass/idle-preload';
 
 import { APP_DECLARATIONS } from './app.declarations';
 import { APP_ENTRY_COMPONENTS } from './app.entry-components';
 import { APP_IMPORTS } from './app.imports';
 import { APP_PROVIDERS } from './app.providers';
+
+import { routes } from './app.routing';
 
 import { AppComponent } from './app.component';
 
@@ -24,11 +28,14 @@ import { AppComponent } from './app.component';
   ],
   entryComponents: [APP_ENTRY_COMPONENTS],
   imports: [
-    APP_IMPORTS,
     BrowserModule,
     HttpModule,
+    APP_IMPORTS,
+    IdlePreloadModule.forRoot(), // forRoot ensures the providers are only created once
+    RouterModule.forRoot(routes, { useHash: false, preloadingStrategy: IdlePreload }),
   ],
   bootstrap: [AppComponent],
+  exports: [AppComponent],
   providers: [APP_PROVIDERS]
 })
 

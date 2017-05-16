@@ -4,7 +4,7 @@ import { views } from './app-nav-views';
 
 @Component({
   selector: 'my-app',
-  styleUrls: ['./app.component.css'],
+  styleUrls: ['./app.component.scss'],
   templateUrl: './app.component.html',
   encapsulation: ViewEncapsulation.None
 })

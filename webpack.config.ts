@@ -14,7 +14,6 @@ import {
 } from './constants';
 
 const {
-  ContextReplacementPlugin,
   DefinePlugin,
   DllPlugin,
   DllReferencePlugin,
@@ -29,6 +28,7 @@ const NamedModulesPlugin = require('webpack/lib/NamedModulesPlugin');
 const UglifyJsPlugin = require('webpack/lib/optimize/UglifyJsPlugin');
 const BundleAnalyzerPlugin = require('webpack-bundle-analyzer').BundleAnalyzerPlugin;
 const WebpackMd5Hash = require('webpack-md5-hash');
+const { getAotPlugin } = require('./webpack.aot');
 
 const { hasProcessFlag, root, testDll } = require('./helpers.js');
 
@@ -38,6 +38,7 @@ const DEV_SERVER = EVENT.includes('webdev');
 const DLL = EVENT.includes('dll');
 const E2E = EVENT.includes('e2e');
 const PROD = EVENT.includes('prod');
+const SERVER = EVENT.includes('server');
 const WATCH = hasProcessFlag('watch');
 
 let port: number;
@@ -100,24 +101,23 @@ const clientConfig = function webpackConfig(): WebpackConfig {
       {
         test: /\.ts$/,
         loaders: [
-          'awesome-typescript-loader?{configFileName: "tsconfig.webpack.json"}',
-          'angular2-template-loader',
-          'angular-router-loader?loader=system&genDir=compiled&aot=' + AOT
+          '@ngtools/webpack'
         ],
         exclude: [/\.(spec|e2e|d)\.ts$/]
       },
       { test: /\.json$/, loader: 'json-loader' },
       { test: /\.html/, loader: 'raw-loader', exclude: [root('src/index.html')] },
       { test: /\.css$/, loader: 'raw-loader' },
+      {
+        test: /\.scss$/,
+        loaders: ['to-string-loader', 'css-loader', 'sass-loader']
+      },
       ...MY_CLIENT_RULES
     ]
   };
 
   config.plugins = [
-    new ContextReplacementPlugin(
-      /angular(\\|\/)core(\\|\/)@angular/,
-      path.resolve(__dirname, '../src')
-    ),
+    getAotPlugin('client', AOT),
     new ProgressPlugin(),
     new CheckerPlugin(),
     new DefinePlugin(CONSTANTS),
@@ -174,6 +174,7 @@ const clientConfig = function webpackConfig(): WebpackConfig {
   }
 
   config.cache = true;
+  config.target = 'web';
   PROD ? config.devtool = PROD_SOURCE_MAPS : config.devtool = DEV_SOURCE_MAPS;
 
   if (DLL) {
@@ -199,15 +200,9 @@ const clientConfig = function webpackConfig(): WebpackConfig {
       vendor: [...DLL_VENDORS]
     };
   } else {
-    if (AOT) {
-        config.entry = {
-          main: './src/main.browser.aot'
-        };
-      } else {
-        config.entry = {
-          main: './src/main.browser'
-        };
-      }
+    config.entry = {
+      main: root('./src/main.browser.ts')
+    };
   }
   if (!DLL) {
     config.output = {
@@ -263,7 +258,8 @@ const clientConfig = function webpackConfig(): WebpackConfig {
 
   return config;
 
-} ();
+}();
+
 
 DLL ? console.log('BUILDING DLLs') : console.log('BUILDING APP');
 module.exports = clientConfig;
