@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component, ViewEncapsulation } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
 
 import { views } from './app-nav-views';
@@ -6,8 +6,9 @@ import { MOBILE } from './services/constants';
 
 @Component({
   selector: 'my-app',
-  styleUrls: ['./app.component.css'],
-  templateUrl: './app.component.html'
+  styleUrls: ['main.scss', './app.component.scss'],
+  templateUrl: './app.component.html',
+  encapsulation: ViewEncapsulation.None
 })
 export class AppComponent {
   showMonitor = (ENV === 'development' && !AOT &&
