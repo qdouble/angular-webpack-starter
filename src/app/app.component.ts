@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, ViewEncapsulation } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
 import { TransferState } from '../modules/transfer-state/transfer-state';
 
@@ -7,8 +7,9 @@ import { MOBILE } from './services/constants';
 
 @Component({
   selector: 'my-app',
-  styleUrls: ['./app.component.css'],
-  templateUrl: './app.component.html'
+  styleUrls: ['main.scss', './app.component.scss'],
+  templateUrl: './app.component.html',
+  encapsulation: ViewEncapsulation.None
 })
 export class AppComponent implements OnInit {
   showMonitor = (ENV === 'development' && !AOT &&

@@ -104,7 +104,6 @@ const COPY_FOLDERS = [
   { from: 'src/assets', to: 'assets' },
   { from: 'node_modules/hammerjs/hammer.min.js' },
   { from: 'node_modules/hammerjs/hammer.min.js.map' },
-  { from: 'src/app/main.css' },
   { from: 'src/app/styles.css' },
   ...MY_COPY_FOLDERS
 ];
@@ -136,6 +135,10 @@ const commonConfig = function webpackConfig(): WebpackConfig {
       { test: /\.json$/, loader: 'json-loader' },
       { test: /\.html/, loader: 'raw-loader', exclude: [root('src/index.html')] },
       { test: /\.css$/, loader: 'raw-loader' },
+        {
+        test: /\.scss$/,
+        loaders: ['to-string-loader', 'css-loader', 'sass-loader']
+      },
       ...MY_CLIENT_RULES
     ]
   };
