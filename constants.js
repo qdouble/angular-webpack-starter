@@ -82,18 +82,10 @@ exports.MY_CLIENT_RULES = [
   // use this to import your own rules for Client webpack config.
 ]
 
-exports.MY_SERVER_RULES = [
-  // use this to import your own rules for Universal Server webpack config.
-]
-
 exports.MY_TEST_RULES = [
   // use this to import your own rules for Test webpack config.
 ]
 
 exports.MY_TEST_PLUGINS = [
   // use this to import your own Test webpack config plugins.
-]
-
-exports.MY_SERVER_INCLUDE_CLIENT_PACKAGES = [
-  // include these client packages so we can transform their source with webpack loaders
 ]

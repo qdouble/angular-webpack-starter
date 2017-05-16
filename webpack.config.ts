@@ -14,7 +14,6 @@ import {
 } from './constants';
 
 const {
-  ContextReplacementPlugin,
   DefinePlugin,
   DllPlugin,
   DllReferencePlugin,
