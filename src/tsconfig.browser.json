@@ -1,10 +1,9 @@
 {
-  "extends": "../tsconfig.json",
+  "extends": "../tsconfig.webpack.json",
   "angularCompilerOptions": {
-    "genDir": "compiled",
     "entryModule": "./app/browser.app.module#BrowserAppModule"
   },
   "exclude": [
-    "./main.server.aot.ts"
+    "./server.aot.ts"
   ]
 }

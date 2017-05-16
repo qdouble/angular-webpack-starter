@@ -129,10 +129,7 @@ const commonConfig = function webpackConfig(): WebpackConfig {
         test: /\.ts$/,
         loaders: [
           '@angularclass/hmr-loader',
-          // 'awesome-typescript-loader?{configFileName: "tsconfig.webpack.json"}',
-          // 'angular2-template-loader',
-          '@ngtools/webpack',
-          'angular-router-loader?loader=system&genDir=compiled&aot=' + AOT,
+          '@ngtools/webpack'
         ],
         exclude: [/\.(spec|e2e|d)\.ts$/]
       },
@@ -144,10 +141,6 @@ const commonConfig = function webpackConfig(): WebpackConfig {
   };
 
   config.plugins = [
-    new ContextReplacementPlugin(
-      /angular(\\|\/)core(\\|\/)@angular/,
-      root('./src')
-    ),
     new ProgressPlugin(),
     new CheckerPlugin(),
     new DefinePlugin(CONSTANTS),
@@ -206,7 +199,7 @@ const commonConfig = function webpackConfig(): WebpackConfig {
   }
 
   return config;
-} ();
+}();
 
 // type definition for WebpackConfig at the bottom
 const clientConfig = function webpackConfig(): WebpackConfig {
@@ -214,6 +207,7 @@ const clientConfig = function webpackConfig(): WebpackConfig {
   let config: WebpackConfig = Object.assign({});
 
   config.cache = true;
+  config.target = 'web';
   PROD ? config.devtool = PROD_SOURCE_MAPS : config.devtool = DEV_SOURCE_MAPS;
   config.plugins = [getAotPlugin('client', AOT)];
 
@@ -259,15 +253,9 @@ const clientConfig = function webpackConfig(): WebpackConfig {
       vendor: [...DLL_VENDORS]
     };
   } else {
-    if (AOT) {
-      config.entry = {
-        main: './src/main.browser.aot'
-      };
-    } else {
-      config.entry = {
-        main: './src/main.browser'
-      };
-    }
+    config.entry = {
+      main: root('./src/main.browser.ts')
+    };
   }
 
   if (!DLL) {
@@ -289,7 +277,7 @@ const clientConfig = function webpackConfig(): WebpackConfig {
     historyApiFallback: {
       disableDotRule: true,
     },
-    // stats: 'minimal',
+    stats: 'minimal',
     host: '0.0.0.0',
     watchOptions: DEV_SERVER_WATCH_OPTIONS
   };
@@ -322,11 +310,14 @@ const clientConfig = function webpackConfig(): WebpackConfig {
 
 const serverConfig: WebpackConfig = {
   target: 'node',
-  entry: AOT ? './src/server.aot' : './src/server',
+  entry: AOT ? root('./src/server.aot.ts') : root('./src/server.ts'),
   output: {
     filename: 'server.js',
     path: root('dist')
   },
+  plugins: [
+    getAotPlugin('server', AOT)
+  ],
   module: {
     rules: [
       {
