@@ -42,6 +42,7 @@ const DLL = EVENT.includes('dll');
 const E2E = EVENT.includes('e2e');
 const HMR = hasProcessFlag('hot');
 const PROD = EVENT.includes('prod');
+const SERVER = EVENT.includes('server');
 const WATCH = hasProcessFlag('watch');
 const UNIVERSAL = EVENT.includes('universal');
 
@@ -220,7 +221,7 @@ const clientConfig = function webpackConfig(): WebpackConfig {
     );
   }
 
-  if (UNIVERSAL) {
+  if (UNIVERSAL || SERVER) {
     config.plugins.push(
       new ScriptExtPlugin({
         defaultAttribute: 'defer'
@@ -341,9 +342,11 @@ const defaultConfig = {
   }
 };
 
-if (!UNIVERSAL) {
+if (!UNIVERSAL && !SERVER) {
   DLL ? console.log('BUILDING DLLs') : console.log('BUILDING APP');
   module.exports = webpackMerge({}, defaultConfig, commonConfig, clientConfig);
+} else if (SERVER) {
+  module.exports = webpackMerge({}, defaultConfig, commonConfig, serverConfig);
 } else {
   console.log('BUILDING UNIVERSAL');
   module.exports = [
