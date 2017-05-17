@@ -126,16 +126,18 @@ const commonConfig = function webpackConfig(): WebpackConfig {
       },
       {
         test: /\.ts$/,
-        loaders: [
+        loaders: !DLL && !DEV_SERVER ? ['@ngtools/webpack'] : [
           '@angularclass/hmr-loader',
-          '@ngtools/webpack'
+          'awesome-typescript-loader?{configFileName: "tsconfig.webpack.json"}',
+          'angular2-template-loader',
+          'angular-router-loader?loader=system&genDir=compiled&aot=' + AOT
         ],
         exclude: [/\.(spec|e2e|d)\.ts$/]
       },
       { test: /\.json$/, loader: 'json-loader' },
       { test: /\.html/, loader: 'raw-loader', exclude: [root('src/index.html')] },
       { test: /\.css$/, loader: 'raw-loader' },
-        {
+      {
         test: /\.scss$/,
         loaders: ['to-string-loader', 'css-loader', 'sass-loader']
       },
