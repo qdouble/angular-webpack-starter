@@ -100,8 +100,10 @@ const clientConfig = function webpackConfig(): WebpackConfig {
       },
       {
         test: /\.ts$/,
-        loaders: [
-          '@ngtools/webpack'
+        loaders: !DLL && !DEV_SERVER ? ['@ngtools/webpack'] : [
+          'awesome-typescript-loader?{configFileName: "tsconfig.webpack.json"}',
+          'angular2-template-loader',
+          'angular-router-loader?loader=system&genDir=compiled&aot=' + AOT
         ],
         exclude: [/\.(spec|e2e|d)\.ts$/]
       },
