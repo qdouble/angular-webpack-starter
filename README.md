@@ -29,6 +29,7 @@ yarn start
   * AOT (Ahead of Time/ Offline) Compilation
 * Webpack 2
   * Webpack Dlls (Speeds up devServer builds)
+  * @ngTools AOT plugin
 * TypeScript 2
   * @types
 * Karma/Jasmine testing
@@ -49,10 +50,8 @@ Use `yarn run server:prod` for production server and production watch. Default p
 
 Default ports and option to use proxy backend for dev server can be changed in `constants.js` file.
 
-To create AOT version, run `yarn run compile`. This will compile and build script.
+To create AOT version, run `yarn run build:aot`. This will compile and build script.
 Then you can use `yarn run prodserver` to see to serve files.
-Do not use build:aot directly unless you have already compiled.
-Use `yarn run compile` instead, it compiles and builds:aot
 
 ### AOT  Don'ts
 
