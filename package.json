@@ -44,7 +44,7 @@
     "clean:compile": "npm run rimraf -- \"compiled\" ",
     "prodserver": "node prodserver",
     "sass": "node-sass \"src/app/styles.scss\" \"src/app/styles.css\" --include-path node_modules --output-style compressed -q",
-    "sass:watch": "node-sass -w src -o \"src/app/styles.scss\" \"src/app/styles.css\"  --include-path node_modules --output-style compressed -q",
+    "sass:watch": "node-sass -w  \"src/app/styles.scss\" \"src/app/styles.css\"  --include-path node_modules --output-style compressed -q",
     "start": "npm run server:dev",
     "start:hmr": "npm run server:hmr",
     "serve80": "sudo PORT=80 node prodserver",
