@@ -30,6 +30,7 @@ yarn start
   * AOT safe SASS compilation
 * Webpack 2
   * Webpack Dlls (Speeds up devServer builds)
+  * @ngTools AOT plugin
 * HMR (Hot Module Replacement)
 * TypeScript 2
   * @types
@@ -62,13 +63,8 @@ Use `yarn run server:prod` for production server and production watch. Default p
 
 Default ports and option to use proxy backend for dev server can be changed in `constants.js` file.
 
-To create AOT version, run `yarn run compile`. This will compile and build script.
+To create AOT version, run `yarn run build:aot`. This will compile and build script.
 Then you can use `yarn run prodserver` to see to serve files.
-Do not use build:aot directly unless you have already compiled.
-Use `yarn run compile` instead, it compiles and builds:aot
-
-The scripts are set to compile css next to scss because ngc compiler does not support Sass.
-To compile scss, use `yarn run sass`, but many of the scripts will either build or watch scss files.
 
 ### Store Log Monitor / Store Logger
 
