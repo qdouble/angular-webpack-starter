@@ -137,7 +137,6 @@
     "use-pipe-transform-interface": true,
     "import-destructuring-spacing": true,
     "pipe-naming": [true, "camelCase"],
-    "component-class-suffix": true,
     "directive-class-suffix": true,
     "no-access-missing-member": true,
     "templates-use-public": true,
