@@ -45,7 +45,7 @@
     "start": "npm run server:dev",
     "start:hmr": "npm run server:hmr",
     "serve80": "sudo PORT=80 node prodserver",
-    "server:dev": "npm run webdev",
+    "server:dev": "npm-run-all -p -r webdev sass:watch",
     "server:hmr": "npm-run-all -p -r webdev:hmr sass:watch",
     "server:prod": "npm-run-all -p -r watch:prod prodserver",
     "server:prod80": "npm-run-all -p -r serve80 watch:prod",
