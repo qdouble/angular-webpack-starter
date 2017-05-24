@@ -39,7 +39,7 @@
     "prodserver": "node prodserver",
     "start": "npm run server:dev",
     "serve80": "sudo PORT=80 node prodserver",
-    "server:dev": "npm-run-all -p -r webdev sass:watch",
+    "server:dev": "webdev",
     "server:prod": "npm-run-all -p -r watch:prod prodserver",
     "server:prod80": "npm-run-all -p -r serve80 watch:prod",
     "debug:build": "node-nightly --inspect --debug-brk node_modules/webpack/bin/webpack.js",
