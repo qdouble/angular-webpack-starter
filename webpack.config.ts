@@ -88,7 +88,6 @@ const DLL_VENDORS = [
   '@angular/platform-server',
   '@angular/router',
   '@ngrx/core',
-  '@ngrx/core/add/operator/select.js',
   '@ngrx/effects',
   '@ngrx/router-store',
   '@ngrx/store',
