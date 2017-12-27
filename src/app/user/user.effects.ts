@@ -4,7 +4,13 @@ import { Actions, Effect } from '@ngrx/effects';
 import { Store } from '@ngrx/store';
 import { Observable } from 'rxjs/Observable';
 
-import { UserActions } from './user.actions';
+import {
+  Logout,
+  LogoutFail,
+  LogoutSuccess,
+  UserActions,
+  UserActionTypes
+} from './user.actions';
 import { AppState } from '../reducers';
 import { UserService } from './user.service';
 
@@ -14,20 +20,19 @@ export class UserEffects {
   constructor(
     private actions$: Actions,
     private store: Store<AppState>,
-    private userService: UserService,
-    private userActions: UserActions
+    private userService: UserService
   ) { }
 
   @Effect() logout$ = this.actions$
-    .ofType(UserActions.LOGOUT)
-    .map(action => action.payload)
+    .ofType(UserActionTypes.Logout)
+    // .map((action: Logout) => action.payload)
     .switchMap(() => this.userService.logout()
-      .mergeMap((res: any) => Observable.of(
-        this.userActions.logoutSuccess(res)
-        )
+      .mergeMap((res) => Observable.of(
+        new LogoutSuccess(res)
+      )
       )
       .catch((err) => Observable.of(
-        this.userActions.logoutFail(err)
+        new LogoutFail(err)
       ))
     );
 }

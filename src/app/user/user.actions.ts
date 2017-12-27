@@ -1,42 +1,39 @@
-/* tslint:disable: member-ordering */
-import { Injectable } from '@angular/core';
 import { Response } from '@angular/http';
 import { Action } from '@ngrx/store';
 
 import { User } from './user.model';
 
-@Injectable()
-
-export class UserActions {
-
-  static EDIT_USER = '[User] Edit User';
-  editUser(user: User): Action {
-    return {
-      type: UserActions.EDIT_USER,
-      payload: user
-    };
-  }
-
-  static LOGOUT = '[User] Logout';
-  logout(): Action {
-    return {
-      type: UserActions.LOGOUT
-    };
-  }
-
-  static LOGOUT_FAIL = '[User] Logout Fail';
-  logoutFail(err: Error): Action {
-    return {
-      type: UserActions.LOGOUT_FAIL,
-      payload: err
-    };
-  }
-
-  static LOGOUT_SUCCESS = '[User] Logout Success';
-  logoutSuccess(res: Response): Action {
-    return {
-      type: UserActions.LOGOUT_SUCCESS,
-      payload: res
-    };
-  }
+export enum UserActionTypes {
+  EditUser = '[User] Edit User',
+  Logout = '[User] Logout',
+  LogoutFail = '[User] Logout Fail',
+  LogoutSuccess = '[User] Logout Success'
 }
+
+export class EditUser implements Action {
+  readonly type = UserActionTypes.EditUser;
+
+  constructor(public payload: User) { }
+}
+
+export class Logout implements Action {
+  readonly type = UserActionTypes.Logout;
+}
+
+export class LogoutFail implements Action {
+  readonly type = UserActionTypes.LogoutFail;
+
+  constructor(public payload: Error) { }
+}
+
+export class LogoutSuccess implements Action {
+  readonly type = UserActionTypes.LogoutSuccess;
+
+  constructor(public payload: Response | string) { }
+}
+
+export type UserActions =
+  | EditUser
+  | Logout
+  | LogoutFail
+  | LogoutSuccess;

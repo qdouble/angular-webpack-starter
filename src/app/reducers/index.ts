@@ -1,17 +1,26 @@
-import { compose } from '@ngrx/core/compose';
+import { StoreModule, ActionReducerMap, MetaReducer } from '@ngrx/store';
+import { Params, RouterStateSnapshot } from '@angular/router';
+import { compose } from '@ngrx/store';
 import { ActionReducer, combineReducers } from '@ngrx/store';
 import { storeFreeze } from 'ngrx-store-freeze';
 import { storeLogger } from 'ngrx-store-logger';
-import { routerReducer, RouterState } from '@ngrx/router-store';
+import { routerReducer, RouterReducerState, RouterStateSerializer } from '@ngrx/router-store';
 
 import * as fromUser from '../user/user.reducer';
 
+export interface RouterStateUrl {
+  url: string;
+  params: Params;
+  queryParams: Params;
+}
+
 const modules = {
-  'user': fromUser
+  'router': routerReducer,
+  'user': fromUser.userReducer
 };
 
 export interface AppState {
-  router: RouterState;
+  router: RouterReducerState<RouterStateUrl>;
   user: fromUser.UserState;
 }
 
@@ -19,6 +28,24 @@ export const syncReducers = {
   router: routerReducer,
   user: fromUser.userReducer
 };
+
+export class CustomSerializer implements RouterStateSerializer<RouterStateUrl> {
+  serialize(routerState: RouterStateSnapshot): RouterStateUrl {
+    let route = routerState.root;
+    while (route.firstChild) {
+      route = route.firstChild;
+    }
+
+    const { url } = routerState;
+    const queryParams = routerState.root.queryParams;
+    const params = route.params;
+
+    // Only return an object including the URL, params and query params
+    // instead of the entire snapshot
+    return { url, params, queryParams };
+  }
+}
+
 
 const deepCombineReducers = (allReducers: any) => {
   Object.getOwnPropertyNames(allReducers).forEach((prop) => {
@@ -40,13 +67,14 @@ const createReducer = (asyncReducers = {}) => {
 function stateSetter(reducer: ActionReducer<any>): ActionReducer<any> {
   return function (state, action) {
     if (action.type === 'SET_ROOT_STATE') {
-      return action.payload;
+      console.log('setting root state');
+      return action['payload'];
     }
     return reducer(state, action);
   };
 }
 
-const resetOnLogout = (reducer: Function) => {
+export const resetOnLogout = (reducer: Function) => {
   return function (state, action) {
     let newState;
     if (action.type === '[User] Logout Success') {
@@ -59,7 +87,7 @@ const resetOnLogout = (reducer: Function) => {
   };
 };
 
-const DEV_REDUCERS = [stateSetter, storeFreeze];
+export const DEV_REDUCERS: MetaReducer<AppState>[] = [stateSetter, storeFreeze];
 // set in constants.js file of project root
 if (['logger', 'both'].indexOf(STORE_DEV_TOOLS) !== -1) {
   DEV_REDUCERS.push(storeLogger());
@@ -73,7 +101,8 @@ export function rootReducer(state: any, action: any, asyncReducer) {
   if (ENV !== 'development') {
     return productionReducer(createReducer(asyncReducer))(state, action);
   } else {
-    return developmentReducer(createReducer(asyncReducer))(state, action);
+    // return developmentReducer(createReducer(asyncReducer))(state, action);
+    return productionReducer(createReducer(asyncReducer))(state, action);
   }
 }
 

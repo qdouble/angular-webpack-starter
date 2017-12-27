@@ -45,6 +45,6 @@ export interface AppStateWithLazy extends AppState {
 export class StoreWithLazy extends Store<AppStateWithLazy> { }
 
 export function lazyStoreFactory(appStore: Store<AppState>) {
-    appStore.replaceReducer(createNewRootReducer({ lazy: lazyReducer }));
+    // appStore.replaceReducer(createNewRootReducer({ lazy: lazyReducer }));
     return appStore;
 }
