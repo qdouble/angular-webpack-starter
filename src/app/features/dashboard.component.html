@@ -3,13 +3,13 @@
 </header>
 <section>
   <form [formGroup]="form" (ngSubmit)="submitState()" autocomplete="off">
-    <md-input-container> 
-      <input mdInput formControlName="name" [placeholder]="nameLabel">
-    </md-input-container>    
+    <mat-form-field> 
+      <input matInput formControlName="name" [placeholder]="nameLabel">
+    </mat-form-field>   
     <br>
-    <button md-raised-button color="primary">Update store</button>
-    <button md-raised-button color="accent" type="button" (click)="clearName()">Clear name</button>
+    <button mat-raised-button color="primary">Update store</button>
+    <button mat-raised-button color="accent" type="button" (click)="clearName()">Clear name</button>
   </form>
   <br><br>
-    <button id="my-logout-button" md-raised-button color="accent" (click)="logout()">Logout</button>
+    <button id="my-logout-button" mat-raised-button color="accent" (click)="logout()">Logout</button>
 </section>

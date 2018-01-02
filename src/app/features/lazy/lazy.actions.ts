@@ -1,31 +1,26 @@
-/* tslint:disable: member-ordering */
-import { Injectable } from '@angular/core';
 import { Response } from '@angular/http';
-
 import { Action } from '@ngrx/store';
+import { Logout, LogoutSuccess } from '../../user/user.actions';
 
-@Injectable()
-
-export class LazyActions {
-
-  static DECREMENT = '[Lazy] Decrement';
-  decrement(): Action {
-    return {
-      type: LazyActions.DECREMENT
-    };
-  }
-
-  static INCREMENT = '[Lazy] Increment';
-  increment(): Action {
-    return {
-      type: LazyActions.INCREMENT
-    };
-  }
-
-  static RESET = '[Lazy] Reset';
-  reset(): Action {
-    return {
-      type: LazyActions.RESET
-    };
-  }
+export enum LazyActionTypes {
+  Decrement = '[Lazy] Decrement',
+  Increment = '[Lazy] Increment',
+  Reset = '[Lazy] Reset'
 }
+
+export class Decrement implements Action {
+  readonly type = LazyActionTypes.Decrement;
+}
+
+export class Increment implements Action {
+  readonly type = LazyActionTypes.Increment;
+}
+
+export class Reset implements Action {
+  readonly type = LazyActionTypes.Reset;
+}
+
+export type LazyActions =
+  | Decrement
+  | Increment
+  | Reset;

@@ -2,8 +2,9 @@
 import { TestBed, async } from '@angular/core/testing';
 import { RouterTestingModule } from '@angular/router/testing';
 import { ReactiveFormsModule } from '@angular/forms';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 
-import { MaterialModule } from '@angular/material';
+import { MaterialModule } from './material.module';
 
 import { AppComponent } from './app.component';
 import { DashboardComponent } from './features/dashboard.component';
@@ -17,6 +18,7 @@ describe('App Component', () => {
   beforeEach(() => {
     TestBed.configureTestingModule({
       imports: [
+        BrowserAnimationsModule,
         MaterialModule,
         ReactiveFormsModule,
         RouterTestingModule.withRoutes(routes),
