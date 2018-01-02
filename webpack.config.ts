@@ -26,6 +26,7 @@ const CopyWebpackPlugin = require('copy-webpack-plugin');
 const { CheckerPlugin } = require('awesome-typescript-loader');
 const HtmlWebpackPlugin = require('html-webpack-plugin');
 const NamedModulesPlugin = require('webpack/lib/NamedModulesPlugin');
+const nodeExternals = require('webpack-node-externals');
 const ScriptExtPlugin = require('script-ext-html-webpack-plugin');
 const UglifyJsPlugin = require('webpack/lib/optimize/UglifyJsPlugin');
 const webpackMerge = require('webpack-merge');
@@ -313,6 +314,7 @@ const clientConfig = function webpackConfig(): WebpackConfig {
 
 const serverConfig: WebpackConfig = {
   target: 'node',
+  externals: [nodeExternals()],
   entry: AOT ? './src/server.aot.ts' : root('./src/server.ts'),
   output: {
     filename: 'server.js',
@@ -322,18 +324,7 @@ const serverConfig: WebpackConfig = {
     getAotPlugin('server', AOT)
   ],
   module: {
-    rules: [
-      {
-        test: /@angular(\\|\/)material/,
-        loader: 'imports-loader',
-        options: {
-          window: '>global',
-          'CSS': '>null',
-          navigator: '>{get userAgent(){ return \'Chrome\'; }}',
-          document: '>global.document',
-        },
-      },
-    ]
+    rules: []
   },
 
 };

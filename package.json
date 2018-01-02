@@ -109,7 +109,7 @@
     "@ngrx/store": "4.1.1",
     "@ngrx/store-devtools": "4.1.1",
     "@ngrx/store-log-monitor": "3.0.2",
-    "@nguniversal/express-engine": "1.0.0-beta.2",
+    "@nguniversal/express-engine": "5.0.0-beta.5",
     "body-parser": "^1.18.2",
     "compression": "^1.7.1",
     "cookie-parser": "1.4.3",
@@ -185,7 +185,8 @@
     "webpack-dev-middleware": "~2.0.3",
     "webpack-dev-server": "~2.9.7",
     "webpack-md5-hash": "^0.0.6",
-    "webpack-merge": "~4.1.1"
+    "webpack-merge": "~4.1.1",
+    "webpack-node-externals": "^1.6.0"
   },
   "license": "Apache-2.0",
   "bugs": {
