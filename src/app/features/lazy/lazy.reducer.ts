@@ -1,8 +1,7 @@
-import { Store, ActionReducer, Action } from '@ngrx/store';
+import { AppState } from './../../reducers/index';
 
-import { AppState, createNewRootReducer } from './../../reducers/index';
-
-import { LazyActions } from './lazy.actions';
+import { LazyActions, LazyActionTypes } from './lazy.actions';
+import * as fromRoot from '../../reducers';
 
 export interface LazyState {
     counter: number;
@@ -12,22 +11,28 @@ const initialState: LazyState = {
     counter: 0
 };
 
-export function lazyReducer(state: LazyState = initialState, action: Action) {
+export interface State extends fromRoot.AppState {
+    lazyModule: { lazy: LazyState };
+}
+
+export function lazyReducer(state: LazyState = initialState, action: LazyActions) {
     switch (action.type) {
 
-        case LazyActions.DECREMENT:
+        case LazyActionTypes.Decrement:
             return {
                 ...state,
                 counter: state.counter - 1
             };
 
-        case LazyActions.INCREMENT:
+
+        case LazyActionTypes.Increment:
             return {
                 ...state,
                 counter: state.counter + 1
             };
 
-        case LazyActions.RESET:
+
+        case LazyActionTypes.Reset:
             return {
                 ...state,
                 counter: 0
@@ -38,13 +43,3 @@ export function lazyReducer(state: LazyState = initialState, action: Action) {
     }
 }
 
-export interface AppStateWithLazy extends AppState {
-    lazy: LazyState;
-}
-
-export class StoreWithLazy extends Store<AppStateWithLazy> { }
-
-export function lazyStoreFactory(appStore: Store<AppState>) {
-    appStore.replaceReducer(createNewRootReducer({ lazy: lazyReducer }));
-    return appStore;
-}

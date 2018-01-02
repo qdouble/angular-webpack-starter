@@ -12,6 +12,9 @@ if ('production' === ENV) {
 }
 
 export function main(): Promise<any> {
+  if (module.hot) {
+    module.hot.accept();
+  }
   return platformBrowserDynamic()
     .bootstrapModule(AppModule)
     .then(decorateModuleRef)

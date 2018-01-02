@@ -5,8 +5,9 @@ import { Observable } from 'rxjs/Observable';
 
 import { AppState } from '../reducers';
 import { Store } from '@ngrx/store';
-import { UserActions } from '../user/user.actions';
 import { User } from '../user/user.model';
+
+import * as UserActions from '../user/user.actions';
 
 @Component({
   selector: 'my-dashboard',
@@ -23,7 +24,7 @@ export class DashboardComponent implements OnDestroy, OnInit {
   constructor(
     fb: FormBuilder,
     private store: Store<AppState>,
-    private userActions: UserActions,
+
   ) {
     this.form = fb.group({
       name: ''
@@ -37,12 +38,20 @@ export class DashboardComponent implements OnDestroy, OnInit {
     this.form.get('name').setValue(this.user.name);
   }
 
+  clearName() {
+    this.store.dispatch(new UserActions.EditUser(
+      Object.assign({}, this.user, { name: '' }
+      )));
+
+    this.form.get('name').setValue('');
+  }
+
   logout() {
-    this.store.dispatch(this.userActions.logout());
+    this.store.dispatch(new UserActions.Logout());
   }
 
   submitState() {
-    this.store.dispatch(this.userActions.editUser(
+    this.store.dispatch(new UserActions.EditUser(
       Object.assign({}, this.user, { name: this.form.get('name').value }
       )));
   }

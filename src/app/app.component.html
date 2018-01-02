@@ -1,11 +1,11 @@
+<div ngbDropdown class="d-inline-block">
+  <button class="btn btn-outline-primary" id="dropdownBasic1" ngbDropdownToggle>Navigation Menu</button>
+  <div ngbDropdownMenu aria-labelledby="dropdownBasic1">
+    <button *ngFor="let view of views" [routerLink]="view.link" class="dropdown-item">{{view.name}}</button>
+  </div>
+</div>
 <header class="navbar navbar-static-top">
-	<h2 class="bd-title" id="my-app-title">Angular Starter App</h2>
-  <div ngbDropdown id="my-nav-menu">
-		<button class="btn btn-outline-primary" id="dropdownMenu3" ngbDropdownToggle>Navigation Menu</button>
-		<div class="dropdown-menu" aria-labelledby="dropdownMenu3">
-			<button *ngFor="let view of views" [routerLink]="view.link" class="dropdown-item">{{view.name}}</button>
-		</div>
-	</div>
+  <h2 class="bd-title" id="my-app-title">Angular Starter App</h2>
 </header>
 <router-outlet (activate)="activateEvent($event)" (deactivate)="deactivateEvent($event)"></router-outlet>
 <my-store-devtools *ngIf="showMonitor"></my-store-devtools>
