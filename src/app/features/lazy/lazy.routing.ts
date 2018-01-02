@@ -1,4 +1,3 @@
-/* tslint:disable: variable-name */
 import { Routes } from '@angular/router';
 import { LazyComponent } from './lazy.component';
 

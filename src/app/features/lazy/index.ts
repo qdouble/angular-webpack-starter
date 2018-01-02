@@ -5,7 +5,6 @@ import { routes } from './lazy.routing';
 
 import { LazyComponent } from './lazy.component';
 
-
 @NgModule({
   imports: [
     CommonModule,
