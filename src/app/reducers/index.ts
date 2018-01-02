@@ -65,16 +65,24 @@ const createReducer = (asyncReducers = {}) => {
 
 // Generate a reducer to set the root state in dev mode for HMR
 function stateSetter(reducer: ActionReducer<any>): ActionReducer<any> {
-  return function (state, action) {
+  return function(state: any, action: any) {
     if (action.type === 'SET_ROOT_STATE') {
-      console.log('setting root state');
-      return action['payload'];
+      return action.payload;
     }
     return reducer(state, action);
   };
 }
 
-export const resetOnLogout = (reducer: Function) => {
+function logout(reducer: ActionReducer<AppState>): ActionReducer<AppState> {
+  return function(state: AppState, action: any): AppState {
+    if (action.type === '[User] Logout Success') {
+      state = undefined;
+    }
+    return reducer(state, action);
+  };
+}
+
+export const resetOnLogout = (reducer: ActionReducer<AppState>): ActionReducer<AppState> => {
   return function (state, action) {
     let newState;
     if (action.type === '[User] Logout Success') {
@@ -93,21 +101,3 @@ if (['logger', 'both'].indexOf(STORE_DEV_TOOLS) !== -1) {
   DEV_REDUCERS.push(storeLogger());
 }
 
-// tslint:disable-next-line:max-line-length
-const developmentReducer = compose(...DEV_REDUCERS, resetOnLogout);
-const productionReducer = compose(resetOnLogout);
-
-export function rootReducer(state: any, action: any, asyncReducer) {
-  if (ENV !== 'development') {
-    return productionReducer(createReducer(asyncReducer))(state, action);
-  } else {
-    // return developmentReducer(createReducer(asyncReducer))(state, action);
-    return productionReducer(createReducer(asyncReducer))(state, action);
-  }
-}
-
-export function createNewRootReducer(reducer: any): ActionReducer<any> {
-  return function (state, action) {
-    return rootReducer(state, action, reducer);
-  };
-}

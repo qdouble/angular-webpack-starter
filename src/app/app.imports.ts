@@ -2,16 +2,15 @@ import { ReactiveFormsModule } from '@angular/forms';
 import { RouterModule, PreloadAllModules } from '@angular/router';
 
 import { EffectsModule } from '@ngrx/effects';
-// import { RouterStoreModule } from '@ngrx/router-store';
 import { StoreRouterConnectingModule } from '@ngrx/router-store';
-import { StoreModule, MetaReducer } from '@ngrx/store';
+import { StoreModule, MetaReducer, ActionReducer } from '@ngrx/store';
 import { StoreDevtoolsModule } from '@ngrx/store-devtools';
 import { useLogMonitor } from '@ngrx/store-log-monitor';
 
 import { MaterialModule } from './material.module';
 import { TransferHttpModule } from '../modules/transfer-http/transfer-http.module';
 
-import { DEV_REDUCERS, rootReducer, syncReducers, resetOnLogout, AppState } from './reducers';
+import { DEV_REDUCERS, syncReducers, resetOnLogout, AppState } from './reducers';
 import { StoreDevToolsModule } from './features/store-devtools.module';
 import { UserEffects } from './user/user.effects';
 import { userReducer } from './user/user.reducer';
@@ -29,7 +28,9 @@ if (ENV === 'development' && !AOT &&
   })
 ]);
 
-export const metaReducers: MetaReducer<AppState>[] = ENV === 'development' ? DEV_REDUCERS : [];
+
+export const metaReducers: MetaReducer<AppState>[] = ENV === 'development' ?
+  [...DEV_REDUCERS, resetOnLogout] : [resetOnLogout];
 
 export const APP_IMPORTS = [
   EffectsModule.forRoot([UserEffects]),
@@ -37,8 +38,6 @@ export const APP_IMPORTS = [
   ReactiveFormsModule,
   StoreModule.forRoot(syncReducers, { metaReducers }),
   StoreRouterConnectingModule,
-  // StoreModule.forRoot(rootReducer),
-  // StoreModule.forRoot({ user: userReducer }),
   STORE_DEV_TOOLS_IMPORTS,
   StoreDevToolsModule,
   TransferHttpModule
