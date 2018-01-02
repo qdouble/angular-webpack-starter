@@ -42,7 +42,10 @@ import { AppState } from './reducers';
     DEV_SERVER ? [BrowserAnimationsModule, BrowserTransferStateModule] : [],
     HttpModule,
     APP_IMPORTS,
-    RouterModule.forRoot(routes, { useHash: false, preloadingStrategy: PreloadAllModules }),
+    RouterModule.forRoot(routes, {
+      useHash: false,
+      // preloadingStrategy: PreloadAllModules
+    }),
   ],
   bootstrap: [AppComponent],
   exports: [AppComponent],
