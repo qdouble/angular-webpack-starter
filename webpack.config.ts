@@ -3,7 +3,6 @@
  * Try to not make your own edits to this file, use the constants folder instead.
  * If more constants should be added file an issue or create PR.
  */
-import 'ts-helpers';
 
 import {
   DEV_PORT, PROD_PORT, UNIVERSAL_PORT, EXCLUDE_SOURCE_MAPS, HOST,
