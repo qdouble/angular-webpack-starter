@@ -7,10 +7,10 @@ const root = require('../helpers').root;
 /**
  * Webpack Plugins
  */
-const ProvidePlugin = require('webpack/lib/ProvidePlugin');
 const DefinePlugin = require('webpack/lib/DefinePlugin');
 const ForkCheckerPlugin = require('awesome-typescript-loader').ForkCheckerPlugin;
 const NamedModulesPlugin = require('webpack/lib/NamedModulesPlugin');
+const ProvidePlugin = require('webpack/lib/ProvidePlugin');
 
 const EXCLUDE_SOURCE_MAPS = require('../constants').EXCLUDE_SOURCE_MAPS;
 const MY_TEST_RULES = require('../constants').MY_TEST_RULES;
@@ -91,6 +91,19 @@ module.exports = {
         exclude: [EXCLUDE_SOURCE_MAPS]
       },
 
+      {
+        enforce: 'pre',
+        test: /\.js$/,
+        loader: 'source-map-loader',
+        exclude: [
+          /**
+           * These packages have problems with their sourcemaps
+           */
+          root('node_modules/rxjs'),
+          root('node_modules/@angular')
+        ]
+      },
+
       /**
        * Typescript loader support for .ts and Angular 2 async routes via .async.ts
        *
@@ -159,7 +172,7 @@ module.exports = {
    */
   plugins: [
     new webpack.ContextReplacementPlugin(
-      /angular(\\|\/)core(\\|\/)(esm(\\|\/)src|src)(\\|\/)linker/,
+      /angular(\\|\/)core(\\|\/)@angular/,
       root('./src')
     ),
     /**
