@@ -25,4 +25,3 @@ import 'rxjs/Observable';
 import 'rxjs/Subject';
 import 'rxjs/Subscription';
 
-import '@ngrx/core/add/operator/select';

@@ -3,8 +3,6 @@
  * Try to not make your own edits to this file, use the constants folder instead.
  * If more constants should be added file an issue or create PR.
  */
-import 'ts-helpers';
-
 import {
   DEV_PORT, PROD_PORT, UNIVERSAL_PORT, EXCLUDE_SOURCE_MAPS, HOST,
   USE_DEV_SERVER_PROXY, DEV_SERVER_PROXY_CONFIG, DEV_SERVER_WATCH_OPTIONS,
@@ -87,7 +85,6 @@ const DLL_VENDORS = [
   '@angular/platform-server',
   '@angular/router',
   '@ngrx/core',
-  '@ngrx/core/add/operator/select.js',
   '@ngrx/effects',
   '@ngrx/router-store',
   '@ngrx/store',

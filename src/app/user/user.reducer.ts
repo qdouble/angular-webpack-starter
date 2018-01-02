@@ -1,7 +1,7 @@
 /* tslint:disable: no-switch-case-fall-through */
 import { Action } from '@ngrx/store';
 
-import { UserActions } from './user.actions';
+import { UserActions, UserActionTypes } from './user.actions';
 import { User } from './user.model';
 
 export interface UserState {
@@ -16,10 +16,10 @@ export const initialState: UserState = {
   loaded: true,
 };
 
-export function userReducer(state = initialState, action: Action): UserState {
+export function userReducer(state = initialState, action: UserActions): UserState {
   switch (action.type) {
 
-    case UserActions.EDIT_USER: {
+    case UserActionTypes.EditUser: {
       return {
         ...state,
         user: action.payload

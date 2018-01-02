@@ -5,7 +5,8 @@
 		<div class="form-group">
 			<label for="password">Enter your name</label>
 			<input formControlName="name" id="password" [placeholder]="nameLabel">
-			<button class="btn btn-primary">Update store</button>
+      <button class="btn btn-primary">Update store</button>
+      <button class="btn btn-primary" type="button" (click)="clearName()">Clear name</button>
 		</div>
 	</form>
 	<button class="btn btn-danger" (click)="logout()">Logout</button>
