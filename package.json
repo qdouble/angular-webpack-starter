@@ -81,7 +81,7 @@
     "watch:aot": "npm-run-all -p -r \"build:aot:dev -- --watch\" sass:watch",
     "watch:dev": "npm-run-all -p -r \"build:dev -- --watch\" sass:watch",
     "watch:prod": "npm-run-all -p -r \"build:prod -- --watch\" sass:watch",
-    "watch:universal": "npm-run-all -p -r \"build:universal -- --watch\" sass:watch",
+    "watch:universal": "npm-run-all -p -r \"build:universal -- -- --watch\" sass:watch",
     "universal": "npm run build:universal && npm run server:universal",
     "universal:aot": "npm run build:universal:aot && npm run server:universal",
     "universal:watch": "npm run build:universal && npm-run-all -p -r watch:universal server:universal"
