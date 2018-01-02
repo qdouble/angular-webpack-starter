@@ -139,9 +139,9 @@
     source-map "^0.5.6"
     tree-kill "^1.0.0"
 
-"@nguniversal/express-engine@1.0.0-beta.1":
-  version "1.0.0-beta.1"
-  resolved "https://registry.yarnpkg.com/@nguniversal/express-engine/-/express-engine-1.0.0-beta.1.tgz#f8ece70affc80a08391abd93969cf6d7b680f2ae"
+"@nguniversal/express-engine@5.0.0-beta.5":
+  version "5.0.0-beta.5"
+  resolved "https://registry.yarnpkg.com/@nguniversal/express-engine/-/express-engine-5.0.0-beta.5.tgz#3cbc0fb7f928012d61240681631581fb0ad327f5"
 
 "@types/body-parser@*", "@types/body-parser@~1.16.8":
   version "1.16.8"
@@ -7585,6 +7585,10 @@ webpack-merge@~4.1.1:
   resolved "https://registry.yarnpkg.com/webpack-merge/-/webpack-merge-4.1.1.tgz#f1197a0a973e69c6fbeeb6d658219aa8c0c13555"
   dependencies:
     lodash "^4.17.4"
+
+webpack-node-externals@^1.6.0:
+  version "1.6.0"
+  resolved "https://registry.yarnpkg.com/webpack-node-externals/-/webpack-node-externals-1.6.0.tgz#232c62ec6092b100635a3d29d83c1747128df9bd"
 
 webpack-sources@^1.0.1:
   version "1.1.0"

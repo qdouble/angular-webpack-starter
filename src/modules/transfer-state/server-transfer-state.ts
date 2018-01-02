@@ -22,7 +22,7 @@ export class ServerTransferState extends TransferState {
       });
 
       const head = document.head;
-      if (head.name !== 'head') {
+      if (head.tagName !== 'HEAD') {
         throw new Error('Please have <head> as the first element in your document');
       }
 
