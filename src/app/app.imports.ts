@@ -28,7 +28,6 @@ if (ENV === 'development' && !AOT &&
   })
 ]);
 
-
 export const metaReducers: MetaReducer<AppState>[] = ENV === 'development' ?
   [...DEV_REDUCERS, resetOnLogout] : [resetOnLogout];
 
