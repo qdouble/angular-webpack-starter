@@ -82,7 +82,7 @@ function logout(reducer: ActionReducer<AppState>): ActionReducer<AppState> {
   };
 }
 
-export const resetOnLogout = (reducer: ActionReducer<AppState>): ActionReducer<AppState> => {
+export function resetOnLogout (reducer: ActionReducer<AppState>): ActionReducer<AppState> {
   return function (state, action) {
     let newState;
     if (action.type === '[User] Logout Success') {
@@ -93,7 +93,7 @@ export const resetOnLogout = (reducer: ActionReducer<AppState>): ActionReducer<A
     }
     return reducer(newState || state, action);
   };
-};
+}
 
 export const DEV_REDUCERS: MetaReducer<AppState>[] = [stateSetter, storeFreeze];
 // set in constants.js file of project root
