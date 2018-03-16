@@ -1,9 +1,12 @@
 import { Component, OnInit, ViewEncapsulation } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
 import { TransferState } from '../modules/transfer-state/transfer-state';
+import { Store, select } from '@ngrx/store';
 
 import { views } from './app-nav-views';
 import { MOBILE } from './services/constants';
+
+import * as fromRoot from './reducers';
 
 @Component({
   selector: 'my-app',
@@ -22,11 +25,14 @@ export class AppComponent implements OnInit {
   constructor(
     private cache: TransferState,
     public route: ActivatedRoute,
-    public router: Router
+    public router: Router,
+    public store: Store<fromRoot.AppState>
   ) { }
 
   ngOnInit() {
     this.cache.set('cached', true);
+    let a = this.store.pipe(select(fromRoot.getUserLoaded));
+    a.subscribe(l => console.log(l));
   }
 
   activateEvent(event) {
