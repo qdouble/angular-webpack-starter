@@ -1,10 +1,17 @@
-import { StoreModule, ActionReducerMap, MetaReducer } from '@ngrx/store';
+import {
+  StoreModule,
+  ActionReducerMap,
+  MetaReducer,
+  createFeatureSelector,
+  createSelector
+} from '@ngrx/store';
 import { Params, RouterStateSnapshot } from '@angular/router';
 import { compose } from '@ngrx/store';
 import { ActionReducer, combineReducers } from '@ngrx/store';
 import { storeFreeze } from 'ngrx-store-freeze';
 import { storeLogger } from 'ngrx-store-logger';
 import { routerReducer, RouterReducerState, RouterStateSerializer } from '@ngrx/router-store';
+import * as fromRouter from '@ngrx/router-store';
 
 import * as fromUser from '../user/user.reducer';
 
@@ -20,7 +27,7 @@ const modules = {
 };
 
 export interface AppState {
-  router: RouterReducerState<RouterStateUrl>;
+  router: fromRouter.RouterReducerState<RouterStateUrl>;
   user: fromUser.UserState;
 }
 
@@ -29,6 +36,13 @@ export const syncReducers = {
   user: fromUser.userReducer
 };
 
+export const getUserState = createFeatureSelector<fromUser.UserState>('user');
+
+export const getUserLoaded = createSelector(
+  getUserState,
+  fromUser.getLoaded
+);
+
 export class CustomSerializer implements RouterStateSerializer<RouterStateUrl> {
   serialize(routerState: RouterStateSnapshot): RouterStateUrl {
     let route = routerState.root;
@@ -36,9 +50,8 @@ export class CustomSerializer implements RouterStateSerializer<RouterStateUrl> {
       route = route.firstChild;
     }
 
-    const { url } = routerState;
-    const queryParams = routerState.root.queryParams;
-    const params = route.params;
+    const { url, root: { queryParams } } = routerState;
+    const { params } = route;
 
     // Only return an object including the URL, params and query params
     // instead of the entire snapshot
@@ -65,7 +78,7 @@ const createReducer = (asyncReducers = {}) => {
 
 // Generate a reducer to set the root state in dev mode for HMR
 function stateSetter(reducer: ActionReducer<any>): ActionReducer<any> {
-  return function(state: any, action: any) {
+  return function (state: any, action: any) {
     if (action.type === 'SET_ROOT_STATE') {
       return action.payload;
     }
@@ -74,7 +87,7 @@ function stateSetter(reducer: ActionReducer<any>): ActionReducer<any> {
 }
 
 function logout(reducer: ActionReducer<AppState>): ActionReducer<AppState> {
-  return function(state: AppState, action: any): AppState {
+  return function (state: AppState, action: any): AppState {
     if (action.type === '[User] Logout Success') {
       state = undefined;
     }
@@ -82,7 +95,7 @@ function logout(reducer: ActionReducer<AppState>): ActionReducer<AppState> {
   };
 }
 
-export function resetOnLogout (reducer: ActionReducer<AppState>): ActionReducer<AppState> {
+export function resetOnLogout(reducer: ActionReducer<AppState>): ActionReducer<AppState> {
   return function (state, action) {
     let newState;
     if (action.type === '[User] Logout Success') {

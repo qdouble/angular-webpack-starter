@@ -4,6 +4,8 @@ import { ActivatedRoute, Router } from '@angular/router';
 import { views } from './app-nav-views';
 import { MOBILE } from './services/constants';
 
+import * as fromRoot from './reducers';
+
 @Component({
   selector: 'my-app',
   styleUrls: ['main.scss', './app.component.scss'],
@@ -20,7 +22,8 @@ export class AppComponent {
 
   constructor(
     public route: ActivatedRoute,
-    public router: Router
+    public router: Router,
+    public store: Store<fromRoot.AppState>
   ) { }
 
   activateEvent(event) {

@@ -31,3 +31,5 @@ export function userReducer(state = initialState, action: UserActions): UserStat
     }
   }
 }
+
+export const getLoaded = (state: UserState) => state.loaded;
