@@ -178,7 +178,7 @@
     "tslib": "^1.5.0",
     "tslint": "~5.8.0",
     "tslint-loader": "~3.5.3",
-    "typescript": "~2.7.2",
+    "typescript": "~2.4.2",
     "watch-run": "~1.2.5",
     "webpack": "~3.10.0",
     "webpack-bundle-analyzer": "^2.9.1",
