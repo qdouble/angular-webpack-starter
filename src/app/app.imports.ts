@@ -13,9 +13,9 @@ import { MaterialModule } from './material.module';
 
 import { DEV_REDUCERS, syncReducers, resetOnLogout, AppState } from './reducers';
 import { StoreDevToolsModule } from './features/store-devtools.module';
+import { RouterEffects } from './effects/router';
 import { UserEffects } from './user/user.effects';
 import { userReducer } from './user/user.reducer';
-import { storeFreeze } from 'ngrx-store-freeze';
 
 const STORE_DEV_TOOLS_IMPORTS = [];
 if (ENV === 'development' && !AOT &&
@@ -34,11 +34,16 @@ export const metaReducers: MetaReducer<AppState>[] = ENV === 'development' ?
 
 export const APP_IMPORTS = [
   BrowserAnimationsModule,
-  EffectsModule.forRoot([UserEffects]),
+  EffectsModule.forRoot([
+    RouterEffects,
+    UserEffects
+  ]),
   MaterialModule,
   ReactiveFormsModule,
   StoreModule.forRoot(syncReducers, { metaReducers }),
-  StoreRouterConnectingModule,
+  StoreRouterConnectingModule.forRoot({
+    stateKey: 'router' // name of reducer key
+  }),
   STORE_DEV_TOOLS_IMPORTS,
   StoreDevToolsModule
 ];
