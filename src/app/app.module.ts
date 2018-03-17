@@ -9,7 +9,7 @@
 import { ApplicationRef, NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
-import { HttpModule } from '@angular/http';
+import { HttpClientModule } from '@angular/common/http';
 import { RouterModule, PreloadAllModules } from '@angular/router';
 
 import { removeNgStyles, createNewHosts, createInputTransfer } from '@angularclass/hmr';
@@ -40,7 +40,7 @@ import { AppState } from './reducers';
   imports: [
     CommonModule,
     DEV_SERVER ? [BrowserAnimationsModule, BrowserTransferStateModule] : [],
-    HttpModule,
+    HttpClientModule,
     APP_IMPORTS,
     RouterModule.forRoot(routes, {
       useHash: false,

@@ -1,84 +1,189 @@
 /* tslint:disable: max-line-length no-shadowed-variable */
 import { Injectable } from '@angular/core';
-import {
-  ConnectionBackend, Http, Request, RequestOptions,
-  RequestOptionsArgs, Response
-} from '@angular/http';
+import { HttpClient, HttpHeaders, HttpParams } from '@angular/common/http';
+import { TransferState } from '@angular/platform-browser';
 import { Observable } from 'rxjs/Observable';
-import { Subject } from 'rxjs/Subject';
-import { TransferState } from '../transfer-state/transfer-state';
-
-import 'rxjs/add/operator/map';
 import 'rxjs/add/operator/do';
 import 'rxjs/add/observable/fromPromise';
 
 @Injectable()
 export class TransferHttp {
-  constructor(private http: Http, protected transferState: TransferState) { }
+  constructor(protected transferState: TransferState,
+              private httpClient: HttpClient) {
+  }
 
-  request(uri: string | Request, options?: RequestOptionsArgs): Observable<any> {
-    return this.getData(uri, options, (url: string, options: RequestOptionsArgs) => {
-      return this.http.request(url, options);
+  public request(method: string, uri: string | Request, options?: {
+    body?: any;
+    headers?: HttpHeaders | {
+      [header: string]: string | string[];
+    };
+    reportProgress?: boolean;
+    observe?: 'response';
+    params?: HttpParams | {
+      [param: string]: string | string[];
+    };
+    responseType?: 'json';
+    withCredentials?: boolean;
+  }): Observable<any> {
+    // tslint:disable-next-line:no-shadowed-variable
+    return this.getData(method, uri, options, (method: string, url: string, options: any) => {
+      return this.httpClient.request(method, url, options);
     });
   }
+
   /**
    * Performs a request with `get` http method.
    */
-  get(url: string, options?: RequestOptionsArgs): Observable<any> {
-    return this.getData(url, options, (url: string, options: RequestOptionsArgs) => {
-      return this.http.get(url, options);
-    });
-  }
-  /**
-   * Performs a request with `post` http method.
-   */
-  post(url: string, body: any, options?: RequestOptionsArgs): Observable<any> {
-    return this.getPostData(url, body, options, (url: string, options: RequestOptionsArgs) => {
-      return this.http.post(url, body.options);
-    });
-  }
-  /**
-   * Performs a request with `put` http method.
-   */
-  put(url: string, body: any, options?: RequestOptionsArgs): Observable<any> {
-    return this.getData(url, options, (url: string, options: RequestOptionsArgs) => {
-      return this.http.put(url, options);
-    });
-  }
-  /**
-   * Performs a request with `delete` http method.
-   */
-  delete(url: string, options?: RequestOptionsArgs): Observable<any> {
-    return this.getData(url, options, (url: string, options: RequestOptionsArgs) => {
-      return this.http.delete(url, options);
-    });
-  }
-  /**
-   * Performs a request with `patch` http method.
-   */
-  patch(url: string, body: any, options?: RequestOptionsArgs): Observable<any> {
-    return this.getPostData(url, body, options, (url: string, options: RequestOptionsArgs) => {
-      return this.http.patch(url, body.options);
-    });
-  }
-  /**
-   * Performs a request with `head` http method.
-   */
-  head(url: string, options?: RequestOptionsArgs): Observable<any> {
-    return this.getData(url, options, (url: string, options: RequestOptionsArgs) => {
-      return this.http.head(url, options);
-    });
-  }
-  /**
-   * Performs a request with `options` http method.
-   */
-  options(url: string, options?: RequestOptionsArgs): Observable<any> {
-    return this.getData(url, options, (url: string, options: RequestOptionsArgs) => {
-      return this.http.options(url, options);
+  get(url: string, options?: {
+    headers?: HttpHeaders | {
+      [header: string]: string | string[];
+    };
+    observe?: 'response';
+    params?: HttpParams | {
+      [param: string]: string | string[];
+    };
+    reportProgress?: boolean;
+    responseType?: 'json';
+    withCredentials?: boolean;
+  }): Observable<any> {
+    // tslint:disable-next-line:no-shadowed-variable
+    return this.getData('get', url, options, (method: string, url: string, options: any) => {
+      return this.httpClient.get(url, options);
     });
   }
 
-  private getData(uri: string | Request, options: RequestOptionsArgs, callback: (uri: string | Request, options?: RequestOptionsArgs) => Observable<Response>) {
+  /**
+   * Performs a request with `post` http method.
+   */
+  post(url: string, body: any, options?: {
+    headers?: HttpHeaders | {
+      [header: string]: string | string[];
+    };
+    observe?: 'response';
+    params?: HttpParams | {
+      [param: string]: string | string[];
+    };
+    reportProgress?: boolean;
+    responseType?: 'json';
+    withCredentials?: boolean;
+  }): Observable<any> {
+    // tslint:disable-next-line:no-shadowed-variable
+    return this.getPostData('post', url, body, options, (url: string, body: any, options: any): Observable<any> => {
+      return this.httpClient.post(url, body, options);
+    });
+  }
+
+  /**
+   * Performs a request with `put` http method.
+   */
+  put(url: string, body: any, options?: {
+    headers?: HttpHeaders | {
+      [header: string]: string | string[];
+    };
+    observe?: 'body';
+    params?: HttpParams | {
+      [param: string]: string | string[];
+    };
+    reportProgress?: boolean;
+    responseType?: 'json';
+    withCredentials?: boolean;
+  }): Observable<any> {
+    // tslint:disable-next-line:no-shadowed-variable
+    return this.getData('put', url, options, (method: string, url: string, options: any) => {
+      return this.httpClient.put(url, options);
+    });
+  }
+
+
+  /**
+   * Performs a request with `delete` http method.
+   */
+  delete(url: string, options?: {
+    headers?: HttpHeaders | {
+      [header: string]: string | string[];
+    };
+    observe?: 'response';
+    params?: HttpParams | {
+      [param: string]: string | string[];
+    };
+    reportProgress?: boolean;
+    responseType?: 'json';
+    withCredentials?: boolean;
+  }): Observable<any> {
+    // tslint:disable-next-line:no-shadowed-variable
+    return this.getData('delete', url, options, (method: string, url: string, options: any) => {
+      return this.httpClient.delete(url, options);
+    });
+  }
+
+  /**
+   * Performs a request with `patch` http method.
+   */
+  patch(url: string, body: any, options?: {
+    headers?: HttpHeaders | {
+      [header: string]: string | string[];
+    };
+    observe?: 'response';
+    params?: HttpParams | {
+      [param: string]: string | string[];
+    };
+    reportProgress?: boolean;
+    responseType?: 'json';
+    withCredentials?: boolean;
+  }): Observable<any> {
+    // tslint:disable-next-line:no-shadowed-variable
+    return this.getPostData('patch', url, body, options, (url: string, body: any, options: any): Observable<any> => {
+      return this.httpClient.patch(url, body, options);
+    });
+  }
+
+  /**
+   * Performs a request with `head` http method.
+   */
+  head(url: string, options?: {
+    headers?: HttpHeaders | {
+      [header: string]: string | string[];
+    };
+    observe?: 'response';
+    params?: HttpParams | {
+      [param: string]: string | string[];
+    };
+    reportProgress?: boolean;
+    responseType?: 'json';
+    withCredentials?: boolean;
+  }): Observable<any> {
+    // tslint:disable-next-line:no-shadowed-variable
+    return this.getData('head', url, options, (method: string, url: string, options: any) => {
+      return this.httpClient.head(url, options);
+    });
+  }
+
+  /**
+   * Performs a request with `options` http method.
+   */
+  options(url: string, options?: {
+    headers?: HttpHeaders | {
+      [header: string]: string | string[];
+    };
+    observe?: 'response';
+    params?: HttpParams | {
+      [param: string]: string | string[];
+    };
+    reportProgress?: boolean;
+    responseType?: 'json';
+    withCredentials?: boolean;
+  }): Observable<any> {
+    // tslint:disable-next-line:no-shadowed-variable
+    return this.getData('options', url, options, (method: string, url: string, options: any) => {
+      return this.httpClient.options(url, options);
+    });
+  }
+
+  // tslint:disable-next-line:max-line-length
+  private getData(method: string,
+                  uri: string | Request,
+                  options: any,
+                  callback: (method: string, uri: string | Request, options: any) => Observable<any>) {
 
     let url = uri;
 
@@ -86,21 +191,23 @@ export class TransferHttp {
       url = uri.url;
     }
 
-    const key = url + JSON.stringify(options);
+    const key = url + (options ? JSON.stringify(options) : '');
 
     try {
       return this.resolveData(key);
-
     } catch (e) {
-      return callback(uri, options)
-        .map(res => res.json())
+      return callback(method, uri, options)
         .do(data => {
           this.setCache(key, data);
         });
     }
   }
 
-  private getPostData(uri: string | Request, body: any, options: RequestOptionsArgs, callback: (uri: string | Request, body: any, options?: RequestOptionsArgs) => Observable<Response>) {
+  // tslint:disable-next-line:max-line-length
+  private getPostData(method: string,
+                      uri: string | Request,
+                      body: any, options: any,
+                      callback: (uri: string | Request, body: any, options: any) => Observable<Response>) {
 
     let url = uri;
 
@@ -108,15 +215,12 @@ export class TransferHttp {
       url = uri.url;
     }
 
-    const key = url + JSON.stringify(body) + JSON.stringify(options);
+    const key = url + (body ? JSON.stringify(body) : '') + (options ? JSON.stringify(options) : '');
 
     try {
-
       return this.resolveData(key);
-
     } catch (e) {
       return callback(uri, body, options)
-        .map(res => res.json())
         .do(data => {
           this.setCache(key, data);
         });
@@ -138,6 +242,6 @@ export class TransferHttp {
   }
 
   private getFromCache(key): any {
-    return this.transferState.get(key);
+    return this.transferState.get(key, null);
   }
 }

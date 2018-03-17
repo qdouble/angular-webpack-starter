@@ -1,19 +1,20 @@
 import { Injectable } from '@angular/core';
-import { Http, Headers, RequestOptions } from '@angular/http';
+import { Headers } from '@angular/http';
+import { HttpClient, HttpHeaders, HttpInterceptor } from '@angular/common/http';
 
 @Injectable()
 export class RequestBase {
-  headers = new Headers();
-  noPreFlightHeaders = new Headers();
-  options = new RequestOptions({
+  headers = new HttpHeaders();
+  noPreFlightHeaders = new HttpHeaders();
+  options = {
     headers: this.headers,
     withCredentials: true
-  });
-  optionsNoPre = new RequestOptions({
+  };
+  optionsNoPre = {
     headers: this.noPreFlightHeaders,
     withCredentials: true
-  });
-  constructor(public http: Http) {
+  };
+  constructor(public http: HttpClient) {
     this.headers.append('Content-Type', 'application/json');
     this.noPreFlightHeaders.append('Content-Type', 'text/plain');
   }
