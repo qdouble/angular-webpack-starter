@@ -65,10 +65,6 @@
   dependencies:
     tsickle "^0.21.0"
 
-"@angularclass/idle-preload@~2.0.1":
-  version "2.0.1"
-  resolved "https://registry.yarnpkg.com/@angularclass/idle-preload/-/idle-preload-2.0.1.tgz#63f58fe6e18a2d3a1bbaeff6307c4905c3a18d7f"
-
 "@ngtools/webpack@1.10.2":
   version "1.10.2"
   resolved "https://registry.yarnpkg.com/@ngtools/webpack/-/webpack-1.10.2.tgz#373705fd19992b36e996203480b1d412e942c8d6"
@@ -259,6 +255,10 @@ alphanum-sort@^1.0.1, alphanum-sort@^1.0.2:
 amdefine@>=0.0.4, amdefine@^1.0.0:
   version "1.0.1"
   resolved "https://registry.yarnpkg.com/amdefine/-/amdefine-1.0.1.tgz#4a5282ac164729e93619bcfd3ad151f817ce91f5"
+
+angular-idle-preload@~2.0.4:
+  version "2.0.4"
+  resolved "https://registry.yarnpkg.com/angular-idle-preload/-/angular-idle-preload-2.0.4.tgz#7b177c0f52918c090e5c345480b922297cd59a0d"
 
 angular-router-loader@~0.8.1:
   version "0.8.1"

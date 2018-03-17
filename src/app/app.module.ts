@@ -10,7 +10,7 @@ import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
 import { HttpClientModule } from '@angular/common/http';
 import { RouterModule, PreloadAllModules } from '@angular/router';
-import { IdlePreload, IdlePreloadModule } from '@angularclass/idle-preload';
+import { IdlePreload, IdlePreloadModule } from 'angular-idle-preload';
 
 import { APP_DECLARATIONS } from './app.declarations';
 import { APP_ENTRY_COMPONENTS } from './app.entry-components';

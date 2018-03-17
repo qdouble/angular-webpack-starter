@@ -67,7 +67,7 @@
     "@angular/platform-browser-dynamic": "~5.2.9",
     "@angular/router": "~5.2.9",
     "@angular/tsc-wrapped": "~4.4.6",
-    "@angularclass/idle-preload": "~2.0.1",
+    "angular-idle-preload": "~2.0.4",
     "core-js": "2.5.3",
     "ip": "~1.1.5",
     "rxjs": "~5.5.7",
