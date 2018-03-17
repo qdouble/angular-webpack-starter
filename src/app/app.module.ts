@@ -8,7 +8,7 @@
 
 import { ApplicationRef, NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
-import { HttpModule } from '@angular/http';
+import { HttpClientModule } from '@angular/common/http';
 import { RouterModule, PreloadAllModules } from '@angular/router';
 import { IdlePreload, IdlePreloadModule } from '@angularclass/idle-preload';
 
@@ -35,7 +35,7 @@ import { AppState } from './reducers';
   entryComponents: [APP_ENTRY_COMPONENTS],
   imports: [
     CommonModule,
-    HttpModule,
+    HttpClientModule,
     APP_IMPORTS,
     IdlePreloadModule.forRoot(), // forRoot ensures the providers are only created once
     RouterModule.forRoot(routes, { useHash: false, preloadingStrategy: IdlePreload }),
