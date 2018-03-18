@@ -15,7 +15,7 @@ function getAotPlugin(platform, aot) {
   return new AngularCompilerPlugin({
     tsConfigPath: aot ? aotTsconfigs[platform] : tsconfigs[platform],
     skipCodeGeneration: !aot,
-    sourceMap: true
+    sourceMap: false
   });
 }
 
