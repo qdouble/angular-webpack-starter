@@ -10,12 +10,12 @@ import { ApplicationRef, NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { HttpClientModule } from '@angular/common/http';
 import { RouterModule, PreloadAllModules } from '@angular/router';
-import { IdlePreload, IdlePreloadModule } from 'angular-idle-preload';
 
 import { removeNgStyles, createNewHosts, createInputTransfer } from '@angularclass/hmr';
 
 import { Store } from '@ngrx/store';
 
+import { take } from 'rxjs/operators';
 import { APP_DECLARATIONS } from './app.declarations';
 import { APP_ENTRY_COMPONENTS } from './app.entry-components';
 import { APP_IMPORTS } from './app.imports';
@@ -37,8 +37,7 @@ import { AppState } from './reducers';
     CommonModule,
     HttpClientModule,
     APP_IMPORTS,
-    IdlePreloadModule.forRoot(), // forRoot ensures the providers are only created once
-    RouterModule.forRoot(routes, { useHash: false, preloadingStrategy: IdlePreload }),
+    RouterModule.forRoot(routes, { useHash: false, preloadingStrategy: PreloadAllModules }),
   ],
   bootstrap: [AppComponent],
   exports: [AppComponent],
@@ -66,7 +65,7 @@ export class AppModule {
   }
   hmrOnDestroy(store) {
     const cmpLocation = this.appRef.components.map(cmp => cmp.location.nativeElement);
-    this._store.take(1).subscribe(s => store.rootState = s);
+    this._store.pipe(take(1)).subscribe(s => store.rootState = s);
     store.disposeOldHosts = createNewHosts(cmpLocation);
     store.restoreInputValues = createInputTransfer();
     removeNgStyles();
