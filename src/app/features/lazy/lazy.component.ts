@@ -1,10 +1,10 @@
 import { Component } from '@angular/core';
 
 import { Store } from '@ngrx/store';
-import { Observable } from 'rxjs/Observable';
+import { Observable } from 'rxjs';
 
 import * as LazyActions from './lazy.actions';
-import { LazyState, State } from './lazy.reducer';
+import { State } from './lazy.reducer';
 
 @Component({
   selector: 'my-lazy',

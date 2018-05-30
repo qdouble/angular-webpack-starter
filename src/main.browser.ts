@@ -1,10 +1,8 @@
 import './polyfills.browser';
-import './rxjs.imports';
 
 import { enableProdMode } from '@angular/core';
 import { platformBrowserDynamic } from '@angular/platform-browser-dynamic';
 import { bootloader } from '@angularclass/hmr';
-import { AppModule } from './app/app.module';
 import { BrowserAppModule } from './app/browser.app.module';
 import { decorateModuleRef } from './environment';
 

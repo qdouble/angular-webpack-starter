@@ -6,12 +6,13 @@ import { AppComponent } from './app.component';
 import { AppModule } from './app.module';
 import { TransferState } from '../modules/transfer-state/transfer-state';
 import { BrowserModule } from '@angular/platform-browser';
+import { filter, first } from 'rxjs/operators';
 
 export function onBootstrap(appRef: ApplicationRef, transferState: TransferState) {
   return () => {
-    appRef.isStable
-      .filter(stable => stable)
-      .first()
+    appRef.isStable.pipe(
+      filter(stable => stable),
+      first())
       .subscribe(() => {
         transferState.inject();
       });

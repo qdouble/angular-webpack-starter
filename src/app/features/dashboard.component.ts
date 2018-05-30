@@ -1,7 +1,7 @@
 import { Component, OnDestroy, OnInit } from '@angular/core';
 import { FormGroup, FormBuilder } from '@angular/forms';
-import { Subject } from 'rxjs/Subject';
-import { Observable } from 'rxjs/Observable';
+import { Observable, Subject } from 'rxjs';
+import { map, takeUntil } from 'rxjs/operators';
 import { TransferHttp } from '../../modules/transfer-http/transfer-http';
 
 import { AppState } from '../reducers';
@@ -33,16 +33,16 @@ export class DashboardComponent implements OnDestroy, OnInit {
       name: ''
     });
     this.user$ = this.store.select(state => state.user.user);
-    this.user$.takeUntil(this.destroyed$)
+    this.user$.pipe(takeUntil(this.destroyed$))
       .subscribe(user => { this.user = user; });
   }
 
   ngOnInit() {
     this.form.get('name').setValue(this.user.name);
     if (UNIVERSAL) {
-      this.testSub$ = this.http.get('http://localhost:8000/data').map(data => {
+      this.testSub$ = this.http.get('http://localhost:8000/data').pipe(map(data => {
         return `${data.greeting} ${data.name}`;
-      });
+      }));
     }
   }
 

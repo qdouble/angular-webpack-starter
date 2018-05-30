@@ -16,6 +16,8 @@ import { removeNgStyles, createNewHosts, createInputTransfer } from '@angularcla
 
 import { Store } from '@ngrx/store';
 
+import { take } from 'rxjs/operators';
+
 import {
   BrowserTransferStateModule
 } from '../modules/transfer-state/browser-transfer-state.module';
@@ -73,7 +75,7 @@ export class AppModule {
   }
   hmrOnDestroy(store) {
     const cmpLocation = this.appRef.components.map(cmp => cmp.location.nativeElement);
-    this._store.take(1).subscribe(s => store.rootState = s);
+    this._store.pipe(take(1)).subscribe(s => store.rootState = s);
     store.disposeOldHosts = createNewHosts(cmpLocation);
     store.restoreInputValues = createInputTransfer();
     removeNgStyles();
