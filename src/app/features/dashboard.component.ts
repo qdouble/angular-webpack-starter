@@ -1,7 +1,7 @@
 import { Component, OnDestroy, OnInit } from '@angular/core';
 import { FormGroup, FormBuilder } from '@angular/forms';
-import { Subject } from 'rxjs/Subject';
-import { Observable } from 'rxjs/Observable';
+import { Observable, Subject } from 'rxjs';
+import { takeUntil } from 'rxjs/operators';
 
 import { AppState } from '../reducers';
 import { Store } from '@ngrx/store';
@@ -30,7 +30,7 @@ export class DashboardComponent implements OnDestroy, OnInit {
       name: ''
     });
     this.user$ = this.store.select(state => state.user.user);
-    this.user$.takeUntil(this.destroyed$)
+    this.user$.pipe(takeUntil(this.destroyed$))
       .subscribe(user => { this.user = user; });
   }
 
