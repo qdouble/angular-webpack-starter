@@ -10,7 +10,6 @@ import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
 import { HttpClientModule } from '@angular/common/http';
 import { RouterModule, PreloadAllModules } from '@angular/router';
-import { IdlePreload, IdlePreloadModule } from 'angular-idle-preload';
 
 import { APP_DECLARATIONS } from './app.declarations';
 import { APP_ENTRY_COMPONENTS } from './app.entry-components';
@@ -31,8 +30,7 @@ import { AppComponent } from './app.component';
     BrowserModule,
     HttpClientModule,
     APP_IMPORTS,
-    IdlePreloadModule.forRoot(), // forRoot ensures the providers are only created once
-    RouterModule.forRoot(routes, { useHash: false, preloadingStrategy: IdlePreload }),
+    RouterModule.forRoot(routes, { useHash: false, preloadingStrategy: PreloadAllModules }),
   ],
   bootstrap: [AppComponent],
   exports: [AppComponent],
