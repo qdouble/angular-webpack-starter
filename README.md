@@ -2,39 +2,22 @@
 
 ## Bootstrap and Universal Branch
 
-<<<<<<< HEAD
-> Featuring Bootstrap 4 and ng-bootstrap, Webpack 2 (and Webpack DLL plugin for faster dev builds), HMR (Hot Module Replacement), Universal for server-side rendering and @ngrx for state management.
-=======
-> Featuring Material Design 2, Webpack (and Webpack DLL plugin for faster dev builds), HMR (Hot Module Replacement), @ngrx for state management and optional server-side rendering with Universal.
->>>>>>> 07eb18c... update readme
+> Featuring Bootstrap 4 and ng-bootstrap, Webpack (and Webpack DLL plugin for faster dev builds), HMR (Hot Module Replacement), Universal for server-side rendering and @ngrx for state management.
 
 ###### You can use npm, but it's recommended to use yarn as it installs a lot faster and has other benefits https://yarnpkg.com/ . Make sure you are using yarn version 0.16.0 or newer (check with 'yarn --version')
 
 ```bash
-<<<<<<< HEAD
-git clone -b bootstrap-and-universal https://github.com/qdouble/angular-webpack2-starter.git
-cd angular-webpack2-starter
-=======
-git clone https://github.com/qdouble/angular-webpack-starter.git
+git clone -b bootstrap-and-universal https://github.com/qdouble/angular-webpack-starter.git
 cd angular-webpack-starter
->>>>>>> 07eb18c... update readme
 yarn
 yarn start
 ```
 
-<<<<<<< HEAD
-### [Bootstrap Branch without Universal](https://github.com/qdouble/angular-webpack2-starter/tree/bootstrap)
+### [Bootstrap Branch without Universal](https://github.com/qdouble/angular-webpack-starter/tree/bootstrap)
 
-### [Material Branch with Universal (Server-side rendering) support](https://github.com/qdouble/angular-webpack2-starter)
+### [Material Branch with Universal (Server-side rendering) support](https://github.com/qdouble/angular-webpack-starter)
 
-### [Material Branch without Universal (Server-side rendering) support](https://github.com/qdouble/angular-webpack2-starter/tree/no-universal-support)
-=======
 ### [Material Branch without Universal (Server-side rendering) support](https://github.com/qdouble/angular-webpack-starter/tree/no-universal-support)
-
-### [Bootstrap Branch](https://github.com/qdouble/angular-webpack-starter/tree/bootstrap)
-
-### [Bootstrap and Universal Branch](https://github.com/qdouble/angular-webpack-starter/tree/bootstrap-and-universal)
->>>>>>> 07eb18c... update readme
 
 ### [Minimal Branch](https://github.com/qdouble/angular-webpack-starter/tree/minimal)
 
@@ -86,13 +69,9 @@ Default ports and option to use proxy backend for dev server can be changed in `
 To create AOT version, run `yarn run build:aot`. This will compile and build script.
 Then you can use `yarn run prodserver` to see to serve files.
 
-### Store Log Monitor / Store Logger
+### Store Logger
 
-In development mode, the store log monitor appears on the right hand of your screen. This allows
-you to view your stored state and manipulate your state history. By default, the monitor is NOT imported
-when you are in production mode. State history is also not saved in production mode.
-
-There is also an option to use store-logger which outputs to the console instead of your application view.
+There is an option to use store-logger which outputs ngrx action history to the console.
 To set your development mode store logging preference, go to the constant.js file and edit the `STORE_DEV_TOOLS` constant.
 Available options are `logger | none`
 
@@ -126,8 +105,4 @@ For e2e tests, use `yarn run e2e`. To run unit test and e2e test at the same tim
 
 ### License
 
-<<<<<<< HEAD
-[MIT](https://github.com/qdouble/angular-webpack2-starter/blob/bootstrap-and-universal/LICENSE)
-=======
-[MIT](https://github.com/qdouble/angular-webpack-starter/blob/master/LICENSE)
->>>>>>> 07eb18c... update readme
+[MIT](https://github.com/qdouble/angular-webpack-starter/blob/bootstrap-and-universal/LICENSE)
