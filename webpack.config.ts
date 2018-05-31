@@ -28,11 +28,12 @@ const HtmlWebpackPlugin = require('html-webpack-plugin');
 const NamedModulesPlugin = require('webpack/lib/NamedModulesPlugin');
 const nodeExternals = require('webpack-node-externals');
 const ScriptExtPlugin = require('script-ext-html-webpack-plugin');
-const UglifyJsPlugin = require('webpack/lib/optimize/UglifyJsPlugin');
+const FilterWarningsPlugin = require('webpack-filter-warnings-plugin');
+const UglifyJsPlugin = require('uglifyjs-webpack-plugin');
 const webpackMerge = require('webpack-merge');
 const { getAotPlugin } = require('./webpack.aot');
 
-const { hasProcessFlag, includeClientPackages, root, testDll } = require('./helpers.js');
+const { hasProcessFlag, root, testDll } = require('./helpers.js');
 
 const EVENT = process.env.npm_lifecycle_event || '';
 const AOT = EVENT.includes('aot');
@@ -77,6 +78,8 @@ const CONSTANTS = {
 };
 
 const DLL_VENDORS = [
+  '@angular/animations',
+  '@angular/cdk',
   '@angular/common',
   '@angular/compiler',
   '@angular/core',
@@ -87,15 +90,20 @@ const DLL_VENDORS = [
   '@angular/platform-browser-dynamic',
   '@angular/platform-server',
   '@angular/router',
-  '@ngrx/core',
+  '@angularclass/hmr',
+  '@angularclass/hmr-loader',
   '@ngrx/effects',
+  '@ngrx/entity',
   '@ngrx/router-store',
   '@ngrx/store',
   '@ngrx/store-devtools',
-  '@ngrx/store-log-monitor',
+  'core-js',
+  'hammerjs',
   'ngrx-store-freeze',
   'ngrx-store-logger',
   'rxjs',
+  'web-animations-js',
+  'zone.js',
   ...MY_VENDOR_DLLS
 ];
 
@@ -133,7 +141,17 @@ const commonConfig = function webpackConfig(): WebpackConfig {
         ],
         exclude: [/\.(spec|e2e|d)\.ts$/]
       },
-      { test: /\.json$/, loader: 'json-loader' },
+      {
+        type: 'javascript/auto',
+        test: /\.json/,
+        exclude: /(node_modules|bower_components)/,
+        use: [
+          {
+            loader: 'file-loader',
+            options: { name: '[name].[ext]' }
+          }
+        ]
+      },
       { test: /\.html/, loader: 'raw-loader', exclude: [root('src/index.html')] },
       { test: /\.css$/, loader: 'raw-loader' },
       {
@@ -149,6 +167,9 @@ const commonConfig = function webpackConfig(): WebpackConfig {
     new CheckerPlugin(),
     new DefinePlugin(CONSTANTS),
     new NamedModulesPlugin(),
+    new FilterWarningsPlugin({
+      exclude: /System\.import/
+    }),
     ...MY_CLIENT_PLUGINS
   ];
 
@@ -209,7 +230,7 @@ const commonConfig = function webpackConfig(): WebpackConfig {
 const clientConfig = function webpackConfig(): WebpackConfig {
 
   let config: WebpackConfig = Object.assign({});
-
+  config.mode = PROD ? 'production' : 'development';
   config.cache = true;
   config.target = 'web';
   PROD ? config.devtool = PROD_SOURCE_MAPS : config.devtool = DEV_SOURCE_MAPS;
@@ -218,8 +239,12 @@ const clientConfig = function webpackConfig(): WebpackConfig {
   if (PROD) {
     config.plugins.push(
       new UglifyJsPlugin({
-        beautify: false,
-        comments: false
+        uglifyOptions: {
+          output: {
+            comments: false,
+            beautify: false
+          }
+        }
       })
     );
   }
@@ -314,6 +339,7 @@ const clientConfig = function webpackConfig(): WebpackConfig {
 
 const serverConfig: WebpackConfig = {
   target: 'node',
+  mode: PROD ? 'production' : 'development',
   externals: [nodeExternals()],
   entry: AOT ? './src/server.aot.ts' : root('./src/server.ts'),
   output: {
