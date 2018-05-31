@@ -95,7 +95,6 @@ const DLL_VENDORS = [
   '@ngrx/router-store',
   '@ngrx/store',
   '@ngrx/store-devtools',
-  '@ngrx/store-log-monitor',
   '@ng-bootstrap/ng-bootstrap',
   'core-js',
   'ngrx-store-freeze',
