@@ -5,6 +5,7 @@ interface WebpackConfig {
   entry: any;
   externals?: any;
   output: any;
+  mode?: string;
   module?: any;
   plugins?: Array<any>;
   resolve?: {
