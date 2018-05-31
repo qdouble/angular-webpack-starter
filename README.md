@@ -69,7 +69,7 @@ Default ports and option to use proxy backend for dev server can be changed in `
 To create AOT version, run `yarn run build:aot`. This will compile and build script.
 Then you can use `yarn run prodserver` to see to serve files.
 
-### Store Log Monitor / Store Logger
+### Store Logger
 
 There is also an option to use store-logger which outputs ngrx action history to the console.
 To set your development mode store logging preference, go to the constant.js file and edit the `STORE_DEV_TOOLS` constant.
