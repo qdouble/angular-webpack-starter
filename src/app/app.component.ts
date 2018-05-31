@@ -14,9 +14,6 @@ import * as fromRoot from './reducers';
   encapsulation: ViewEncapsulation.None
 })
 export class AppComponent {
-  showMonitor = (ENV === 'development' && !AOT &&
-    ['monitor', 'both'].includes(STORE_DEV_TOOLS) // set in constants.js file in project root
-  );
   mobile = MOBILE;
   sideNavMode = MOBILE ? 'over' : 'side';
   views = views;

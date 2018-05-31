@@ -24,9 +24,9 @@ const CopyWebpackPlugin = require('copy-webpack-plugin');
 const { CheckerPlugin } = require('awesome-typescript-loader');
 const HtmlWebpackPlugin = require('html-webpack-plugin');
 const NamedModulesPlugin = require('webpack/lib/NamedModulesPlugin');
-const UglifyJsPlugin = require('webpack/lib/optimize/UglifyJsPlugin');
 const BundleAnalyzerPlugin = require('webpack-bundle-analyzer').BundleAnalyzerPlugin;
-const WebpackMd5Hash = require('webpack-md5-hash');
+const FilterWarningsPlugin = require('webpack-filter-warnings-plugin');
+const UglifyJsPlugin = require('uglifyjs-webpack-plugin');
 const { getAotPlugin } = require('./webpack.aot');
 
 const { hasProcessFlag, root, testDll } = require('./helpers.js');
@@ -66,6 +66,8 @@ const CONSTANTS = {
 };
 
 const DLL_VENDORS = [
+  '@angular/animations',
+  '@angular/cdk',
   '@angular/common',
   '@angular/compiler',
   '@angular/core',
@@ -75,15 +77,20 @@ const DLL_VENDORS = [
   '@angular/platform-browser',
   '@angular/platform-browser-dynamic',
   '@angular/router',
-  '@ngrx/core',
+  '@angularclass/hmr',
+  '@angularclass/hmr-loader',
   '@ngrx/effects',
+  '@ngrx/entity',
   '@ngrx/router-store',
   '@ngrx/store',
   '@ngrx/store-devtools',
-  '@ngrx/store-log-monitor',
+  'core-js',
+  'hammerjs',
   'ngrx-store-freeze',
   'ngrx-store-logger',
   'rxjs',
+  'web-animations-js',
+  'zone.js',
   ...MY_VENDOR_DLLS
 ];
 
@@ -121,7 +128,17 @@ const clientConfig = function webpackConfig(): WebpackConfig {
         ],
         exclude: [/\.(spec|e2e|d)\.ts$/]
       },
-      { test: /\.json$/, loader: 'json-loader' },
+      {
+        type: 'javascript/auto',
+        test: /\.json/,
+        exclude: /(node_modules|bower_components)/,
+        use: [
+          {
+            loader: 'file-loader',
+            options: { name: '[name].[ext]' }
+          }
+        ]
+      },
       { test: /\.html/, loader: 'raw-loader', exclude: [root('src/index.html')] },
       { test: /\.css$/, loader: 'raw-loader' },
       {
@@ -138,10 +155,11 @@ const clientConfig = function webpackConfig(): WebpackConfig {
     new CheckerPlugin(),
     new DefinePlugin(CONSTANTS),
     new NamedModulesPlugin(),
-    new WebpackMd5Hash(),
+    new FilterWarningsPlugin({
+      exclude: /System\.import/}),
     new HtmlWebpackPlugin({
-      template: 'src/index.html',
-      metadata: { isDevServer: DEV_SERVER }
+        template: 'src/index.html',
+        metadata: { isDevServer: DEV_SERVER }
     }),
     ...MY_CLIENT_PLUGINS
   ];
@@ -177,9 +195,12 @@ const clientConfig = function webpackConfig(): WebpackConfig {
     config.plugins.push(
       new NoEmitOnErrorsPlugin(),
       new UglifyJsPlugin({
-        beautify: false,
-        comments: false
-      }),
+        uglifyOptions: {
+          output: {
+            comments: false,
+            beautify: false
+          }
+        }}),
       new CompressionPlugin({
         asset: '[path].gz[query]',
         algorithm: 'gzip',
@@ -197,6 +218,7 @@ const clientConfig = function webpackConfig(): WebpackConfig {
   }
 
   config.cache = true;
+  config.mode = PROD ? 'production' : 'development';
   config.target = 'web';
   PROD ? config.devtool = PROD_SOURCE_MAPS : config.devtool = DEV_SOURCE_MAPS;
 
