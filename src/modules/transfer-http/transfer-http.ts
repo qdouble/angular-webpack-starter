@@ -2,9 +2,8 @@
 import { Injectable } from '@angular/core';
 import { HttpClient, HttpHeaders, HttpParams } from '@angular/common/http';
 import { TransferState } from '@angular/platform-browser';
-import { Observable } from 'rxjs';
-import 'rxjs/add/operator/do';
-import 'rxjs/add/observable/fromPromise';
+import { from, Observable } from 'rxjs';
+import { tap } from 'rxjs/operators';
 
 @Injectable()
 export class TransferHttp {
@@ -197,9 +196,9 @@ export class TransferHttp {
       return this.resolveData(key);
     } catch (e) {
       return callback(method, uri, options)
-        .do(data => {
+        .pipe(tap(data => {
           this.setCache(key, data);
-        });
+        }));
     }
   }
 
@@ -221,9 +220,9 @@ export class TransferHttp {
       return this.resolveData(key);
     } catch (e) {
       return callback(uri, body, options)
-        .do(data => {
+        .pipe(tap(data => {
           this.setCache(key, data);
-        });
+        }));
     }
   }
 
@@ -234,7 +233,7 @@ export class TransferHttp {
       throw new Error();
     }
 
-    return Observable.fromPromise(Promise.resolve(data));
+    return from(Promise.resolve(data));
   }
 
   private setCache(key, data) {
