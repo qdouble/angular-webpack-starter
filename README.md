@@ -71,11 +71,7 @@ Then you can use `yarn run prodserver` to see to serve files.
 
 ### Store Log Monitor / Store Logger
 
-In development mode, the store log monitor appears on the right hand of your screen. This allows
-you to view your stored state and manipulate your state history. By default, the monitor is NOT imported
-when you are in production mode. State history is also not saved in production mode.
-
-There is also an option to use store-logger which outputs to the console instead of your application view.
+There is also an option to use store-logger which outputs ngrx action history to the console.
 To set your development mode store logging preference, go to the constant.js file and edit the `STORE_DEV_TOOLS` constant.
 Available options are `logger | none`
 
