@@ -1,34 +1,51 @@
-# Complete starter seed project for Angular 2
+# Complete starter seed project for Angular
 
 ## Bootstrap and Universal Branch
 
+<<<<<<< HEAD
 > Featuring Bootstrap 4 and ng-bootstrap, Webpack 2 (and Webpack DLL plugin for faster dev builds), HMR (Hot Module Replacement), Universal for server-side rendering and @ngrx for state management.
+=======
+> Featuring Material Design 2, Webpack (and Webpack DLL plugin for faster dev builds), HMR (Hot Module Replacement), @ngrx for state management and optional server-side rendering with Universal.
+>>>>>>> 07eb18c... update readme
 
 ###### You can use npm, but it's recommended to use yarn as it installs a lot faster and has other benefits https://yarnpkg.com/ . Make sure you are using yarn version 0.16.0 or newer (check with 'yarn --version')
 
 ```bash
+<<<<<<< HEAD
 git clone -b bootstrap-and-universal https://github.com/qdouble/angular-webpack2-starter.git
 cd angular-webpack2-starter
+=======
+git clone https://github.com/qdouble/angular-webpack-starter.git
+cd angular-webpack-starter
+>>>>>>> 07eb18c... update readme
 yarn
 yarn start
 ```
 
+<<<<<<< HEAD
 ### [Bootstrap Branch without Universal](https://github.com/qdouble/angular-webpack2-starter/tree/bootstrap)
 
 ### [Material Branch with Universal (Server-side rendering) support](https://github.com/qdouble/angular-webpack2-starter)
 
 ### [Material Branch without Universal (Server-side rendering) support](https://github.com/qdouble/angular-webpack2-starter/tree/no-universal-support)
+=======
+### [Material Branch without Universal (Server-side rendering) support](https://github.com/qdouble/angular-webpack-starter/tree/no-universal-support)
 
-### [Minimal Branch](https://github.com/qdouble/angular-webpack2-starter/tree/minimal)
+### [Bootstrap Branch](https://github.com/qdouble/angular-webpack-starter/tree/bootstrap)
+
+### [Bootstrap and Universal Branch](https://github.com/qdouble/angular-webpack-starter/tree/bootstrap-and-universal)
+>>>>>>> 07eb18c... update readme
+
+### [Minimal Branch](https://github.com/qdouble/angular-webpack-starter/tree/minimal)
 
 ## Features
 
-* Angular 2
+* Angular
   * Async loading
   * Treeshaking
   * AOT (Ahead of Time/ Offline) Compilation
   * AOT safe SASS compilation
-* Webpack 2
+* Webpack 4
   * Webpack Dlls (Speeds up devServer builds)
   * @ngTools AOT plugin
 * HMR (Hot Module Replacement)
@@ -37,11 +54,10 @@ yarn start
 * Bootstrap 4 and @ng-bootstrap
 * Universal (Server-side Rendering)
 * @ngrx
-  * store (RxJS powered state management for Angular2 apps, inspired by Redux)
+  * store (RxJS powered state management for Angular apps, inspired by Redux)
   * effects (Side effect model for @ngrx/store)
   * router-store (Bindings to connect angular/router to ngrx/store)
   * store-devtools (Developer Tools for @ngrx/store)
-  * store-log-monitor (Log Monitor for @ngrx/store-devtools and Angular 2)
   * ngrx-store-logger (Advanced console logging for @ngrx/store applications, ported from redux-logger.)
   * ngrx-store-freeze in dev mode (@ngrx/store meta reducer that prevents state from being mutated.)
 * Karma/Jasmine testing
@@ -78,7 +94,7 @@ when you are in production mode. State history is also not saved in production m
 
 There is also an option to use store-logger which outputs to the console instead of your application view.
 To set your development mode store logging preference, go to the constant.js file and edit the `STORE_DEV_TOOLS` constant.
-Available options are `monitor | logger | both | none`
+Available options are `logger | none`
 
 ### HMR (Hot Module Replacement)
 
@@ -106,8 +122,12 @@ For e2e tests, use `yarn run e2e`. To run unit test and e2e test at the same tim
 
 ### Wiki Links
 
-[Recommended Steps for merging this starter into existing project](https://github.com/qdouble/angular-webpack2-starter/wiki/Recommended-Steps-for-Merging-Starter-into-Existing-Project)
+[Recommended Steps for merging this starter into existing project](https://github.com/qdouble/angular-webpack-starter/wiki/Recommended-Steps-for-Merging-Starter-into-Existing-Project)
 
 ### License
 
+<<<<<<< HEAD
 [MIT](https://github.com/qdouble/angular-webpack2-starter/blob/bootstrap-and-universal/LICENSE)
+=======
+[MIT](https://github.com/qdouble/angular-webpack-starter/blob/master/LICENSE)
+>>>>>>> 07eb18c... update readme
