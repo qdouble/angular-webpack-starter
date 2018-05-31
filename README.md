@@ -2,32 +2,32 @@
 
 ## Minimal Branch
 
-> Featuring Webpack 2 (and Webpack DLL plugin for faster dev builds). Supports Lazy Loading and AOT compilation.
+> Featuring Webpack (and Webpack DLL plugin for faster dev builds). Supports Lazy Loading and AOT compilation.
 
 ###### You can use npm, but it's recommended to use yarn as it installs a lot faster and has other benefits https://yarnpkg.com/ . Make sure you are using yarn version 0.16.0 or newer (check with 'yarn --version')
 
 ```bash
-git clone -b minimal https://github.com/qdouble/angular-webpack2-starter.git
-cd angular-webpack2-starter
+git clone -b minimal https://github.com/qdouble/angular-webpack-starter.git
+cd angular-webpack-starter
 yarn
 yarn start
 ```
 
-### [Material Branch with Universal (Server-side rendering) support](https://github.com/qdouble/angular-webpack2-starter)
+### [Material Branch with Universal (Server-side rendering) support](https://github.com/qdouble/angular-webpack-starter)
 
-### [Material Branch without Universal (Server-side rendering) support](https://github.com/qdouble/angular-webpack2-starter/tree/no-universal-support)
+### [Material Branch without Universal (Server-side rendering) support](https://github.com/qdouble/angular-webpack-starter/tree/no-universal-support)
 
-### [Bootstrap and Universal Branch](https://github.com/qdouble/angular-webpack2-starter/tree/bootstrap-and-universal)
+### [Bootstrap and Universal Branch](https://github.com/qdouble/angular-webpack-starter/tree/bootstrap-and-universal)
 
-### [Bootstrap Branch](https://github.com/qdouble/angular-webpack2-starter/tree/bootstrap)
+### [Bootstrap Branch](https://github.com/qdouble/angular-webpack-starter/tree/bootstrap)
 
 ## Features
 
-* Angular 2
+* Angular
   * Async loading
   * Treeshaking
   * AOT (Ahead of Time/ Offline) Compilation
-* Webpack 2
+* Webpack
   * Webpack Dlls (Speeds up devServer builds)
   * @ngTools AOT plugin
 * TypeScript 2
@@ -73,8 +73,8 @@ For e2e tests, use `yarn run e2e`. To run unit test and e2e test at the same tim
 
 ### Wiki Links
 
-[Recommended Steps for merging this starter into existing project](https://github.com/qdouble/angular-webpack2-starter/wiki/Recommended-Steps-for-Merging-Starter-into-Existing-Project)
+[Recommended Steps for merging this starter into existing project](https://github.com/qdouble/angular-webpack-starter/wiki/Recommended-Steps-for-Merging-Starter-into-Existing-Project)
 
 ### License
 
-[MIT](https://github.com/qdouble/angular-webpack2-starter/blob/minimal/LICENSE)
+[MIT](https://github.com/qdouble/angular-webpack-starter/blob/minimal/LICENSE)
