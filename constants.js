@@ -22,7 +22,7 @@ exports.DEV_SERVER_PROXY_CONFIG = {
  * For info on source map options, go to: 
  * https://webpack.github.io/docs/configuration.html#devtool
  */
-exports.DEV_SOURCE_MAPS = 'eval';
+exports.DEV_SOURCE_MAPS = 'source-map';
 exports.PROD_SOURCE_MAPS = 'source-map';
 
 /**
