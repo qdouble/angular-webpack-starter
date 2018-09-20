@@ -26,7 +26,6 @@ const { CheckerPlugin } = require('awesome-typescript-loader');
 const HtmlWebpackPlugin = require('html-webpack-plugin');
 const NamedModulesPlugin = require('webpack/lib/NamedModulesPlugin');
 const nodeExternals = require('webpack-node-externals');
-const ScriptExtPlugin = require('script-ext-html-webpack-plugin');
 const FilterWarningsPlugin = require('webpack-filter-warnings-plugin');
 const UglifyJsPlugin = require('uglifyjs-webpack-plugin');
 const webpackMerge = require('webpack-merge');
@@ -245,14 +244,6 @@ const clientConfig = function webpackConfig(): WebpackConfig {
     );
   }
 
-  if (UNIVERSAL || SERVER) {
-    config.plugins.push(
-      new ScriptExtPlugin({
-        defaultAttribute: 'defer'
-      })
-    );
-  }
-
   if (DLL) {
     config.entry = {
       app_assets: ['./src/main.browser'],
@@ -331,7 +322,7 @@ const clientConfig = function webpackConfig(): WebpackConfig {
 
   return config;
 
-} ();
+}();
 
 const serverConfig: WebpackConfig = {
   target: 'node',
