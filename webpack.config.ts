@@ -5,11 +5,24 @@
  */
 
 import {
-  DEV_PORT, PROD_PORT, UNIVERSAL_PORT, EXCLUDE_SOURCE_MAPS, HOST,
-  USE_DEV_SERVER_PROXY, DEV_SERVER_PROXY_CONFIG, DEV_SERVER_WATCH_OPTIONS,
-  DEV_SOURCE_MAPS, PROD_SOURCE_MAPS, STORE_DEV_TOOLS,
-  MY_COPY_FOLDERS, MY_POLYFILL_DLLS, MY_VENDOR_DLLS, MY_CLIENT_PLUGINS, MY_CLIENT_PRODUCTION_PLUGINS,
-  MY_CLIENT_RULES, SHOW_WEBPACK_BUNDLE_ANALYZER
+  DEV_PORT,
+  PROD_PORT,
+  UNIVERSAL_PORT,
+  EXCLUDE_SOURCE_MAPS,
+  HOST,
+  USE_DEV_SERVER_PROXY,
+  DEV_SERVER_PROXY_CONFIG,
+  DEV_SERVER_WATCH_OPTIONS,
+  DEV_SOURCE_MAPS,
+  PROD_SOURCE_MAPS,
+  STORE_DEV_TOOLS,
+  MY_COPY_FOLDERS,
+  MY_POLYFILL_DLLS,
+  MY_VENDOR_DLLS,
+  MY_CLIENT_PLUGINS,
+  MY_CLIENT_PRODUCTION_PLUGINS,
+  MY_CLIENT_RULES,
+  SHOW_WEBPACK_BUNDLE_ANALYZER,
 } from './constants';
 
 const {
@@ -17,7 +30,7 @@ const {
   DllPlugin,
   DllReferencePlugin,
   ProgressPlugin,
-  NoEmitOnErrorsPlugin
+  NoEmitOnErrorsPlugin,
 } = require('webpack');
 
 const BundleAnalyzerPlugin = require('webpack-bundle-analyzer').BundleAnalyzerPlugin;
@@ -27,7 +40,6 @@ const { CheckerPlugin } = require('awesome-typescript-loader');
 const HtmlWebpackPlugin = require('html-webpack-plugin');
 const NamedModulesPlugin = require('webpack/lib/NamedModulesPlugin');
 const nodeExternals = require('webpack-node-externals');
-const ScriptExtPlugin = require('script-ext-html-webpack-plugin');
 const FilterWarningsPlugin = require('webpack-filter-warnings-plugin');
 const UglifyJsPlugin = require('uglifyjs-webpack-plugin');
 const webpackMerge = require('webpack-merge');
@@ -74,7 +86,7 @@ const CONSTANTS = {
   HOST: JSON.stringify(HOST),
   PORT: PORT,
   STORE_DEV_TOOLS: JSON.stringify(STORE_DEV_TOOLS),
-  UNIVERSAL: UNIVERSAL || SERVER
+  UNIVERSAL: UNIVERSAL || SERVER,
 };
 
 const DLL_VENDORS = [
@@ -104,7 +116,7 @@ const DLL_VENDORS = [
   'rxjs',
   'web-animations-js',
   'zone.js',
-  ...MY_VENDOR_DLLS
+  ...MY_VENDOR_DLLS,
 ];
 
 const COPY_FOLDERS = [
@@ -112,7 +124,7 @@ const COPY_FOLDERS = [
   { from: 'node_modules/hammerjs/hammer.min.js' },
   { from: 'node_modules/hammerjs/hammer.min.js.map' },
   { from: 'src/app/styles.css' },
-  ...MY_COPY_FOLDERS
+  ...MY_COPY_FOLDERS,
 ];
 
 if (!DEV_SERVER) {
@@ -121,7 +133,7 @@ if (!DEV_SERVER) {
   COPY_FOLDERS.push({ from: 'dll' });
 }
 
-const commonConfig = function webpackConfig(): WebpackConfig {
+const commonConfig = (function webpackConfig(): WebpackConfig {
   let config: WebpackConfig = Object.assign({});
 
   config.module = {
@@ -129,17 +141,20 @@ const commonConfig = function webpackConfig(): WebpackConfig {
       {
         test: /\.js$/,
         loader: 'source-map-loader',
-        exclude: [EXCLUDE_SOURCE_MAPS]
+        exclude: [EXCLUDE_SOURCE_MAPS],
       },
       {
         test: /\.ts$/,
-        loaders: !DLL && !DEV_SERVER ? ['@ngtools/webpack'] : [
-          '@angularclass/hmr-loader',
-          'awesome-typescript-loader?{configFileName: "tsconfig.webpack.json"}',
-          'angular2-template-loader',
-          'angular-router-loader?loader=system&genDir=compiled&aot=' + AOT
-        ],
-        exclude: [/\.(spec|e2e|d)\.ts$/]
+        loaders:
+          !DLL && !DEV_SERVER
+            ? ['@ngtools/webpack']
+            : [
+                '@angularclass/hmr-loader',
+                'awesome-typescript-loader?{configFileName: "tsconfig.webpack.json"}',
+                'angular2-template-loader',
+                'angular-router-loader?loader=system&genDir=compiled&aot=' + AOT,
+              ],
+        exclude: [/\.(spec|e2e|d)\.ts$/],
       },
       {
         type: 'javascript/auto',
@@ -148,18 +163,18 @@ const commonConfig = function webpackConfig(): WebpackConfig {
         use: [
           {
             loader: 'file-loader',
-            options: { name: '[name].[ext]' }
-          }
-        ]
+            options: { name: '[name].[ext]' },
+          },
+        ],
       },
       { test: /\.html/, loader: 'raw-loader', exclude: [root('src/index.html')] },
       { test: /\.css$/, loader: 'raw-loader' },
       {
         test: /\.scss$/,
-        loaders: ['to-string-loader', 'css-loader', 'sass-loader']
+        loaders: ['to-string-loader', 'css-loader', 'sass-loader'],
       },
-      ...MY_CLIENT_RULES
-    ]
+      ...MY_CLIENT_RULES,
+    ],
   };
 
   config.plugins = [
@@ -168,24 +183,24 @@ const commonConfig = function webpackConfig(): WebpackConfig {
     new DefinePlugin(CONSTANTS),
     new NamedModulesPlugin(),
     new FilterWarningsPlugin({
-      exclude: /System\.import/
+      exclude: /System\.import/,
     }),
-    ...MY_CLIENT_PLUGINS
+    ...MY_CLIENT_PLUGINS,
   ];
 
   if (DEV_SERVER) {
     config.plugins.push(
       new DllReferencePlugin({
         context: '.',
-        manifest: require(`./dll/polyfill-manifest.json`)
+        manifest: require(`./dll/polyfill-manifest.json`),
       }),
       new DllReferencePlugin({
         context: '.',
-        manifest: require(`./dll/vendor-manifest.json`)
+        manifest: require(`./dll/vendor-manifest.json`),
       }),
       new HtmlWebpackPlugin({
         template: 'src/index.html',
-        inject: false
+        inject: false,
       })
     );
   }
@@ -212,28 +227,25 @@ const commonConfig = function webpackConfig(): WebpackConfig {
         algorithm: 'gzip',
         test: /\.js$|\.html$/,
         threshold: 10240,
-        minRatio: 0.8
+        minRatio: 0.8,
       }),
-      ...MY_CLIENT_PRODUCTION_PLUGINS,
+      ...MY_CLIENT_PRODUCTION_PLUGINS
     );
     if (!E2E && !WATCH && !UNIVERSAL && SHOW_WEBPACK_BUNDLE_ANALYZER) {
-      config.plugins.push(
-        new BundleAnalyzerPlugin({ analyzerPort: 5000 })
-      );
+      config.plugins.push(new BundleAnalyzerPlugin({ analyzerPort: 5000 }));
     }
   }
 
   return config;
-}();
+})();
 
 // type definition for WebpackConfig at the bottom
-const clientConfig = function webpackConfig(): WebpackConfig {
-
+const clientConfig = (function webpackConfig(): WebpackConfig {
   let config: WebpackConfig = Object.assign({});
   config.mode = PROD ? 'production' : 'development';
   config.cache = true;
   config.target = 'web';
-  PROD ? config.devtool = PROD_SOURCE_MAPS : config.devtool = DEV_SOURCE_MAPS;
+  PROD ? (config.devtool = PROD_SOURCE_MAPS) : (config.devtool = DEV_SOURCE_MAPS);
   config.plugins = [getAotPlugin('client', AOT)];
 
   if (PROD) {
@@ -242,17 +254,9 @@ const clientConfig = function webpackConfig(): WebpackConfig {
         uglifyOptions: {
           output: {
             comments: false,
-            beautify: false
-          }
-        }
-      })
-    );
-  }
-
-  if (UNIVERSAL || SERVER) {
-    config.plugins.push(
-      new ScriptExtPlugin({
-        defaultAttribute: 'defer'
+            beautify: false,
+          },
+        },
       })
     );
   }
@@ -277,26 +281,26 @@ const clientConfig = function webpackConfig(): WebpackConfig {
         'webpack-dev-server/client/socket.js',
         'webpack/hot/emitter.js',
         'zone.js/dist/long-stack-trace-zone.js',
-        ...MY_POLYFILL_DLLS
+        ...MY_POLYFILL_DLLS,
       ],
-      vendor: [...DLL_VENDORS]
+      vendor: [...DLL_VENDORS],
     };
   } else {
     config.entry = {
-      main: root('./src/main.browser.ts')
+      main: root('./src/main.browser.ts'),
     };
   }
 
   if (!DLL) {
     config.output = {
       path: root('dist'),
-      filename: 'index.js'
+      filename: 'index.js',
     };
   } else {
     config.output = {
       path: root('dll'),
       filename: '[name].dll.js',
-      library: '[name]'
+      library: '[name]',
     };
   }
 
@@ -308,17 +312,17 @@ const clientConfig = function webpackConfig(): WebpackConfig {
     },
     stats: 'minimal',
     host: '0.0.0.0',
-    watchOptions: DEV_SERVER_WATCH_OPTIONS
+    watchOptions: DEV_SERVER_WATCH_OPTIONS,
   };
 
   if (USE_DEV_SERVER_PROXY) {
     Object.assign(config.devServer, {
-      proxy: DEV_SERVER_PROXY_CONFIG
+      proxy: DEV_SERVER_PROXY_CONFIG,
     });
   }
 
   config.performance = {
-    hints: false
+    hints: false,
   };
 
   config.node = {
@@ -330,12 +334,11 @@ const clientConfig = function webpackConfig(): WebpackConfig {
     clearImmediate: false,
     setImmediate: false,
     clearTimeout: true,
-    setTimeout: true
+    setTimeout: true,
   };
 
   return config;
-
-}();
+})();
 
 const serverConfig: WebpackConfig = {
   target: 'node',
@@ -344,21 +347,18 @@ const serverConfig: WebpackConfig = {
   entry: AOT ? './src/server.aot.ts' : root('./src/server.ts'),
   output: {
     filename: 'server.js',
-    path: root('dist')
+    path: root('dist'),
   },
-  plugins: [
-    getAotPlugin('server', AOT)
-  ],
+  plugins: [getAotPlugin('server', AOT)],
   module: {
-    rules: []
+    rules: [],
   },
-
 };
 
 const defaultConfig = {
   resolve: {
-    extensions: ['.ts', '.js', '.json']
-  }
+    extensions: ['.ts', '.js', '.json'],
+  },
 };
 
 if (!UNIVERSAL && !SERVER) {
@@ -370,6 +370,6 @@ if (!UNIVERSAL && !SERVER) {
   console.log('BUILDING UNIVERSAL');
   module.exports = [
     webpackMerge({}, defaultConfig, commonConfig, clientConfig),
-    webpackMerge({}, defaultConfig, commonConfig, serverConfig)
+    webpackMerge({}, defaultConfig, commonConfig, serverConfig),
   ];
 }
