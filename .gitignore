@@ -5,6 +5,7 @@ Thumbs.db
 .idea
 .vscode
 
+/.angular/cache
 # Node Files #
 /node_modules
 /bower_components
