@@ -113,7 +113,7 @@
     "compression": "^1.7.2",
     "cookie-parser": "1.4.3",
     "core-js": "2.5.7",
-    "express": "~4.16.2",
+    "express": "~4.17.3",
     "hammerjs": "~2.0.8",
     "ip": "~1.1.5",
     "methods": "1.1.2",
